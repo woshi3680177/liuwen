@@ -2,11 +2,11 @@
     #include <stdlib.h>
     #include "LinkList.cpp"
     #pragma warning(disable:4996)
-     int main()
+    int main()
     {
         //创建一个线性表
         LinkList* llist=LL_Create();
-        //向线性表中插a个数据元素
+        //向线性表中插入a个数据元素
         int i;
         int x;
         int a;
@@ -35,5 +35,4 @@
         LL_Print(llist);
         system("PAUSE");
         LL_Free(llist);
-		return 0;
     }

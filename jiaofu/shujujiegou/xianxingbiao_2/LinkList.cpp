@@ -186,6 +186,16 @@ bool LL_InsAt(LinkList* llist, T x)
     llist->curr = newNode;
     return true;
 }
+void LL_Print(LinkList* llist)
+// 打印整个线性表。
+{
+    LinkNode* node=llist->front;
+    while (node) {
+        printf("%d ", node->data);
+        node=node->next;
+    }
+    printf("\n");
+}
 
 // 12）	
 bool LL_InsAfter(LinkList* llist, T x)
@@ -203,18 +213,23 @@ bool LL_InsAfter(LinkList* llist, T x)
         /* 在空表中插入*/
         newNode->next=NULL;
         llist->front = llist->rear = newNode;
+        printf("%d\n",llist->front->data);
 	}
-    //当前位置为表头
-    else if (newNode->next==NULL)
+    //当前位置为表尾
+    else if (llist->curr->next==NULL)
     {
         /* 在表头结点处插入*/
-        llist->curr->next = newNode;
+        llist->rear->next = newNode;
         llist->rear= newNode;
+        newNode->next=NULL;
+        printf("%d a \n",llist->curr->data);
+        
     }
     else {  
-        /* 在链表的中间位置或表尾后的位置插入*/
+        /* 在链表的中间位置或头的位置插入*/
 		newNode->next=llist->curr->next;
         llist->curr->next = newNode;
+        printf("%d\n",llist->pre->data);
     }
     //插入在表尾后
     if (llist->pre==NULL)
@@ -223,12 +238,17 @@ bool LL_InsAfter(LinkList* llist, T x)
     llist->len++;
     /* 新插入的结点为当前结点*/
     llist->curr = newNode;
+    printf("ding\n");
+    LL_Print(llist);
     return true;
+
 
     /********** End **********/
 }
 
 // 13）	
+
+
 bool LL_DelAt(LinkList* llist)
 // 删除线性表的当前位置的数据元素结点。
 // 若删除失败（为空表，或当前位置为尾结点之后），则返回false，否则返回true。
@@ -314,17 +334,5 @@ int LL_DelValue(LinkList* llist, T x)
     if (idx<0) return -1;
     LL_SetPosition(llist, idx);
     LL_DelAt(llist);
-}
-
-// 17）	
-void LL_Print(LinkList* llist)
-// 打印整个线性表。
-{
-    LinkNode* node=llist->front;
-    while (node) {
-        printf("%d ", node->data);
-        node=node->next;
-    }
-    printf("\n");
 }
 
