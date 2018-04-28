@@ -645,6 +645,13 @@ However, in order to prevent the payment provider to saving or leaking the user'
 7, the payment provider bind the virtual bank card to the user accounts.
 
 In this scheme, the payment provider can not get the user's real bank card account information.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.7]{token_shengcheng2.pdf}}
+\caption{Token application process.}
+\label{fig}
+\end{figure}
+
 \subsection{Fundamental of virtual bank card: payment tokenization }
 Enterprises, merchants, and payment processors face severe, ongoing challenges securing their networks and high-value sensitive data such as payment cardholder data, to comply with the Payment Card Industry Data Security Standard (PCI DSS) and data privacy laws. Tokenization, which is used as a way of replacing sensitive data like credit card numbers with tokens, is one of the data protection and audit scope reduction methods recommended by the PCI DSS. 
 
@@ -658,7 +665,7 @@ Second, payment tags can only be used in a limited transaction scenario, making 
 Thirdly, compared with the traditional bank card verification function, the payment tag integrates the functions of personal identification and device information verification, additional verification of payment information and risk rating to conduct transaction legitimacy identification and risk control. Therefore, the tokenization of the payment can not only prevent the leakage of sensitive information of cardholders in all aspects of transaction, but also reduce the probability of fraudulent transactions.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.17]{tokenapply2.png}}
+\centerline{\includegraphics[scale=0.7]{token_shengcheng.pdf}}
 \caption{Token application process.}
 \label{fig}
 \end{figure}
@@ -816,9 +823,20 @@ Chirp describes the technical details of relying on sound for data communication
 The receiver needs to record the sound and perform it and fault-tolerant processing. Its relatively high requirements on the algorithm, noise reduction and fault-tolerant processing are critical to the correct information
 
 \section{Internet transfer payment technologies}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.6]{zhuanzhangshifu.pdf}}
+\caption{Token application process.}
+\label{fig}
+\end{figure}
+
+
 Internet transfer payment technology, as the name suggests, is a transfer payment via the Internet.Different from the PC terminal, the network transfer payment at the mobile terminal needs to pay for the support of the client's app.
 
 Network transfer payment technology is mainly based on the security of tokenization technology.
+
+
+
 \subsection{scan the QR code}
 In the scan code payment scenario, the QR code is actually a url with some parameters. The scan code will initiate the transfer. The two-dimensional code is actually only an account medium, a data storage body, which itself is not the result of the payment innovation. The existing various QR code payment only replaces the data carrier of the original payment means with a two-dimensional code. Similar chip content with bank cards. Is an account of the embodiment. 
 \begin{figure}[htbp]
@@ -1187,6 +1205,9 @@ especially to ensure that the attack is as
 “invisible” on the network as possible, to
 go undetected.
 \section{offline payment technologies}
+Offline payment is a payment method that is very widely used and very convenient to use. In China today, this type of payment can be seen everywhere, from large shopping malls to small supermarket chains. Even in the underground shopping malls with poor network signals, the surrounding areas of the city, and even tourist attractions in the mountains, as long as a mobile phone, you can pay. The most prominent feature is that the paying party do not need connecting to the Internet, which means only one party need communicate with the payment server.
+
+
 \subsection{Time-Based One-Time Password:The key to offline payment}
 \subsection{IC card and NFC payment}
 \subsection{Mobile phone imitate IC card}
