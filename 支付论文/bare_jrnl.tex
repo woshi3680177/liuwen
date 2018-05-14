@@ -653,6 +653,10 @@ In this scheme, the payment provider can not get the user's real bank card accou
 \end{figure}
 
 \subsection{Fundamental of virtual bank card: payment tokenization }
+In our digital age, bank cards have become a popular payment tool. With the increasing popularity of business through the Internet, each company needs to maintain its customers' bank card information in some form. The theft of bank card data is considered to be one of the most serious threats to any company. Such violations will not only bring serious economic losses to the company, but also cause serious damage to the “brand image”.
+
+The Payment Card Industry Security Standards Council (PCI SSC) was established by a major payment card company and is an organization responsible for the best development and deployment.The organization that ensures the security of credit card data. In particular, PCI SSC has developed a standard PCI Data Security Standard (PCI DSS) called "Standards" [11], which specifies the security mechanism card data required to guarantee payment. PCI DSS requires organizations that process card payments to protect cardholder data as they store, transmit, and process them. The practical requirements specified by the PCI DSS are very detailed and complicated. In order to achieve PCI compliance, merchants need to provide security policies regarding the use and use of the document regarding all sensitive information stored in their environment. Considering PCI compliance requires the confidence of its customers for any business. In addition, in some countries, a company that is exposed to theft of sensitive information may face a large amount of fines.
+
 Enterprises, merchants, and payment processors face severe, ongoing challenges securing their networks and high-value sensitive data such as payment cardholder data, to comply with the Payment Card Industry Data Security Standard (PCI DSS) and data privacy laws. Tokenization, which is used as a way of replacing sensitive data like credit card numbers with tokens, is one of the data protection and audit scope reduction methods recommended by the PCI DSS. 
 
 The principle is to verify the transaction by using a payment token instead of a real bank card number so as to prevent card number information leakage risk. Payment tokenization is the process of replacing a traditional bank card master account with a unique numeric value, while ensuring that the value's application is limited to a specific merchant, channel, or device. Payment tags can be used in all aspects of bank card transactions, and existing bank card number based on the same transaction, can be used across industries in the industry, has versatility.
@@ -670,6 +674,55 @@ Thirdly, compared with the traditional bank card verification function, the paym
 \label{fig}
 \end{figure}
 
+  The international chip card standardization organization EMVCo has defined smart card payment and also defined a token (ie token) as a substitute in the actual card application. Merchants can handle cards and tokens in the same way, which means that there is no need to change the already installed and installed PoS (Point of Sale) terminals. This clever processing is done through a Token Service Provider (TSP) that has the actual card information. When issuing token Tokens, you can flexibly make some restrictions, such as the use of only certain businesses, online use only, offline use, and you can limit the value, time and location of tokens, such as The security level of the device determines its effective time. When necessary, tokens can be destroyed and re-issued. The Tokens solution ensures compatibility with existing infrastructure and saves money. Working with HCE, the token can solve the problem of availability. When the mobile network is unstable, the token is stored locally on the mobile phone and can be paid offline. The EMVCo Payment Token Specification Technical Framework v1.0 provides examples of secure storage of tokens on a device. For example, it can be stored in a trusted execution environment TEE. In addition, tokens can be used through any channel, such as NFC HCE, Internet transactions, and Bluetooth Beacons, so the technology is not limited to PoS terminals.
+  
+As described in [10], a tokenization system has the following components:
+
+\textbf{1.A method for token generation}
+A process to create a token corresponding to a primary account number (PAN). Some of the mentioned options are encryption functions, cryptographic hash functions andrandom number generators.
+
+\textbf{2.A token mapping procedure}
+It refers to the method used to associate a token with a PAN. Given a token, this method will allow the system to recover PAN.
+
+\textbf{3.Card-Vault}
+It is a repository that typically stores pairs of PANs and tokens and other information needed for token mapping. Since it may contain PAN, it must be specially protected according to PCI DSS requirements.
+
+\textbf{4.Cryptographic Key Management}
+This module is a set of mechanisms for creating, using, managing, storing, and protecting keys used to protect PAN data and data involved in token generation.
+\\
+
+It is two basic requirements for tokens and tokenization systems.
+
+\textbf{Format Preserving}
+The token should have the same format as the PAN so that the stored PAN can be easily replaced by the token in the merchant's environment. In addition, it is important to distinguish the token from the PAN token easily.
+
+\textbf{Uniqueness}
+The token generation method should be deterministic. The tokens for a specific PAN should be unique,In a specific payment environment two different PANs should be represented by different tokens.
+
+Article [10] discusses the security of tokenization systems.the author consider three different attack scenarios: 
+
+\textbf{1. IND-TKR }: Tokens are only public. This represents the most realistic scenario where an adversary has
+access to the tokens only, and the card-vault data remains in-accessible.
+
+IND-TKR refers to the basic security requirement for tokens. It adheres to the informal security notion for tokens as stated in the PCI DSS guideline for tokenization. It models the fact that tokens and PANs are un-linkable in a computational sense, if the key and card-vault are kept secret. Thus, if a merchant adopts a tokenization scheme provided by a third party, which is secure in the IND-TKR sense then this will probably relieve it from PCI compliance. As in this case the merchant does not own the card-vault or the keys, and the burden of security involved with the keys and the card-vault lies with the provider who offers the tokenization service.
+
+\textbf{2. IND-TKR-CV }: The tokens and the contents of the card-vault are public. This represents an extreme scenario where the adversary gets access to the card-vault data also.
+
+The IND-TKR-CV is a stronger notion. If a tokenization system achieves this security, then it implies that tokens and PANs are un-linkable even with the knowledge of the card-vault. This in turn implies that the contents of the card-vault are not useful (in a computational sense) to derive a relation between PANs and tokens. Thus, it provides security both to the tokenization service provider and the merchant who use this service.
+
+3. IND-TKR-KEY : This represents another extreme scenario where the tokens and the keys are public.
+
+IND-TKR-KEY is a stronger form of the IND-TKR notion. Some public documents like [17] it has been stressed that encryption is not a good option for tokenization, as in theory there exists the possibility that a token can be inverted to obtain the PAN. If tokens are generated using a “secure” encryption scheme, then it is infeasible for any “reasonably efficient” adversary to invert the token without the knowledge of the key. But, this computational guarantee does not seem to be enough for users. The IND-
+TKR-KEY definition aims to model this paranoid situation, where linking the PANs with tokens becomes infeasible even with the knowledge of the key. Note in IND-TKR-KEY we still assume that the card-vault is inaccessible to an adversary.
+\\
+
+All the definitions follow the style of a chosen plaintext attack. The definitions may be made stronger by giving the adversary additional power of obtaining PANs corresponding to tokens of its choice. But in this application, we think such stronger notions are not applicable.
+
+the [10] also give the security proof of Tokenization Using FPE and Tokenization Without Using FPE.For details, please check the the article
+
+Tokens and tokenization solutions can be implemented in numerous ways, and the security or process controls provided by one solution may not be suitable or applicable to another. Additionally, the assignment of roles and responsibilities may vary according to the particular solution or deployment method, and all entities involved should be aware of their obligations for maintaining security controls and protecting cardholder data.[10]
+
+The level of PCI DSS scope reduction offered by a tokenization solution will also need to be carefully evaluated for each implementation. For example, locations and flows of cardholder data, adequacy of segmentation, and controls around de-tokenization and mapping processes should be reviewed and verified to ensure proper scoping of the CDE and appropriate application of PCI DSS security requirements.[10]
 \subsubsection{Centralized tokenization technologies}
 Centralized tokenization is conventional, database-centric solutions，which requst the token corresponding to the provided PAN from a common central database. If no token corresponding token exists in the common central database at the time of the request, a new token is generated and an entry will be added to the common central database.
 
@@ -693,15 +746,56 @@ Centralized tokenization involves building a large-scale database (“token vaul
 \section{Communication method}
 Mobile payment communication is mainly used for short-distance communication, especially for poor mobile network environment offline payment. Payment information is delivered via these means of communication. Many people regard communication as a means of payment. However, they are only responsible for transmitting payment information. The real means of influencing payment are payment encryption and authentication technologies.
 \subsection{QR code}
-QR code is a matrix QR code symbol that was invented in 1994 by Denso Wave, a Toyota subsidiary of Japan. The QR code not only has large information capacity, high reliability, and low cost, but also can represent various character information such as Chinese characters and images, and has strong security against fraud and is very convenient to use. Therefore, it quickly became popular in Japan and South Korea. Since then, European and American countries have begun to use it in large quantities. 
+QR code was invented in 1994 by Denso Wave, a Toyota subsidiary of Japan. The QR code not only has large information capacity, high reliability, and low cost, but also can represent various character information such as Chinese characters and images, and has strong security against fraud and is very convenient to use. Therefore, it quickly became popular in Japan and South Korea. Since then, European and American countries have begun to use it in large quantities. 
 
 QR code payment is very popular in China, people can almost go out without wallets and bank cards. You only need to show the QR code on your mobile phone to be able to pay in most places even without network. However, why is it possible to authorize payment with the QR code?
 
-The QR code itself cannot make payment authorization, since the actual payment authorization is the payment certificate which encoded in the QR code. The payment certificate is a series of digits. You can authorize payment with this numbers. So the role of the QR code in mobile payment is to transmit this series of numbers. The specific technology of payment certificate will be told in section 4.
+However, the QR code itself cannot make payment authorization, since the actual payment authorization is the payment certificate which encoded in the QR code. The payment certificate is a series of digits(which we calld \textbf{payment password}). You can authorize payment with this numbers. So the role of the QR code in mobile payment is to transmit this series of numbers. The specific technology of payment certificate will be told in section 4.
+
+In this subsection, the QR code technology will be introduce.
+
+The QR code is one of the two-dimensional code, which is similar to the magnetic stripe. The magnetic stripe transforms the information into a track through a certain law, and the two-dimensional code transforms the information into a graph. Reading the magnetic stripe reads the track through the reader and then converts back to the original information, while the two-dimensional code reads the graphics through the camera and then converts back to the original information.
+
+\textbf{Stacked two dimensional bar code:} It consists of multiple rows of bar codes stacked together. Its shape is similar to that of one-dimensional codes. The encoding principle is similar to the encoding principle of the same dimension codes. It has the same or similar characteristics as the one-dimensional bar code in terms of coding design, reading mode, and verification principle, and can even be read and scanned with the same device, except that the reading and decoding algorithms are different from the one-dimensional bar code. Larger capacity but usually does not have error correction.
+Representatives are:
 
 
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=1]{code49.png}}
+\caption{code 49}
+\label{fig}
+\end{figure}
 
-\subsection{NFC:MST}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.5]{PDF417.png}}
+\caption{PDF 417}
+\label{fig}
+\end{figure}
+
+\textbf{Matrix type two-dimensional bar code:}
+A matrix consisting of dark squares and light squares, usually square, where the dark and light blocks represent 1 and 0 in binary, respectively. Matrix-based two-dimensional code is a graphical symbol automatic identification and processing code system, which usually has error correction function. Typical examples are DM codes, QR codes, and Hanson codes.
+
+The QR code has a total of 4 error correction levels, represented by L, M, Q, and H, respectively, and the recoverable code word ratios are 7\%, 15\%, 25\%, and 30\% in order. The higher the error correction level used is, the more error correction code words are used, and the fewer code words are used for encoding information. (In which the related technology mainly uses error correction code)
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.46]{QRcode.pdf}}
+\caption{The structure of the QR code}
+\label{fig}
+\end{figure}
+
+The Fig 7 shows the structure of the QR code:
+
+\textbf{Check up graphic:}The Check up graphic looks similar to the position detection pattern, but the middle square has only one unit. It is mainly used for the correction of the QR code, especially the correction of the graphic distortion caused by the different camera angles or the uneven surface of the printed object. Depending on the version, the number of correction patterns is not the same. There is no correction pattern for version 1 and version 40 contains 46. Wechat's payment code belongs to version 1 so there is no correction graphics, and Alipay's payment code belongs to version 2, there is one.
+
+\textbf{positioning graphic}The positioning graphic is two alternating dark and light bands, and the table is defined on the two-dimensional code like a ruler.
+
+\textbf{Format and Version information:}The format information and version information record the format and version of this QR code and have their own separate calculation rules.
+
+\textbf{Data and Error Correction code:}After the error correction coding of the data is completed, the final code word sequence is constructed in a certain order for the data code word and the error correction code word. The low code word of each data block is in front of the sequence, and the data code word is arranged in front of the error correction code. According to the first codeword of data block 1, the first codeword of data block 2, ..., the last codeword of data block n; the first codeword of error correction code 1, error correction The second codeword of code 2, ..., the last codeword of error correction code n
+
+
+\subsection{NFC}
 Near field communication (NFC) is a wireless technology operating in the short range of four to ten centimeters for communication. It is based on radio frequency identification (RFID) technology. For a communication, an NFC device generates a radio frequency in 13.56 MHz spectrum. A receiver could receive the data through the principle of magnetic inductive coupling if it lies in a close proximity. Transmitter and receiver are small chipsets which are able to be embedded in devices such as mobile phones, POS (Point Of Sale) terminals, cards posters and many other items. 
 
 The NFC forum (www.nfcforum.org) was formed in 2004 aimed at standardizing NFC technology. It defines NFC as: NFC is a short-range wireless connectivity technology (also known as ISO 18092) that provides intuitive, simple, and safe communication between electronic devices. Operating at the frequency of 13.56 MHz and limited short range communicating distance, NFC supports data rate of 106 Kbps, 212 Kbps and 424 Kbps. Therefore, NFC is suitable for transmission of short information or messages within small time interval. 
@@ -745,24 +839,30 @@ $D$           : Relative permeability of transmitter and receiver antenna coil c
 An NFC system basically consists of three components as shown in Figure 5. This is the typical casewhen an NFC phone reads an NFC tag and communicates with the backend server [3-5]. In some cases, NFC tag can be another NFC phone or also there would be no need to contact backend server [6-7]. In essence, an NFC mobile system consists of an NFC tag, an NFC chip embedded mobile phone
 and a backend server.
 
-MST is "Magnetic Secure Transmissions". The technology was developed and patented by LoopPay. Samsung previously acquired the company to deploy its Samsung Pay service.The biggest highlight of Samsung Pay and Apple Pay is support for magnetic stripe card payments.
+The security of NFC can be confirmed to some extent. However, as it is a wireless technology, some security issues are inevitable [12-13]:
 
-Figure 3 shows the components of the payment accessory that LoopPay made for Samsung. By using AC current, the coil will generate a magnetic field.If the correct magnetic field is generated, the coil can communicate with a credit card reader.In fact, the principle of MST is to emit a magnetic field.
+\textbf{1,Eavesdropping :} Through eavesdropping, an attacker can receive the transferred information using a suitable antenna.For NFC attack, this antenna should be close enough. But, there is no solid analysis on accurate range
+for possible attack as it depends on attackers' antenna parameters. It is to be worth noted that NFC provides no defense mechanism against eavesdropping. In literature [8], it is discussed that eavesdropping in NFC is difficult if a device is working on passive mode. Hence, operating on passive mode could be one of the countermeasures against eavesdropping. However, it is not practical for an NFC device to always operate on passive mode. Therefore, eavesdropping can be avoided by establishing a secure channel between the devices.
 
-\begin{figure}[htbp]
-\centerline{\includegraphics[scale=1]{MSTyuanjian2.png}}
-\caption{token service provider}
-\label{fig}
-\end{figure}
+\textbf{2,Data Modification}
+If the attacker has enough knowledge of the transmission, such as the mode of operation, the modulation technology used, etc., then different RF fields can be used to tamper with the data. This attack can be further divided into the following three types[14]:
 
-However, payment security is not solved by a copper coil.The MST application has three protection mechanisms: Payment Tokenization, eSE (hardware security module) bank card information protection, KNOX, and fingerprint/password authentication.
+\textit{1) Data Alteration:} The attacker sends a valid but modified data to the receiver.
 
-For Token, the user needs to enter the card information and send it to the card organization for verification. After the card organization passes the verification, a token will be generated for this card and the token will be sent to the device. The credit card information is not directly stored on the device. Token is stored in an independent security chip (SE chip) and used to replace the bank card number. It can be understood that the Token and the bank card number are equivalent, but even if the Token leaks, the bank card information cannot be reversed. Only when fingerprint or password authentication passes can the token be read out through the MST. Token's storage and management is governed by Samsung's own KNOX security platform.High-risk behaviors such as equipment modification occur, and KNOX can invalidate sensitive data on the device.
+\textit{2) Data Insertion:} The attacker inserts its data shortly before the receiver acknowledges the transmission.
 
-In other words, when using Samsung Pay's magnetic card payment mode, the key technical step is how this Token is sent. The MST generates a dynamic magnetic field through an induction coil and can be changed according to the user-defined time limit. If your mobile device is within 3 inches of the reader, you will be able to identify the magnetic field.
+\textit{3) Data Destruction:} The attacker destroys or blocks the transmitted data so that it cannot be read by the receiver (DoS attack).
 
-Like a traditional credit or debit card, magnetic fields include your payment information. The magnetic field only exists when the user chooses to send the payment information, and the magnetic field will automatically disappear once the distance between the mobile device and the reader exceeds 3 inches. This means that the attacker must be very close to the payment process to steal the payment data.
+For data modification, the attacker should generate his own RF field based on the modulation and transmission techniques used by the NFC device. This is very difficult from the perspective of the attacker. In addition, NFC devices can operate in full-duplex mode. This means they can check the RF field generated by the attacker to avoid collisions.
 
+\textbf{3,Man in the middle Attack:}The attacker receives the signal from the transmitter and modifies or modifies the data and sends it to the receiver and vice versa. Although this is a big issue in large-scale network security, NFC is very difficult or almost impossible because the transceiver can detect the radio field during communication and can know the unknown RF field or collision.
+
+However, the three major mainstream payments using NFC payment now are Samsung Pay, Apple Pay, and Google pay. Its essence of TOTP technology, in the middle of the attack, will reveal a great security risk. These are mentioned in section 5.
+
+\textbf{Lost devices and abandoned connections}
+NFC-enabled mobile devices are easily lost. However, they contain important information such as credit cards and personal data. Therefore, anyone who finds missing devices can use it just like using a lost credit card. In this case, manual security in the mobile device is the only solution, such as secure access to the phone through some PIN code or personal identification number.
+
+On the other hand, short NFC communications can be abandoned without closing after use. These abandoned connections can be used by attackers for a variety of purposes. Therefore, communication timeout techniques should be implemented to avoid such attacks.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[scale=0.25]{ComparisonoNFCandotherPANtechnologies.png}}
@@ -797,13 +897,43 @@ each other. Another popular usage is for connection handoff to other standard te
 \end{figure}
 
 
+\subsection{MST}
+Magnetic Secure Transmission (MST) is a technology that can transmit magnetic signals that simulate the magnetic stripe on a traditional payment card. The MST sends a magnetic signal from your device to the reader of the payment terminal (simulating the physical card swiping without upgrading the terminal's software or hardware). Almost all payment terminals with card readers can use MST technology. Some payment terminals may require software updates. Simply select a card from Samsung Pay and transfer the payment information by moving the device within one inch of the payment terminal. Your transaction and payment information will use tokenization for privacy and security. MST is more secure than using traditional payment cards and is as secure as using Near Field Communication (NFC) payments.
+
+The technology was developed and patented by LoopPay. Samsung previously acquired the company to deploy its Samsung Pay service.The biggest highlight of Samsung Pay and Apple Pay is support for magnetic stripe card payments.
+
+Figure 3 shows the components of the payment accessory that LoopPay made for Samsung. By using AC current, the coil will generate a magnetic field.If the correct magnetic field is generated, the coil can communicate with a credit card reader.In fact, the principle of MST is to emit a magnetic field.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=1]{MSTyuanjian2.png}}
+\caption{token service provider}
+\label{fig}
+\end{figure}
+
+However, payment security is not solved by a copper coil.The MST application has three protection mechanisms: Payment Tokenization, eSE (hardware security module) bank card information protection, KNOX, and fingerprint/password authentication.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.18]{Emittingmagneticpulse.png}}
+\caption{Emitting magnetic pulse.}
+\label{fig}
+\end{figure}
+
+For Token, the user needs to enter the card information and send it to the card organization for verification. After the card organization passes the verification, a token will be generated for this card and the token will be sent to the device. The credit card information is not directly stored on the device. Token is stored in an independent security chip (SE chip) and used to replace the bank card number. It can be understood that the Token and the bank card number are equivalent, but even if the Token leaks, the bank card information cannot be reversed. Only when fingerprint or password authentication passes can the token be read out through the MST. Token's storage and management is governed by Samsung's own KNOX security platform.High-risk behaviors such as equipment modification occur, and KNOX can invalidate sensitive data on the device.
+
+In other words, when using Samsung Pay's magnetic card payment mode, the key technical step is how this Token is sent. The MST generates a dynamic magnetic field through an induction coil and can be changed according to the user-defined time limit. If your mobile device is within 3 inches of the reader, you will be able to identify the magnetic field.
+
+Like a traditional credit or debit card, magnetic fields include your payment information. The magnetic field only exists when the user chooses to send the payment information, and the magnetic field will automatically disappear once the distance between the mobile device and the reader exceeds 3 inches. This means that the attacker must be very close to the payment process to steal the payment data.
+
+Near Field Communication (NFC) allows two devices to be located a few inches apart to exchange information. NFC payments require merchants to upgrade old terminals to NFC-enabled payment terminals. Magnetic Secure Transmission (MST) Sends magnetic signals from compatible devices to the payment terminal's reader (emulates card swiping physical payment cards). The MST payment does not require the merchant to upgrade the payment terminal so that Samsung payment can be used on almost all payment terminals with a card reader. Some payment terminals may require software updates. Samsung Pay uses NFC and MST to send payment information to the terminal. Whether using NFC or MST, transactions are seamless, providing a better user experience. Both technologies are equally secure, using a unique digital card number instead of the actual payment card number. Your information is confidential and secure. Only the payment network of your bank and credit card will provide transaction information.
+
+
 \subsection{Audio}
 
 The audio protocol we are talking about today for sonic communication is generally from the technical documentation of chirp which is a novel application for "transmitting" files via voice issued by the American startup Animal Systems.
 
 Acoustic wave transmission is a set of technical solutions that use sound to achieve fast transmission of files: Cross-platform technology is used to implement data transmission between any device that can send sound waves and receive sound waves.There are also a large number of applications in mobile payments.
 
-\subsubsection{coding}
+\subsubsection{encoding}
 The principle of the audio protocol is simple and easy to implement. Create a table with 32 characters and map each character to a frequency table. The frequency table is generated based on the music theory through the calculation of sound.Each character is represented by the pitch of one frequency, so there are 32 frequencies, 0 corresponds to 1760 Hz, 1 corresponds to 1864 Hz,..., v corresponds to 10.5 kHz, and the adjacent frequency differs by a half interval.
 
 The audio produced by Chirp contains 20 characters. Each character is generated with a sine wave of the corresponding frequency. Each sine wave lasts 87.2 ms. If the sampling rate is 44.1 kHz, then each character is about 3846 samples. The whole audio is about 20*87.2ms=1.744s, because each character is represented by a different frequency, it sounds like music.
@@ -822,10 +952,10 @@ Chirp describes the technical details of relying on sound for data communication
 
 The receiver needs to record the sound and perform it and fault-tolerant processing. Its relatively high requirements on the algorithm, noise reduction and fault-tolerant processing are critical to the correct information
 
-\section{Internet transfer payment technologies}
+\section{online payment technologies}
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.6]{zhuanzhangshifu.pdf}}
+\centerline{\includegraphics[scale=0.58]{zhuanzhangshifu.pdf}}
 \caption{Token application process.}
 \label{fig}
 \end{figure}
@@ -845,371 +975,182 @@ In the scan code payment scenario, the QR code is actually a url with some param
 \label{fig}
 \end{figure}
 \subsection{Through email}
-PayPal is a Web-based e-commerce
-business that allows money transfers and
-payments to be made through the
-Internet. It offers a secure method to
-transfer funds between individuals or
-business electronically. A special feature
-of PayPal is that it does not transmit any
-financial information over the Internet as
-a bank would do. It is similar to an escrow
-service as PayPal acts as the middleman
-holder of the money between both parties
-involved in a transaction.
-In this paper I will focus on the specific
-case of Cross-Site Scripting attacks (XSS)
-against the security of web applications.
-The XSS attack is very similar to SQL
-Injection due to the fact that both attacks
-inject code into the web application that
-poses a threat. A study documented by
-Symantec in 2007 showed that roughly
-84 of websites are susceptible to cross
-site scripting.
 
-PayPal uses the public key cryptography
-technology to encrypt your PayPal button
-created from your account that is used in
-a website.
-Public key cryptography provides a way to
-prove the identity in the online world. This
-cryptographic algorithm uses two keys(public-key and private-key) which are
-bits of data that are mathematically
-related to one another. This type of
-cryptographic algorithm only works only if
-you keep the private key confidential,
-while the public key can be made
-available. The public keys are distributed
-inside a digital certificate.
-Digital certificates represents a file that
-contains information about the public key
-(name of the company that owns the
-public key, the third party company that
-distributed
-the
-certificate
-and
-the
-certificate expiration date) and the key
-itself. The third party involved in signing
-the certificate is referred as a certificate
-authority (CA). The CA signs the digital
-certificate, and the consumers can
-validate that the public key is valid by
-using the public certificate of the CA to
-verify the digital signature.
-
-Even though you can generate an
-encrypted PayPal button either from your
-PayPal account or through the PayPal API,
-many websites still use the standard HTML form for a Buy Now button or
-Subscription button.
-The code for the encrypted PayPal button
-is presented in the image below.
-You can see in Figure 1 that the input with
-the name $hosted_button_id$ holds the
-encrypted value for the product. This
-includes the business name. item name,
-price, currency shipping and tax values
-entered in PayPal.
-
-This type of PayPal button is secure
-because it does not display any
-information about the merchant or about
-the item itself.
-Another type of PayPal button is the one
-where you can enter all the variables in
-plaintext as seen below (Figure 2).
-
-In Figure 2 you can see that the personal
-information about your account is now
-visible: business (the merchant account),
-amount (the price of the item), first
-name, last name, address 1, address 2
-city, zip (information about the buyer).
-All the above information is in plaintext
-and can be easily altered for malicious
-intents.
-
-For example using a man-in-the-middle
-attack as seen in Figure 3, the attacker
-intercepts the communication between
-the victim and the Web Server. Using
-different techniques, the attacker can split
-the original connection into two new
-connections, one between the victim and
-the attacker and the other between the
-attacker and the Web Server. Once the
-connection is intercepted, the attacker
-can read and alter the data from the
-intercepted connection. Once the attacker
-intercepts the connection he can alter the
-merchant account by adding his own
-
-user’s browser allows an attacker to
-perform the following types of attack:
-Cookie theft: the attacker can access
-the victim’s cookies associated with
-the website, send them to his own
-server and use them to extract
-sensitive information like session ID,
-which can be used to enter PayPal’s
-website (PayPal uses cookies when a
-user loges in with his account) as
-though he was the actual owner of the
-account
- 
- Keylogging: the attacker can register
-a keyboard event listener, and then
-send all of the user’s keystrokes to his
-own server, potentially recording
-personal or financial information
- Phishing: the attacker can insert a
-fake login form into the page, set the
-form’s action attribute to target his
-own server and then trick the user
-into submitting sensitive information.
-For security purposes PayPal introduced
-an option for using a PayPal Security Key
-during the login process. This security
-measure is actually an OTP authentication
-system
-that
-generates
-a
-random
-temporary security code (which is
-displayed on the PayPal Security Key
-card) that must be used together with the
-account’s holder username and password
-to complete the sign in process.
-is ignored and therefore the attack was
-successful.
-Further,
-the
-attackers
-establish a separate HTTPS connection
-with the server to complete the request,
-and the result of the response is delivered
-to the victim’s browser. This gives the
-attackers full control over the SSL traffic
-and
-helps
-them
-steal
-personal
-information. Since the attackers are not
-breaking the request-response chain, this
-kind of attack becomes tough to detect
-the data theft.
-2.3.1 NSA Man in the middle
-NSA (National Security Agency) is known
-for using man in the middle attack.
-Because NSA has a secret partnership
-with the US telecoms companies, NSA
-placed secret servers at key places in the
-internet
-backbone.
-This
-placement
-
-ensured that they can react faster then
-any other websites can. Exploiting these
-speed differences these servers could
-impersonate a visited website to the
-victim before the legitimate website could
-respond, thereby tricking the victim into
-thinking they are on the right website.
-This kind of attack is very difficult to
-execute for any other attackers because it
-requires a privileged position in the
-internet backbone. NSA uses these fast
-servers to execute a packet injection
-attack that redirects the victim to one of
-the NSA servers.
-2.3 The SSL Man in the middle attack
-In this case, the attackers intrude into the
-network and establish a successful man in
-the middle connection. The attackers can
-watch the HTTPS traffic and wait for the
-targeted website to respond to some
-browsers HTTPS request. When a browser
-sends a HTTPS request, the server
-responds by sending its digital certificate
-as part of the SSL handshake protocol. At
-this moment, the attackers can grab this
-certificate
-and
-note
-down
-various
-information
-as
-the
-domain
-name,
-expiration date etc. The attackers can
-now create their self-signed certificate
-using the information from above. From
-this point forward, the attackers intercept
-each browser request and respond with
-the fake certificate. As a normal response
-to this situation, the browser pops up a
-warning to the user, which in most cases
-2.4 Packet Crafting
-Packet crafting is a task that is
-methodically carried out to penetrate into
-a network’s infrastructure. There are four
-steps involved in crafting a packet:
- Packet assembly;
- Packet editing;
- Packet playing;
- Packet analysis.
-2.4.1 Paced assembly
-This is the first step in the crafting
-process, where an attacker decides which
-network needs to be cracked, tries to
-gather possible vulnerability information
-and creates the packets to be sent. The
-packet is then checked for accuracy,
-especially to ensure that the attack is as
-“invisible” on the network as possible, to
-go undetected.
-
-user’s browser allows an attacker to
-perform the following types of attack:
- Cookie theft: the attacker can access
-the victim’s cookies associated with
-the website, send them to his own
-server and use them to extract
-sensitive information like session ID,
-which can be used to enter PayPal’s
-website (PayPal uses cookies when a
-user loges in with his account) as
-though he was the actual owner of the
-account
- Keylogging: the attacker can register
-a keyboard event listener, and then
-send all of the user’s keystrokes to his
-own server, potentially recording
-personal or financial information
- Phishing: the attacker can insert a
-fake login form into the page, set the
-form’s action attribute to target his
-own server and then trick the user
-into submitting sensitive information.
-For security purposes PayPal introduced
-an option for using a PayPal Security Key
-during the login process. This security
-measure is actually an OTP authentication
-system
-that
-generates
-a
-random
-temporary security code (which is
-displayed on the PayPal Security Key
-card) that must be used together with the
-account’s holder username and password
-to complete the sign in process.
-is ignored and therefore the attack was
-successful.
-Further,
-the
-attackers
-establish a separate HTTPS connection
-with the server to complete the request,
-and the result of the response is delivered
-to the victim’s browser. This gives the
-attackers full control over the SSL traffic
-and
-helps
-them
-steal
-personal
-information. Since the attackers are not
-breaking the request-response chain, this
-kind of attack becomes tough to detect
-the data theft.
-2.3.1 NSA Man in the middle
-NSA (National Security Agency) is known
-for using man in the middle attack.
-Because NSA has a secret partnership
-with the US telecoms companies, NSA
-placed secret servers at key places in the
-internet
-backbone.
-This
-placement
-ensured that they can react faster then
-any other websites can. Exploiting these
-speed differences these servers could
-impersonate a visited website to the
-victim before the legitimate website could
-respond, thereby tricking the victim into
-thinking they are on the right website.
-This kind of attack is very difficult to
-execute for any other attackers because it
-requires a privileged position in the
-internet backbone. NSA uses these fast
-servers to execute a packet injection
-attack that redirects the victim to one of
-the NSA servers.
-2.3 The SSL Man in the middle attack
-In this case, the attackers intrude into the
-network and establish a successful man in
-the middle connection. The attackers can
-watch the HTTPS traffic and wait for the
-targeted website to respond to some
-browsers HTTPS request. When a browser
-sends a HTTPS request, the server
-responds by sending its digital certificate
-as part of the SSL handshake protocol. At
-this moment, the attackers can grab this
-certificate
-and
-note
-down
-various
-information
-as
-the
-domain
-name,
-expiration date etc. The attackers can
-now create their self-signed certificate
-using the information from above. From
-this point forward, the attackers intercept
-each browser request and respond with
-the fake certificate. As a normal response
-to this situation, the browser pops up a
-warning to the user, which in most cases
-2.4 Packet Crafting
-Packet crafting is a task that is
-methodically carried out to penetrate into
-a network’s infrastructure. There are four
-steps involved in crafting a packet:
- Packet assembly;
- Packet editing;
- Packet playing;
- Packet analysis.
-2.4.1 Paced assembly
-This is the first step in the crafting
-process, where an attacker decides which
-network needs to be cracked, tries to
-gather possible vulnerability information
-and creates the packets to be sent. The
-packet is then checked for accuracy,
-especially to ensure that the attack is as
-“invisible” on the network as possible, to
-go undetected.
 \section{offline payment technologies}
-Offline payment is a payment method that is very widely used and very convenient to use. In China today, this type of payment can be seen everywhere, from large shopping malls to small supermarket chains. Even in the underground shopping malls with poor network signals, the surrounding areas of the city, and even tourist attractions in the mountains, as long as a mobile phone, you can pay. The most prominent feature is that the paying party do not need connecting to the Internet, which means only one party need communicate with the payment server.
+Offline payment is a payment method which the most prominent feature is that the paying party do not need connecting to the Internet, which means only one party need communicate with the payment server.It is widely welcomed due to its ease of use. In China today, this type of payment method can be seen everywhere, from large shopping malls to small supermarket chains. Even in the underground shopping malls with poor network signals, the surrounding areas of the city, and tourist attractions in the mountains, as long as a mobile phone in hand, you can pay for you. 
 
+Off-line payment is mainly provided by two major technologies, one mainly provided  by large-scale payment service providers such as Alipay, Tencent, UnionPay, Wal-Mart, and Amazon. It mainly binds the bank card to the account of the corresponding payment provider and uses the TOTP technology to generate the payment password and use the account number to pay. Another source is mainly provided by large mobile terminals or system providers, such as Apple, Samsung, and Google. It mainly binds the bank card to the mobile phone terminal and simulates the bank card payment method and pays for direct connection to the bank.
 
+Figure 15 shows the entire process of offline payment from client to bank, including TOTP payment represented by Alipay and analog bank card payment represented by Samsung.
+
+First look at the former, after the TOTP is generated by the mobile phone, the QR code or audio is used as a carrier to the store. The store transmits the TOTP plus payment information to the server of the payment service provider, decodes the TOTP and completes the settlement. At this time, the payment provider The money in the customer's account in the database is transferred to the store's account.
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.68]{offline.pdf}}
+\caption{Offline payment.}
+\label{fig}
+\end{figure}
 \subsection{Time-Based One-Time Password:The key to offline payment}
-\subsection{IC card and NFC payment}
+one of the technical prototypes of the off-line payment is a one-time password (OTP) widely used in the industry. Products using this technology include Alipay and WeChat, as well as hardware equipment such as bank U shields and game tokens.
+
+Regardless of Alipay or WeChat, they scanned the payment using 18-digit digitally-generated barcodes and QR codes. This 18-digit number is the payment password. 
+
+
+\subsubsection{HMAC(Message Authentication Code Algorithm Based on Hash Function)}
+Algorithm formula:
+$$HMAC(K, m) = H((K^{\prime} xor opad) || H ((K^{\prime} xor ipad) || m)) $$
+
+$\bullet$ H:hash functio4;
+
+$\bullet$ K:shared secret key;
+
+$\bullet$:$K^{\prime}$ calculated by K(key) (The hash function of this scheme is SHA-1, MD5, RIPEMD-128/160, and the size of $K^{\prime}$ is 64 bytes, followed by 0);
+
+$\bullet$ xor;
+
+$\bullet$ opad:outer HASH padding value, 0x5c5c5c.... Length equal to K’ $K^{\prime}$;
+
+$\bullet$ ipad:inner HASH padding value, 0x363636.... Length equal to  $K^{\prime}$;
+
+$\bullet$ m:a message input;
+
+$\bullet$ $||$:Indicates connection.
+
+\subsubsection{HOTCP(HMAC-based One-Time Password)}
+Algorithm formula:
+\\
+$HOTP(K,C) = (Truncate(HMAC(K,C))\&0x7FFFFFFF) 
+\\mod 10^{d}$
+
+$\bullet$ C:counter;
+
+$\bullet$ Truncate:after processing will get a 32bit unsigned integer;
+
+$\bullet$ A d-bit numeric password is obtained with a d-squared modulus operation of 10.
+\subsubsection{TOTP(Time-Based One-Time Password)}
+Algorithm formula:
+\\
+$$TOTP = HOTP(K, TC)$$
+
+$\bullet$ $TC=f((unixtime(now) − unixtime(T0)) / TS)$;
+
+$\bullet$ T0:The time step to start the calculation;
+
+$\bullet$ TS:Time Step.
+\\
+\\
+After the terminal installs the client and starts the application for the first time, the server can generate a unique token and the device ID corresponding to the token.
+
+$\bullet$ Token: The seed used to generate the OTP code.
+
+$\bullet$ Device ID: Used to uniquely identify the terminal.
+
+After sending the token and the device ID to each terminal, the server needs to store the mapping relationship between the token and the device ID.
+
+
+The terminal calculates the dynamic password by using the pre-stored token and the current time as input values of the first preset algorithm.
+
+The first preset algorithm may be an arbitrarily formed irreversible algorithm
+                           
+                           $1$, time synchronization algorithm (TOTP);
+ 
+                           $2$, event synchronization algorithm (HOTP);
+
+                           $3$, challenge response algorithm (OCRA);
+
+Alipay and moust of payment server provider now mainly uses TOTP technology
+
+
+
+
+The first information can be any of the following:
+
+1, dynamic password: such as: 123456.
+
+2, the combination of dynamic password and current time value: such as: 123456 (dynamic password) 20160503110232 (current time value)
+
+3, device ID and dynamic password:
+
+4, device ID and dynamic password + current time value.
+
+The first information including the above-mentioned dynamic password is used as the input value of the second preset algorithm, and the second information is calculated.
+
+The second preset algorithm is an irreversible algorithm such as: HMAC, MD5, or HMAC-SHA algorithm.
+
+ second information is generally obtained with the token and the first information as input values
+
+1, find the corresponding token with the device ID of the authentication password
+
+2, using the token and the first default algorithm to verify the dynamic password.
+The trusted dynamic password list is first calculated (the trusted dynamic list includes multiple trusted dynamic passwords).
+If it is found that a certain trusted dynamic oral delivery is consistent with the above-mentioned dynamic password, the dynamic password verification passes.
+
+3, using the first information and the second preset algorithm to verify the second information
+
+
+
+
+10: device ID
+
+20: Dynamic password
+
+30: second information
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.62]{TOTP2.pdf}}
+\caption{Time-Based One-Time Password.}
+\label{fig}
+\end{figure}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.6]{QRcode.png}}
+\caption{Offline payment.}
+\label{fig}
+\end{figure}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.65]{TOTP.pdf}}
+\caption{Time-Based One-Time Password.}
+\label{fig}
+\end{figure}
+
+
+\subsection{IC card and its imitation payment}
+IC card credit card payment is the main portable payment method before mobile payment. Especially in Europe and the United States, it has become a payment method that many people have become accustomed to. Therefore, Samsung, Apple, Google and other large European and American Internet companies have taken a different path from companies such as Alibaba and Tencent when they entered the payment industry.
+
+Different from the use of the two-dimensional code, audio, and other means. They work directly with banks and  are committed to using mobile phones to simulate IC card payments which hope to have a swipe experience on the mobile phone.
+
+\subsection{bank card}
+The bank card is divided by the interface and can be divided into:
+
+\textbf{magnetic card;}
+
+\textbf{IC card (chip card).}
+\subsubsection{magnetic card}
+A magnetic card is a card-like magnetic recording medium that uses magnetic carriers to record characters and digital information for identification purposes or other purposes. The magnetic card is made of high-strength, high-temperature-resistant plastic or paper-coated plastic, and can be damp-proof, wear-resistant and have certain flexibility. It is easy to carry and uses more stable and reliable. For example, the bank card we used before is the most common magnetic stripe card.
+
+The magnetic stripe card is a veteran of the card industry. It has the longest usage time and the largest number of uses. With the development of informatization and electronic technology, magnetic stripe cards have gradually faded out of the stage of history due to the disadvantages described above.
+
+\subsubsection{IC card}
+An integrated circuit card (IC card) is also called a smart card, an intelligent card, a microcircuit card, or a microchip card. It embeds a microelectronic chip into a card base conforming to the ISO 7816 standard in the form of a card. The communication between the IC card and the reader can be either contact or non-contact. According to the communication interface, the IC card is divided into a contact type IC card, a non-contact type IC, and a dual interface card (having both a contact type and a non-contact type communication interface).
+
+Because of its inherent information security, portability, and relatively standardization, IC cards are increasingly used in identity authentication, banking, telecommunications, public transportation, and yard management, for example, second-generation ID cards, and banks. Electronic purses, telecommunication SIM cards for mobile phones, bus cards for public transportation, subway cards, parking cards for parking fees, etc. all play an important role in people's daily lives.
+
+IC card is another kind of information carrier after the magnetic card. The IC card refers to an integrated circuit card. A commonly used bus card is a kind of IC card. Generally, a common IC card uses radio frequency technology to communicate with a card reader supporting an IC card. There is a difference between the IC card and the magnetic card. The IC card stores information through the integrated circuit in the card, and the magnetic card records information through the magnetic force in the card. IC cards are generally higher in cost than magnetic cards, but have better confidentiality.
+
+The subdivision of chips can be divided into 
+
+\textbf{contact card:}Contact: only support contact transactions, transactions need to plug into the POS machine
+
+\textbf{non-contact card:}Non-contact: only support non-contact transactions, trade on the POS machine, usually non-contact IC is buried in the card, the surface can not see.
+
+\textbf{dual interfaces card.:}The dual interface means that the IC card supports both interfaces. Therefore, only when the bank card is an IC card that supports non-contact transactions, it is possible for the NFC terminal to read the card information.
+
+
+
+
+
+
+
 \subsection{Mobile phone imitate IC card}
 With the gradual deployment of Android Pay, Apple Pay and Samsung Pay, mobile payments have returned to the public eye and the comparative articles on several types of payment have not been uncommon in recent days. This article mainly discusses the similarities and differences between several payment methods from a technical point of view.
 \\
@@ -1219,10 +1160,55 @@ Apple Pay and Android Pay each serve as a system-level payment application (Appl
 Relative to the online payment (in short, that is connected with the Internet, the payment of data through the network transmission), offline payment is a physical payment, you need a terminal device chargeback, in most cases, POS machines. In order to replace the traditional credit card with credit card spending, NFC + Pay way allows consumers to use a cell phone, rather than a variety of cards for "flash" consumption. Pay only needs the POS machine to support NFC without any other modification. Therefore, offline entity merchants accept this payment method exactly as the acceptance of non-connected bank cards such as MasterCard Pay Pass, Visa Pay Wave, China Union Pay Flash Quick Pass , There is no promotion barriers, but also to speed up the deployment of wireless POS machines coupled with a heavy weight.
 
 \subsubsection{sumsung pay}
+Samsung Pay uses NFC and MST technologies. 
+
+Samsung Pay uses both NFC and MST to send payment information to the terminal. The transaction is seamless, whether using NFC or MST, allowing for a better user experience.
+
+Both technologies are equally secure, using a unique digital card number in place of the actual card number. The information is kept private and secure, and only the bank and the card's payment network will have information on the transaction。
+
+Samsung's payment technology also uses TOTP technology and virtual bank card technology. The following steps can be known from Fig 21:
+
+\textbf{1, }The client first submits bank card-related information on the app. Samsung takes them to the bank or card organization in exchange for a virtual silver card and secret value and binds it with the user account. In addition to being stored on the server, it is also stored in the KNOX of the client's mobile phone.
+
+\textbf{2, }Combine the virtual line card with the secret value and add the TOTP algorithm to get a one-time payment password. The following is a guess. When the payment is made again, the first 6 digits and the last 4 digits of the password are the same as the virtual bank card. The middle 8 digits are TOTP passwords.
+
+\textbf{3,}The payment password using MST or NFC encoding, and simulate the physical bank card payment method in pos credit card. The payment password and the pos machine ID are transmitted to the bank server via the payment network.
+
+\textbf{4,}The bank server obtains the virtual bank card by decrypting the TOTP, and obtains the real bank card through the de-tokenization technology. Finally, the bank card is used for real payment, and the payment completion information is returned to the Samsung server.
+
+Samsung's MST payments and NFC payments are analog bank card payments. Not only that, S and C will be displayed behind the pos card number on the pos machine.
+
+In fact, this means that the physical card swiping method. S means the media representing the card is a magnetic stripe. I means that use the intergated chip. C and Q are the non-contact transactions.
+
+It can be concluded that Samsung's payment, while simulating the physical card payment on the surface, essentially uses the core technologies of mobile offline payment, namely, tokenization and TOTP.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.35]{sanxingMST2.png}}
+\caption{samsung pay service architecture.}
+\label{fig}
+\end{figure}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.35]{sanxingNFC2.png}}
+\caption{samsung pay service architecture.}
+\label{fig}
+\end{figure}
+
 \subsubsection{Android pay}
 \subsubsection{apple pay}
+Apple pays only NFC payments, and its technology is very similar to Samsung's NFC technology, but Apple's use of the scene is not Samsung. Because it does not support magnetic stripe payments, it supports Apple payments on many older devices that only support magnetic stripe payments.
+
+By comparison, it is not difficult to see that Apple Pay and Samsung Pay have an essential difference from China’s Alipay/WeChat. Apple Pay and Samsung Pay do not have their own account ecology. They are only used to replace bank cards for online and offline consumption, eliminating the need to carry bank cards or memories, but are limited to only supporting their own models, and their audiences are relatively Narrower.
+
 
 \section{Disscusion and security comparison}
+\begin{figure*}[htbp]
+\centerline{\includegraphics[scale=0.5]{datu.pdf}}
+\caption{Time-Based One-Time Password.}
+\label{fig}
+\end{figure*}
+
+
 \section{Conclusion}
 The conclusion goes here.
 
@@ -1316,6 +1302,16 @@ E. Haselsteiner and K. Breitfu, \emph{“Security in near field communication (N
 \bibitem{IEEEhowto:kopka}
 E. Haselsteiner and K. Breitfu, \emph{“Security in near field communication (NFC),}” Proc. of Workshop
 on RFID security, 2006.
+\bibitem{IEEEhowto:kopka}
+PCI Security Standards Council. Information supplement: PCI DSS tokenization guidelines, 2011. Available at "\url{https:www.pcisecuritystandards.org/documents/Tokenization_Guidelines_Info_Supplement.pdf}".
+\bibitem{IEEEhowto:kopka}
+Díaz-Santiago, S., Rodriguez-Henriquez, L. M., \& Chakraborty, D. (2016). \emph{A cryptographic study of tokenization systems.} International Conference on Security and Cryptography (Vol.15, pp.413-432). IEEE.
+\bibitem{IEEEhowto:kopka}
+E. Haselsteiner and K. Breitfu, \emph{“Security in near field communication (NFC),”} Proc. of Workshop on RFID security, 2006.
+\bibitem{IEEEhowto:kopka}
+C. Mulliner, \emph{“Vulnerability analysis and attacks on NFC-enabled mobile phones,”} Proc. of International Conference on Availability, Reliability and Security (ARES ’09), pp. 695-700, Mar.2009.
+\bibitem{IEEEhowto:kopka}
+Timalsina S K, Moh S. \emph{A review on NFC and NFC-based mobile payment solution[J].} Journal of Next Generation Information Technology, 2012, 3(4):35-44.
 \end{thebibliography}
 
 % biography section
@@ -1345,6 +1341,7 @@ Biography text here.
 \begin{IEEEbiographynophoto}{Jane Doe}
 Biography text here.
 \end{IEEEbiographynophoto}
+
 
 % You can push biographies down or up by placing
 % a \vfill before or after them. The appropriate
