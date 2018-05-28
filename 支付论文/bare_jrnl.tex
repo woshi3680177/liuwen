@@ -743,6 +743,79 @@ Centralized tokenization involves building a large-scale database (“token vaul
 \end{figure}
 
 \subsubsection{Distributed tokenization technologies}
+
+\section{Mobile Terminal Security}
+In 2006, the open mobile terminal platform organization OMTP (Open Mobile Terminal Platform) took the lead in presenting a dual system solution: that is, in addition to a multimedia operating system, providing an isolated security operating system under the same intelligent terminal. Isolated security operating systems on isolated hardware are used to specifically process sensitive information to ensure information security. This program is the predecessor of TEE.
+
+Based on the OMTP solution, ARM (the world's largest solution provider of embedded processors whose architectures account for approximately 95\% of the mobile phone market) proposed a hardware virtualization technology TrustZone and related hardware in 2006. Implement the plan. TrustZone is a product that supports TEE technology. TrustZone is the basic function of all Cortex-A processors. It is introduced through the ARM architecture security extension, and ARM has become one of the leaders of TEE technology. )
+
+ARM later provided its TrustZone API to GlobalPlatform, which has evolved into a TEE client API.
+
+GlobalPlatform (the world's leading organization for smart card multi-application management specification, abbreviated as GP) is an international standard organization led by Visa, MasterCard, and other international bank card organizations. Since 2011, it has drafted and developed related TEE specification standards, and has joined several companies. (ARM, etc.) jointly develop a trusted operating system based on the GP TEE standard. Therefore, most of today's Trust OS based on TEE technology has followed the standard specification of GP.
+
+\subsection{TrustZone}
+TrustZone conceptually divides SoC hardware and software resources into Secure World and Normal World. All operations that require confidentiality are performed in the secure world (such as fingerprint identification, password processing, data encryption and decryption, and security certification, etc.) The rest of the operations are performed in a non-secure world (such as user operating systems, various applications, etc.), the security world and the non-secure world are converted by a mode named Monitor Mode.
+
+On the processor architecture, TrustZone virtualizes each physical core into two cores, a non-secure core (NS Core), code that runs a non-secure world, and another secure core (Secure Core). The world's code.
+
+The two virtual cores operate in a time-sliced manner, occupy physical cores in real time as needed, and switch between the secure world and the non-secure world through Monitor Mode, similar to a multi-application environment under the same CPU, but different from multiple applications. In the program environment, the operating system implements inter-process switching, while the Monitor Mode under Trustzone implements switching between two operating systems on the same CPU.
+
+For more details, please refer to the TrustZone white paper [15].
+
+\subsection{TEE}
+The Trusted Execution Environment (TEE) is a concept proposed by the Global Platform (GP). For the open environment of mobile devices, security issues are also getting more and more attention, not only terminal users, but also service providers, mobile operators, and chip vendors. TEE is an operating environment coexisting with Rich OS  on the device and provides security services to Rich OS. It has its own execution space, which is higher than Rich OS's security level, but lower than the security element (SE, usually a smart card). However, TEE can meet the security needs of most applications. From a cost perspective, TEE provides a balance between security and cost.
+ 
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.45]{TEE.pdf}}
+\caption{TEE and Rich Os}
+\label{fig}
+\end{figure}
+
+Among them, the software and hardware resources that TEE can access are separated from Rich OS. TEE provides a secure execution environment for authorized security software (trusted applications, TA) while also protecting the confidentiality, integrity, and access rights of TA's resources and data. To ensure the trusted root of the TEE itself, the TEE is authenticated and isolated from the Rich OS during the secure boot process. In TEE, each TA is independent of each other and cannot be accessed without authorization.
+
+GP has made great efforts in the standardization of TEE. The basic specifications include TEE internal API, TEE client API, and of course, there are a series of additional functional API specifications, as well as application management, debugging functions, security protection profile, etc. In development.
+
+The TEE internal API mainly includes APIs such as key management, cryptographic algorithms, secure storage, secure clock resources and services, and an extended trusted UI. Trusted UI means that when key information is displayed and user key data (such as password) is input, hardware resources such as screen display and keyboard are completely controlled and accessed by TEE, and software in Rich OS cannot be accessed. The internal API is the programming interface that TEE provides to TA;
+
+The TEE external API is the underlying communication interface for the client application (CA) running in the Rich OS to access TA services and data.
+
+\subsubsection{TEE security level}
+The TEE is running in the device and provides a framework for security between ordinary RichOS and SE (smart card). Many current security architectures are based on Rich OS + SE. In fact, this cannot provide a "just good" fit in terms of convenience and cost. Because some small payments, DRM, corporate VPN, etc., the required security protection is not high, does not need a separate SE to protect, but it can not be directly in Rich OS, because of the latter's openness Make it easy to be attacked. So for such applications, TEE provides the appropriate protection strength and balances cost and ease of development.
+
+For attack resistance, SE is the highest and Rich OS is low. For access control, it is similar to anti-attack, but Rich OS can do more; for the user interface, SE is powerless, and Rich OS is the most abundant; development is easy. On the other hand, the Rich OS is the easiest. Of course, if the TEE standard is done well, it can be done quite "easy". On the processing speed, TEE and Rich OS are equivalent. Because the same physical processor used by both, SE is certainly slow; Finally, the SE is physically removable.
+
+After joining TEE, the extra cost increase is very low, and it can reach a medium protection level; if you want to achieve high-level protection, you will need additional costs. The analysis of this figure does not mean that the appearance of TEE makes the device not need SE, but as a medium security level, to meet the corresponding security objectives.
+\\
+\begin{center}
+\textbf{Table 1}~~Comparison.\\
+ \setlength{\tabcolsep}{1mm}{\begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|} %l(left)居左显示 r(right)居右显示 c居中显示
+\hline 
+&RichOS&TEE&SE\\
+\hline  
+ &Only software&Software and HW&Software and Tamper 
+resistant HW\\
+\hline
+Cost&No extra cost&Low extra cost&High extra cost\\
+\hline
+Attack Resistance&Weak&General&Strong\\
+\hline
+Access Control&Weak&General&Strong\\
+\hline
+User Interface&Abundant&Can do a little&Powerless\\
+\hline
+Ease of Development&Easy&Easy with right Standard&Hard\\
+\hline
+Processing Speed&Fast&Fast&Slow\\
+\hline
+
+
+
+
+ 
+\end{tabular}}
+\end{center}
+
+
 \section{Communication method}
 Mobile payment communication is mainly used for short-distance communication, especially for poor mobile network environment offline payment. Payment information is delivered via these means of communication. Many people regard communication as a means of payment. However, they are only responsible for transmitting payment information. The real means of influencing payment are payment encryption and authentication technologies.
 \subsection{QR code}
@@ -1151,7 +1224,7 @@ The subdivision of chips can be divided into
 
 
 
-\subsection{Mobile phone imitate IC card}
+\section{Mobile phone emulate IC card}
 With the gradual deployment of Android Pay, Apple Pay and Samsung Pay, mobile payments have returned to the public eye and the comparative articles on several types of payment have not been uncommon in recent days. This article mainly discusses the similarities and differences between several payment methods from a technical point of view.
 \\
 
@@ -1159,7 +1232,7 @@ Apple Pay and Android Pay each serve as a system-level payment application (Appl
 
 Relative to the online payment (in short, that is connected with the Internet, the payment of data through the network transmission), offline payment is a physical payment, you need a terminal device chargeback, in most cases, POS machines. In order to replace the traditional credit card with credit card spending, NFC + Pay way allows consumers to use a cell phone, rather than a variety of cards for "flash" consumption. Pay only needs the POS machine to support NFC without any other modification. Therefore, offline entity merchants accept this payment method exactly as the acceptance of non-connected bank cards such as MasterCard Pay Pass, Visa Pay Wave, China Union Pay Flash Quick Pass , There is no promotion barriers, but also to speed up the deployment of wireless POS machines coupled with a heavy weight.
 
-\subsubsection{sumsung pay}
+\subsection{sumsung pay}
 Samsung Pay uses NFC and MST technologies. 
 
 Samsung Pay uses both NFC and MST to send payment information to the terminal. The transaction is seamless, whether using NFC or MST, allowing for a better user experience.
@@ -1194,12 +1267,130 @@ It can be concluded that Samsung's payment, while simulating the physical card p
 \label{fig}
 \end{figure}
 
-\subsubsection{Android pay}
+\subsection{google pay}
+On February 20, 2018, Google announced that it has integrated Android Pay and Google Wallet, officially launched a new payment service Google Pay
+
+\subsubsection{Android Pay}Android Pay is a mobile payment service launched by Google in 2015. It is based on the foundation of Google's electronic money package. It allows users to store credit or financial cards in mobile phones and use Near Field Communication (NFC) to transmit them. Card information to complete the payment process to replace the past credit card payment methods, while the original Google e-money packs still exist, mainly supporting network-based Play Store shopping and some application-based point-to-point payments.
+
+The hardware limitation of using Android Pay is not severe. As long as the system is Android 4.4 or higher, and the built-in NFC chip, Android Pay can be used. In other words, as long as this condition is met, not only the mobile phone, but also the Android tablet can With Android Pay.
+
+
+NFC technology has been around for more than a decade and has been called promising mobile payment technology for the past few years. But even today, NFC-enabled mobile phones are increasingly becoming the standard for smartphones, and NFC-based mobile payments have not formed widespread acceptance among consumers. One important reason is that everyone is rushing to control the Secure Element of NFC technology. The security element, as the name implies, is to ensure the security of property information. Controlling this can control the cost of each transaction. SE has led to endless battles between financial institutions, OEMs and operators. There is no way to unite them, which makes NFC mobile payment development slow.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.6]{NFC_se.pdf}}
+\caption{NFC card emulation with a secure element.}
+\label{fig}
+\end{figure}
+
+
+\subsubsection{HCE(host-based card emulation)}
+
+There are two ways to implement card emulation on an NFC-enabled mobile phone: one is hardware-based, called virtual card mode; the other is software-based, called host card mode ( Host Card Mode).
+
+In the virtual card mode, the security module SE (Secured Elemen) needs to be provided. The SE provides secure storage of sensitive information and provides a secure execution environment for transaction transactions. The NFC chip acts as a contactless communication front end, forwards the commands received from the external reader/writer to the SE, and then processes them by the SE and replies via the NFC controller.
+
+In the host card mode, there is no need to provide the SE. Instead, the SE function is performed by an application running in the mobile phone or a server in the cloud. At this time, the data received by the NFC chip is sent by the operating system or the application in the mobile phone, or The interaction is done through the server that the mobile network sends to the cloud. Both methods are characterized by the limitation of the built-in SE of the mobile phone. The beauty of this standard is that it does not require the entire industry to fight in order to control the safety elements.
+
+\textbf{NFC standard support for Android:}
+
+The NFC standard provides support for many smart card communication protocols, and the Android 4.4 system also supports many contactless smart card protocols including mainstream smart card applications. Therefore, using NFC mobile phones and HCE applications, it is possible to easily simulate different types of smart card applications. .
+
+Many NFC reader terminals on the market also support these protocols, including an NFC-enabled Android device as the reader itself. This way we can deploy an end-to-end NFC solution using HCE technology using only Android devices.
+
+The Android 4.4 system uses the ISO-DEP standard protocol developed by the NFC Forum (based on the ISO/IEC 14443-4 (ISO-DEP) standard) for data transmission, and the transmitted data units are called Application Protocol Data Units (APDUs).
+
+In addition, the Android system only requires support for the top-level NFC-A (ISO/IEC 14443-3 Type A) technology in terms of digital protocols (equivalent to the MAC layer protocol), and for the NFC-B technology (ISO/IEC 14443- 3 Type B) support is optional, these technologies provide solutions including initialization, collision detection, etc.
+
+The HCE technology on the Android system is implemented through system services (HCE services). One of the great advantages of using the service is that it can always run in the background without requiring a user interface. This feature makes HCE technology ideal for transactions such as loyalty cards, transportation cards, and access control cards. When users use them, they do not need to open the program. They only need to put the phone in the NFC reader's identification range. The transaction will be in the background. get on. Of course, it is more recommended to provide the user with a supporting HCE application UI interface. In addition to using the smart card as an ordinary smart card, the UI interface can also provide users with more online service functions, including inquiries, recharging, and information push.
+
+When the user puts the mobile phone into the recognition range of the NFC reader, the Android system needs to know which HCE service the card reader really wants to interact with, so that it can send the received data to the corresponding HCE application. HCE refers to the ISO7816 specification and defines a method to select the corresponding application through the application AID. Therefore, if you want to deploy NFC applications for your new card reading facility, you need to define your own AID.
+
+\textbf{HCE technology to achieve NFC simulation:}
+
+To implement NFC card emulation using HCE technology on mobile phones, we must first create an HCE service that handles transaction transactions. Android 4.4 provides a very convenient base class for HCE services. We can implement our own HCE services by inheriting base classes. If we want to develop an existing NFC system, we only need to implement the application layer protocol expected by the NFC reader in the HCE service. On the other hand, if we want to develop our own new NFC system, we need to define our own protocols and APDU sequences. In general, we should ensure that the use of a small number of APDU packets and a small amount of data during data exchange, so that users do not need to spend a lot of time on the phone on the NFC reader.
+
+The HCE technology only implements sending the data of the NFC reader to the HCE service of the operating system or returning the reply data to the NFC reader. However, the processing of the data and the storage of the sensitive information are not specifically implemented, so HCE Technology is the protocol and implementation that simulates NFC and SE communications. However, the HCE does not implement SE, but uses the NFC and the SE to tell the NFC reader that there is SE support behind it, so that the security assurance of the NFC service can be completed in a virtual SE manner. Since there is no SE, what does the HCE use as the SE? The solution is either a simulation of the local software or a simulation of the cloud server. How the SE responsible for security is implemented through localized software or a remote cloud, and can guarantee security, requires HCE vendors to consider and implement their own.
+
+\textbf{HCE scheme and SE scheme routing and compatibility:}
+
+Many Android 4.4 mobile phones that support HCE function also support the SE mode such as SWP-SIM or SWP-SD to implement the mobile payment function. Therefore, there is a problem of applying AID routing, which is usually caused by the AID routing table in the CLF chip. Responsible for the related routing work, the mobile phone manufacturer is responsible for the development of specific rules
+
+Because the routing table of the CLF chip is differentiated and routed through the application AID in the Select command sent by the card reader terminal, the specific smart card applications supported by the HCE applications in the SE (SWP-SIM) and the mobile HOST CPU are each supported. If the AIDs are different, then there will not be any routing and compatibility issues. All applications can be correctly identified and routed to SE (SWP-SIM) or HCE applications, and the transaction can be completed and processed normally.
+
+If SE (SWP-SIM) and the HCE application in the mobile HOST CPU support the same AID in the smart card application, there is a problem of routing priority. At the same time, the device that supports SE (SWP-SIM) is upgraded to Android4. After .4, compatibility issues for legacy applications in SWP-SIM.
+
+According to the requirements of Android API provided by google, HCE APP has a higher route priority. It means that if there is an application with the same AID, it will be preferentially routed to the HCE application for processing. Then the application of the same AID in SWP-SIM will be Can't be called and used, there will be system upgrade to version 4.4, can not be compatible with existing applications, unless the HCE application is not installed.
+
+Therefore, an operator's customized mobile phone usually requires the priority of the route to be modified so that the priority of the SE (SWP-SIM) route is better. That is, if the same AID application exists, the route will be preferentially routed to the SWP-SIM. Handle to ensure compatibility with old-release SE-enabled devices after system upgrade to 4.4.
+
+
+The doubts about mobile payment will be even more amplified on Android Pay. Because Android is friendly to developers all over the world, it adopts an open system and whether such an open environment may lead to malicious intrusion opportunities. Just like Samsung Pay, Android Pay cannot be used for devices that have already been rooted, unless the user bypasses the Root's checking mechanism through tools. In addition, Android Pay also improves the security through HCE and Token services. HCE refers to host card emulation, which replaces the hardware security components with software emulation and puts user data in the cloud. Simplify the payment process,
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.58]{NFC_cpu.pdf}}
+\caption{NFC card emulation without a secure element.}
+\label{fig}
+\end{figure}
+
 \subsubsection{apple pay}
 Apple pays only NFC payments, and its technology is very similar to Samsung's NFC technology, but Apple's use of the scene is not Samsung. Because it does not support magnetic stripe payments, it supports Apple payments on many older devices that only support magnetic stripe payments.
 
 By comparison, it is not difficult to see that Apple Pay and Samsung Pay have an essential difference from China’s Alipay/WeChat. Apple Pay and Samsung Pay do not have their own account ecology. They are only used to replace bank cards for online and offline consumption, eliminating the need to carry bank cards or memories, but are limited to only supporting their own models, and their audiences are relatively Narrower.
 
+Apple's core technology is still Tokenization. Not only that, Apple is also one of the promoters of the Payment Token specification.Although almost all foreign or domestic analysis articles have intentionally or unintentionally mentioned that Apple Pay has implemented the EMVCo specification, so far no official information from Apple or EMVCo has mentioned that Apple Pay has implemented the Tokenisation specification of EMVCo, but The process of adding a card to Apple Pay is very similar to that of EMVCo's request token. At this time, Apple plays the role of a “token requester” (the specification of EMVCo explicitly mentions that the device manufacturer that makes mobile payment can be One of the main categories of token requestors), the bank or payment network plays the role of a token service provider. In addition, the dynamic security code that provides basic security for Apple Pay transactions is very similar to the method of generating and using the Token Cryptogram of the EMVCo specification. Rethinking that Visa and MasterCard have disclosed their tokenization services after the launch of Apple Pay, we have reason to believe that Apple Pay actually implements the Tokenisation specification of EMVCo.
+
+Like the Samsung, the ios system has an application called wallet. When you bind a card, you need to connect to an Apple Pay server.Similarly, the Apple Pay server will also request the virtual bank card from the bank or card organization server with the bank card information submitted by the user.
+
+The mobile phone and Apple Pay server do not save the full bank card number, and only store the unique Device Account Number in the SE. (The payment credentials generated by DAN's iPhone device information and Token encryption can effectively prevent the leakage of credit card information.
+
+Apple Pay is a product that integrates various technologies and resources. Its composition is more complex. The core components include:
+
+
+
+\textbf{Secure Element:} The short name SE, which is often referred to as a security element, is an electronic component that resists physical attacks. It contains a microprocessor, storage, and encryption/decryption hardware. It can be used independently (for example, a chip card) or embedded in other devices. Medium (eg, Apple Pay and Google Wallet) provide high security services. Apple Pay uses the form of eSE. Specifically, Apple Pay uses industry standards. A secure element that is compatible with the electronic trading requirements of the financial industry by running the Java Card Platform (JCP). SE is the core of Apple Pay security. In essence, all payment processing and security related to Apple Pay are under the responsibility of SE. Other components only play a supporting role.
+
+The SE(Secure Element) technology is based on the Secure Element specification released by the GlobalPlatform organization. The GlobalPlatform organization is an international standards organization that develops security chip technology standards. Important members include ARM, AMD, AT\&T, China Mobile, VISA, Apple, Samsung, Huawei, etc.
+
+Secure Element is a GP card specification compliant Java card that can contain multiple security domains corresponding to different issuing banks or payment network entities. These security domains are shared with corresponding management parties for verifying identity and secure communication of management parties. The key. Personalized data from card issuing banks or payment networks, encrypted using these shared keys, can be securely distributed to the corresponding security domain, thus completing the personalization process for payment of Applet, which is the same as traditional payment card personals. The process is similar
+    
+    \textbf{NFC controller:} NFC controller. In the context of Apple Pay, the NFC controller acts as a router. It is connected to three different external entities: external near-field devices (eg, point-of-sale (POS), point-of-sale), and applications. The processor (AP, Application Processor) and Secure Element, in turn, form two communication channels: the application processor's communication channel to the Secure Element, and the communication channel between the POS and the Secure Element.
+    
+    \textbf{Wallet:}The Wallet was originally called the passbook and was renamed wallet after IOS 9. It was a service that existed before the Apple Pay product was released. After Apple Pay was released, Apple expanded its functionality to allow it to add and manage credit cards and debit cards for Apple Pay.Of course, It can also check the added card information, the bank's privacy policy, and recent transaction details. For Apple Pay, Wallet is equivalent to the management client of Secure Element. Adding or deleting card or debit card information in Secure Element can be performed via the Wallet service.
+   
+    \textbf{Touch ID:} This is the iPhone's fingerprint recognition service. Its purpose is to use fingerprint recognition to make access to the device more secure, faster, and easier. Touch ID is not a replacement of the device security password, but allows users to use complex device passwords without sacrificing convenience. In other words, users can use complex passwords to protect the device while also using the Touch ID to easily access the device.
+   
+    \textbf{Secure Enclave:} Secure Enclave is an internal secure execution environment for iOS devices. It can be used to process sensitive information. For example, the data acquired by Touch ID's fingerprint imaging sensor needs to be passed to Secure Enclave for the actual fingerprinting process. For Apple Pay, Secure Element manages the certification process and makes payment transactions possible.
+    Secure Enclave is a coprocessor packaged together by the Apple A7 and subsequent series of application processors. It has its own secure boot process and personalized software update process, and it is separate from the application processor where the iOS system is located. Secure Enclave uses encryption (using a temporary generated key encryption) physical memory (a portion of the physical memory shared by the application processor) for business processing and has its own hardware random number generator. Secure Enclave communicates with the application processor through the interrupt-driven mailbox and shared memory, and provides all cryptographic services related to data protection key management.
+
+The ARM TrustZone technology we are familiar with is essentially a virtualization technology that divides processor state into secure and non-secure states, and cooperates with other buses and security attributes on peripherals to achieve security throughout the entire hardware system. Like Secure Enclave, ARM TrustZone has its own secure boot process and personalized software update process. It also has its own hardware random number generator (and other similar security peripherals), and is also driven by the interrupt between the same application processor. Monitor mode and shared memory for communication. It can be seen that the security features provided by Secure Enclave have not exceeded the scope of ARM TrustZone technology.
+
+
+Apple has never mentioned that Secure Enclave is an implementation of the ARM TrustZone security extension technology (although according to the description of several secure communication channels in the official Apple documentation, Secure Enclave is probably an implementation of the ARM TrustZone technology), we are still It is impossible to determine whether the Secure Enclave is an independent coprocessor or an application processor running state (both architectures can provide the required security features of Secure Enclave), this needs to be announced by Apple for more details of the implementation of Secure Enclave, At present, it can be concluded that the security features provided by Secure Enclave can also be implemented
+
+\textit{1) Communication security between Secure Enclave and Touch ID:}We know that the fingerprint data acquired by the Touch ID imaging array needs to be actually matched by the Secure Enclave. In the implementation of Apple Pay, the Touch ID sensor is connected to the application processor through the serial peripheral interface bus (Serial Peripheral Interface Bus). Connect and then connect to the Secure Enclave. In other words, the fingerprint imaging data acquired by the fingerprint sensor needs to be relayed via the application processor. This poses a security risk: malicious programs can intercept the data generated by the Touch ID sensor. Apple Pay realizes the secure transmission of fingerprint data in a simple way. First, the Touch ID sensor and Secure Enclave will preset a shared key, then use the shared key to negotiate a session key, and then use the negotiated session key to use. The AES-CCM algorithm encrypts the transmitted data. This ensures that the application processor cannot read fingerprint data and ensures the security of the entire fingerprinting process.
+    
+\textit{2) Communication security between Secure Enclave and Secure Element: }  
+As mentioned earlier when the NFC controller was introduced, the physical communication channel between the Secure Enclave and the Secure Element needs to be relayed through the NFC controller. There is no direct physical connection between the two, which is specifically the Secure Element and NFC controller. Connected, and then the NFC controller is connected to the application processor without mentioning how the NFC controller is connected to the Secure Enclave (as stated by Apple's official documentation, it can be seen here that the Secure Enclave is probably not a separate coprocessor), Then, since Secure Element and Secure Enclave need to transit through the application processor, it is necessary to consider the communication security.
+
+The implementation is similar to the process of communicating with Touch ID and Secure Enclave. It also encrypts the communication content by sharing the pairing key. However, because the Secure Element is involved, the preset of the shared pairing key is more complicated, specifically: The pairing key is preset at the production stage, and the key is generated by the Secure Enclave using its own UID key and the unique identifier of the Secure Element as input, and then securely transmitted to the external hardware security module (HSM, Hardware) in the factory. Security Module) and then injected into Secure Element. In actual use, the communication between Secure Element and Secure Enclave is encrypted using an AES-based cryptographic algorithm, and a cryptographic mechanism is used to prevent replay attacks.
+
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.5]{iphone_pay.pdf}}
+\caption{Iphone security payment.}
+\label{fig}
+\end{figure}
+    
+    \textbf{Apple Pay Servers:} Apple Pay Server, which manages the status of credit and debit cards in Passbooks as well as device-specific account information stored in Secure Element. The Apple Pay server communicates with both the device and the server in the Payment Network. For in-app payments, the Apple Pay server is also responsible for using merchant-specific keys and Payment Credentials for Apple Pay. Encrypt it and send it to the actual merchant server for payment processing.
+
+ using ARM TrustZone technology.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.37]{iphone_tsp.pdf}}
+\caption{Iphone security payment component.}
+\label{fig}
+\end{figure}
 
 \section{Disscusion and security comparison}
 \begin{figure*}[htbp]
@@ -1311,7 +1502,10 @@ E. Haselsteiner and K. Breitfu, \emph{“Security in near field communication (N
 \bibitem{IEEEhowto:kopka}
 C. Mulliner, \emph{“Vulnerability analysis and attacks on NFC-enabled mobile phones,”} Proc. of International Conference on Availability, Reliability and Security (ARES ’09), pp. 695-700, Mar.2009.
 \bibitem{IEEEhowto:kopka}
-Timalsina S K, Moh S. \emph{A review on NFC and NFC-based mobile payment solution[J].} Journal of Next Generation Information Technology, 2012, 3(4):35-44.
+Timalsina S K, Moh S. \emph{A review on NFC and NFC-based mobile payment solution[J]}. Journal of Next Generation Information Technology, 2012, 3(4):35-44.
+\bibitem{IEEEhowto:kopka}
+Alves T. \emph{TrustZone : Integrated Hardware and Software Security[J]. White Paper}, 2004.
+
 \end{thebibliography}
 
 % biography section
