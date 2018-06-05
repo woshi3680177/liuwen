@@ -371,9 +371,9 @@
 % was not built to handle multiple paragraphs
 %
 
-\author{Wenzheng Liu,~\IEEEmembership{Student,~NUDT,}
-        John~Doe,~\IEEEmembership{Fellow,~OSA,}
-        and~Jane~Doe,~\IEEEmembership{Life~Fellow,~IEEE}% <-this % stops a space
+\author{Wenzheng Liu,~\IEEEmembership{~NUDT,}
+        Xiaofeng Wang,~\IEEEmembership{~NUDT,}
+        %and~Jane~Doe,~\IEEEmembership{Life~Fellow,~IEEE}% <-this % stops a space
 \thanks{M. Shell was with the Department
 of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta,
 GA, 30332 USA e-mail: (see http://www.michaelshell.org/contact.html).}% <-this % stops a space
@@ -434,28 +434,12 @@ GA, 30332 USA e-mail: (see http://www.michaelshell.org/contact.html).}% <-this %
 % As a general rule, do not put math, special symbols or citations
 % in the abstract or keywords.
 \begin{abstract}
-Nowadays, the rising penetration of smartphones and the important roles of them in people’s daily
-life make the smartphones an ideal medium to conduct payment transactions. The smartphones are
-capable to store everything that would normally be carried in a physical wallet and also allows the
-users to make payments anytime and anywhere. The potential added-values of mobile payments,
-such as generating new revenues, obtaining new users, increasing user stickiness attracted different
-players to expand their businesses to the mobile payment services, including financial institutions,
-mobile network operators, mobile device manufacturers, trusted third party providers. To compete
-in the market, they explored different technologies and business models which resulted in the
-complexity and dynamics of the mobile payment market. Consequently, mobile payments have
-only become a standard practice in a few countries. In terms of proximity payments, NFC is widely
-viewed as one of the most promising technologies due to its security features, compatibility with
-the existing financial infrastructures, and ease of use. In the Chinese market, compared with QR
-code, NFC was first introduced and supported by various players. However, the Chinese mobile
-proximity payment market has become the largest and fastest-growing mobile proximity payment
-market in the world in few years by utilising QR code. The market is highly concentrated with
-Alipay and Tenpay which are QR code-based mobile payment platforms. In other words, QR code
-overtook NFC and became the most popular mobile proximity payment technology in China.
+In recent years, the rising popularity of smartphones and the important roles of them in people’s daily life make the smartphones become an ideal medium to conduct payment transactions. Now almost no need to bring a wallet, the bank card is stored directly in the mobile phone and also allows the users to make payments anytime and anywhere. The potential added value of mobile payments has attracted many parties involved, including payment service providers, mobile device manufacturers, financial institutions, mobile network operators, and trusted third-party providers. However, paying for security is always a top priority. To compete in the market, they explored different technologies and business models which resulted in the complexity and dynamics of the mobile payment market. The major payment providers have different payment security technologies and do not have uniform standards. This article mainly studies mobile security payment technology popular today, involving mobile terminal payment security technology, secure payment encryption technology, secure payment communication technology, and secure payment authentication. Carefully discussed the overall technical framework of payment, and conducted a layered analysis of the entire payment process from the mobile phone to the bank.
 \end{abstract}
 
 % Note that keywords are not normally used for peerreview papers.
 \begin{IEEEkeywords}
-token, payment, offline, \LaTeX, online, TOTP.
+tokenization, eSE, QR code, NFC, offline, TOTP.
 \end{IEEEkeywords}
 
 
@@ -502,31 +486,34 @@ token, payment, offline, \LaTeX, online, TOTP.
  
 %\hfill August 26, 2015
 \section{Introduction}
-\IEEEPARstart{I}n this study, the research model is developed based on relevant business model, platform and
-business ecosystem theories. The final research model consists of three connected perspectives
- Chinese mobile payment platforms, namely, He Wallet, Alipay and QuickPass which have
-implemented one or several technological solutions based on NFC and QR code technologies. The
-data for the case studies is collected from the semi-structured interviews and the desk research. The
-results showed that although NFC technology was adopted first in the Chinese market, the enabling
-devices of both consumers and merchants were not widely ready at that time for NFC technology,but good enough for QR code technology. However, the early NFC adopters (both MNOs and
-financial institutions) were reluctant to make a huge investment in the enabling devices to realise
-the large-scale deployment in the early stage due to the uncertainties on the technology level and
-the unclear roles and benefits on the business aspect. Thereby, they missed the best time to capture
-user and develop users' habit. In contrast, Alipay strategically adopted the independent service
-provider mode to leverage its obtained platform resources and capabilities which significantly
-contributed the mass adoption of QR code in the Chinese market. Despite QR code currently
-dominated the Chinese mobile payment market, it is believed that NFC has its place in the Chinese
-mobile payment market as China UnionPay adopted an open platform strategy to incorporate all
-relevant players into its ecosystem to facilitate the development of NFC-based mobile payments.
+\IEEEPARstart
+{P}ayment methods range from initial cash payment to credit card payment, to current scan code, NFC payment. Although mobile payments are increasingly convenient, the security issues faced are more and more complex than ever. Mobile payment security has received more and more attention along with the popularity of mobile payment.
+%{I}
+%n this study, the research model is developed based on relevant business model, platform and
+%business ecosystem theories. The final research model consists of three connected perspectives
+% Chinese mobile payment platforms, namely, He Wallet, Alipay and QuickPass which have
+%implemented one or several technological solutions based on NFC and QR code technologies. The
+%data for the case studies is collected from the semi-structured interviews and the desk research. The
+%results showed that although NFC technology was adopted first in the Chinese market, the enabling
+%devices of both consumers and merchants were not widely ready at that time for NFC technology,but good enough for QR code technology. However, the early NFC adopters (both MNOs and
+%financial institutions) were reluctant to make a huge investment in the enabling devices to realise
+%the large-scale deployment in the early stage due to the uncertainties on the technology level and
+%the unclear roles and benefits on the business aspect. Thereby, they missed the best time to capture
+%user and develop users' habit. In contrast, Alipay strategically adopted the independent service
+%provider mode to leverage its obtained platform resources and capabilities which significantly
+%contributed the mass adoption of QR code in the Chinese market. Despite QR code currently
+%dominated the Chinese mobile payment market, it is believed that NFC has its place in the Chinese
+%mobile payment market as China UnionPay adopted an open platform strategy to incorporate all
+%relevant players into its ecosystem to facilitate the development of NFC-based mobile payments.
 
-\subsection{Subsection Heading Here}
-Subsection text here.
+%\subsection{Subsection Heading Here}
+%Subsection text here.%
 
 % needed in second column of first page if using \IEEEpubid
 %\IEEEpubidadjcol
 
-\subsubsection{Subsubsection Heading Here}
-Subsubsection text here.
+%\subsubsection{Subsubsection Heading Here}%
+%Subsubsection text here.%
 
 
 % An example of a floating figure using the graphicx package.
@@ -745,15 +732,16 @@ Centralized tokenization involves building a large-scale database (“token vaul
 \subsubsection{Distributed tokenization technologies}
 
 \section{Mobile Terminal Security}
-In 2006, the open mobile terminal platform organization OMTP (Open Mobile Terminal Platform) took the lead in presenting a dual system solution: that is, in addition to a multimedia operating system, providing an isolated security operating system under the same intelligent terminal. Isolated security operating systems on isolated hardware are used to specifically process sensitive information to ensure information security. This program is the predecessor of TEE.
+In the mobile payment, the mobile terminal often authenticates the payment and also stores a lot of sensitive information related to the payment, such as the PIN code of the payment APP,fingerprint and the virtual bank card mentioned in the previous section. Therefore, the security of mobile terminals is also increasingly concerned by major mobile phone manufacturers and payment service providers.
 
-Based on the OMTP solution, ARM (the world's largest solution provider of embedded processors whose architectures account for approximately 95\% of the mobile phone market) proposed a hardware virtualization technology TrustZone and related hardware in 2006. Implement the plan. TrustZone is a product that supports TEE technology. TrustZone is the basic function of all Cortex-A processors. It is introduced through the ARM architecture security extension, and ARM has become one of the leaders of TEE technology. )
+TEE and eSE are two key technologies for the security of mobile payment mobile terminals today. 
 
-ARM later provided its TrustZone API to GlobalPlatform, which has evolved into a TEE client API.
-
-GlobalPlatform (the world's leading organization for smart card multi-application management specification, abbreviated as GP) is an international standard organization led by Visa, MasterCard, and other international bank card organizations. Since 2011, it has drafted and developed related TEE specification standards, and has joined several companies. (ARM, etc.) jointly develop a trusted operating system based on the GP TEE standard. Therefore, most of today's Trust OS based on TEE technology has followed the standard specification of GP.
 
 \subsection{TrustZone}
+In 2006, the open mobile terminal platform organization OMTP (Open Mobile Terminal Platform) took the lead in presenting a dual system solution: that is, in addition to a multimedia operating system, providing an isolated security operating system under the same intelligent terminal. Isolated security operating systems on isolated hardware are used to specifically process sensitive information to ensure information security. This program is the predecessor of TEE.
+
+Based on the OMTP solution, ARM (the world's largest solution provider of embedded processors whose architectures account for approximately 95\% of the mobile phone market) proposed a hardware virtualization technology TrustZone and related hardware in 2006. Implement the plan. TrustZone is a product that supports TEE technology. TrustZone is the basic function of all Cortex-A processors. 
+
 TrustZone conceptually divides SoC hardware and software resources into Secure World and Normal World. All operations that require confidentiality are performed in the secure world (such as fingerprint identification, password processing, data encryption and decryption, and security certification, etc.) The rest of the operations are performed in a non-secure world (such as user operating systems, various applications, etc.), the security world and the non-secure world are converted by a mode named Monitor Mode.
 
 On the processor architecture, TrustZone virtualizes each physical core into two cores, a non-secure core (NS Core), code that runs a non-secure world, and another secure core (Secure Core). The world's code.
@@ -763,6 +751,14 @@ The two virtual cores operate in a time-sliced manner, occupy physical cores in 
 For more details, please refer to the TrustZone white paper [15].
 
 \subsection{TEE}
+
+ARM later provided its TrustZone API to GlobalPlatform, which has evolved into a TEE client API. It is introduced through the ARM architecture security extension, and ARM has become one of the leaders of TEE technology.
+
+
+GlobalPlatform (the world's leading organization for smart card multi-application management specification, abbreviated as GP) is an international standard organization led by Visa, MasterCard, and other international bank card organizations. Since 2011, it has drafted and developed related TEE specification standards, and has joined several companies. (ARM, etc.) jointly develop a trusted operating system based on the GP TEE standard. Therefore, most of today's Trust OS based on TEE technology has followed the standard specification of GP.
+
+
+
 The Trusted Execution Environment (TEE) is a concept proposed by the Global Platform (GP). For the open environment of mobile devices, security issues are also getting more and more attention, not only terminal users, but also service providers, mobile operators, and chip vendors. TEE is an operating environment coexisting with Rich OS  on the device and provides security services to Rich OS. It has its own execution space, which is higher than Rich OS's security level, but lower than the security element (SE, usually a smart card). However, TEE can meet the security needs of most applications. From a cost perspective, TEE provides a balance between security and cost.
  
 \begin{figure}[htbp]
@@ -779,7 +775,36 @@ The TEE internal API mainly includes APIs such as key management, cryptographic 
 
 The TEE external API is the underlying communication interface for the client application (CA) running in the Rich OS to access TA services and data.
 
-\subsubsection{TEE security level}
+
+\subsection{SE}
+Secure Element (SE) is a platform that can install, personalize and manage applications. It is a combination of hardware, software, interfaces, and protocols that can securely store and use credentials for payment, authentication, and other services. Conceptually, SE can be divided into four areas from the paper [17] :
+
+$\bullet$ Embedded SEs;
+
+$\bullet$ Removable SEs;
+
+$\bullet$ Flexible SE Solutions;
+
+$\bullet$ Software Based SEs.
+
+\subsubsection{Embedded SE}
+The embedded SE is a chip that is integrated into a mobile phone and cannot be removed. According to research [18], the SE provides the same level of security as smart cards support. The chip is embedded in the handset during the manufacturing process and must be personalized after the device is delivered to the end user [18]
+
+The eSE is the most secure device in mobile phones and often stores fingerprint data with the highest security level, authentication keys, and bank card related information. High-end mobile phones often equipped with fingerprint recognition will be equipped with eSE. For example, iphone 7/8, Samsung s9, Huawei mate 10, etc.
+
+\subsubsection{Removable SEs} The rSE is a chip that can be removed and replaced in mobile phones. Usually embedded in some replaceable phone hardware
+, such as SD card, SIM card
+
+\emph {SMC:} The Secure Memory Card (SMC) provides the same advanced security as a smart card and meets most of the smart card's major standards and interfaces (eg, GlobalPlatform, ISO/IEC 7816, JavaCard, etc.). As described in [18], SMC can host a large number of applications with mobility and large memory. 
+
+This year, SMC has slowly withdrawn from the market because major mobile phone manufacturers are no longer supporting SD cards.
+
+\emph {UICC:}  Cards used in existing mobile phones such as SIM, USIM, UIM, etc. are collectively referred to as UICC(Universal Integrated Circuit Card.)
+
+UICC is a general multi-application platform for implementing smart card applications of SIM or USIM. UICC provides an ideal environment for personal, secure, portable and easily remotely managed NFC applications via OTA technology. It can host non-telecom applications from various service providers such as loyalty, ticketing, healthcare, access control and ID applications. GlobalPlatform provides the most promising standard for UICC life cycle management (or card content management)[17].
+
+
+\subsection{comparision}
 The TEE is running in the device and provides a framework for security between ordinary RichOS and SE (smart card). Many current security architectures are based on Rich OS + SE. In fact, this cannot provide a "just good" fit in terms of convenience and cost. Because some small payments, DRM, corporate VPN, etc., the required security protection is not high, does not need a separate SE to protect, but it can not be directly in Rich OS, because of the latter's openness Make it easy to be attacked. So for such applications, TEE provides the appropriate protection strength and balances cost and ease of development.
 
 For attack resistance, SE is the highest and Rich OS is low. For access control, it is similar to anti-attack, but Rich OS can do more; for the user interface, SE is powerless, and Rich OS is the most abundant; development is easy. On the other hand, the Rich OS is the easiest. Of course, if the TEE standard is done well, it can be done quite "easy". On the processing speed, TEE and Rich OS are equivalent. Because the same physical processor used by both, SE is certainly slow; Finally, the SE is physically removable.
@@ -790,7 +815,7 @@ After joining TEE, the extra cost increase is very low, and it can reach a mediu
 \textbf{Table 1}~~Comparison.\\
  \setlength{\tabcolsep}{1mm}{\begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|} %l(left)居左显示 r(right)居右显示 c居中显示
 \hline 
-&RichOS&TEE&SE\\
+&REE&TEE&SE\\
 \hline  
  &Only software&Software and HW&Software and Tamper 
 resistant HW\\
@@ -810,29 +835,6 @@ Processing Speed&Fast&Fast&Slow\\
  
 \end{tabular}}
 \end{center}
-
-\subsection{SE}
-Secure Element (SE) is a platform that can install, personalize and manage applications. It is a combination of hardware, software, interfaces, and protocols that can securely store and use credentials for payment, authentication, and other services. Conceptually, SE can be divided into four areas from the paper [17] :
-
-$\bullet$ Embedded SEs;
-
-$\bullet$ Removable SEs;
-
-$\bullet$ Flexible SE Solutions;
-
-$\bullet$ Software Based SEs.
-
-\subsubsection{Embedded SE}
-The embedded SE is a chip that is integrated into a mobile phone and cannot be removed. According to research [18], the SE provides the same level of security as smart cards support. The chip is embedded in the handset during the manufacturing process and must be personalized after the device is delivered to the end user [18]
-
-The eSE is the most secure device in mobile phones and often stores fingerprint data with the highest security level, authentication keys, and bank card related information. High-end mobile phones often equipped with fingerprint recognition will be equipped with eSE. For example, iphone 7/8, Samsung s9, Huawei mate 10, etc.
-
-\subsubsection{Removable SEs} The rSE is a chip that can be removed and replaced in mobile phones. Usually embedded in some replaceable phone hardware
-Usually embedded in some replaceable phone hardware, such as SD card, SIM card
-
-\emph {SMC:} The Secure Memory Card (SMC) provides the same advanced security as a smart card and meets most of the smart card's major standards and interfaces (eg, GlobalPlatform, ISO/IEC 7816, JavaCard, etc.). As described in [18], SMC can host a large number of applications with mobility and large memory. 
-
-\emph {UICC:} UICC is a general multi-application platform for implementing smart card applications of SIM or USIM. UICC provides an ideal environment for personal, secure, portable and easily remotely managed NFC applications via OTA technology [3, 60, 61]. It can host non-telecom applications from various service providers such as loyalty, ticketing, healthcare, access control and ID applications [110]. GlobalPlatform provides the most promising standard for UICC life cycle management (or card content management). It has three different business models; Simple MNO-centric model, commissioning model and full authorization for TSM center model [17].
 
 \section{Communication method}
 Mobile payment communication is mainly used for short-distance communication, especially for poor mobile network environment offline payment. Payment information is delivered via these means of communication. Many people regard communication as a means of payment. However, they are only responsible for transmitting payment information. The real means of influencing payment are payment encryption and authentication technologies.
@@ -1306,7 +1308,7 @@ NFC technology has been around for more than a decade and has been called promis
 
 There are two ways to implement card emulation on an NFC-enabled mobile phone: one is hardware-based, called virtual card mode; the other is software-based, called host card mode ( Host Card Mode).
 
-In the virtual card mode, the security module SE (Secured Elemen) needs to be provided. The SE provides secure storage of sensitive information and provides a secure execution environment for transaction transactions. The NFC chip acts as a contactless communication front end, forwards the commands received from the external reader/writer to the SE, and then processes them by the SE and replies via the NFC controller.
+In the virtual card mode, the security module SE (Secured Elemen) needs to be provided. The SE provides secure storage of sensitive information and provides a secure execution environment for transactions. The NFC chip acts as a contactless communication front end, forwards the commands received from the external reader/writer to the SE, and then processes them by the SE and replies via the NFC controller.
 
 In the host card mode, there is no need to provide the SE. Instead, the SE function is performed by an application running in the mobile phone or a server in the cloud. At this time, the data received by the NFC chip is sent by the operating system or the application in the mobile phone, or The interaction is done through the server that the mobile network sends to the cloud. Both methods are characterized by the limitation of the built-in SE of the mobile phone. The beauty of this standard is that it does not require the entire industry to fight in order to control the safety elements.
 
@@ -1351,7 +1353,7 @@ The doubts about mobile payment will be even more amplified on Android Pay. Beca
 \label{fig}
 \end{figure}
 
-\subsubsection{apple pay}
+\subsection{apple pay}
 Apple pays only NFC payments, and its technology is very similar to Samsung's NFC technology, but Apple's use of the scene is not Samsung. Because it does not support magnetic stripe payments, it supports Apple payments on many older devices that only support magnetic stripe payments.
 
 By comparison, it is not difficult to see that Apple Pay and Samsung Pay have an essential difference from China’s Alipay/WeChat. Apple Pay and Samsung Pay do not have their own account ecology. They are only used to replace bank cards for online and offline consumption, eliminating the need to carry bank cards or memories, but are limited to only supporting their own models, and their audiences are relatively Narrower.
