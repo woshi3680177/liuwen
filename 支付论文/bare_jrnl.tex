@@ -486,8 +486,8 @@ tokenization, eSE, QR code, NFC, offline, TOTP.
  
 %\hfill August 26, 2015
 \section{Introduction}
-\IEEEPARstart
-{P}ayment methods range from initial cash payment to credit card payment, to current scan code, NFC payment. Although mobile payments are increasingly convenient, the security issues faced are more and more complex than ever. Mobile payment security has received more and more attention along with the popularity of mobile payment.
+\IEEEPARstart{I}n this study, the research will introduce secure payment technologies related to popular mobile payment schemes. Since modern times, payment methods have tremendous changes. People began to get used to paying in cash. After then, technology store cash into magnetic stripe cards and IC cards. Thus people (especially in Europe and the United States) gradually fond of paying by their cards, but today's technology again puts bank cards in mobile phones. mobile payments have become a general trend. With the popularity of mobile payments, mobile payment security has received more and more attention. Although mobile payments have become increasingly convenient, the security issues they face are more complex than ever. Today's major mobile payment solutions can be divided into two camps. One party is based mainly on Alipay, Tencent, Paypal, MasterCard, etc. They are not simply payment providers, but also have some of the bank's functions. The user only interacts with the payment server. After completing the settlement within the server, the server then interacts with the bank. Therefore, the main security technology is used from the user's payment to server authentication. On the other hand, they are Apple, Samsung, Google and other mobile phone manufacturers. In order not to change people's habits of swiping cards, they use their hardware advantages to directly connect with banks and use mobile phones to simulate the entire payment process of the bank cards. Since the IC card itself is very complicated, in order to simulate its functions and maintain the same security, mobile phone manufacturers and banks have jointly developed a large number of software and hardware technologies on mobile terminals. Offline payment (that is, the mobile terminal does not need to pay for networking) is the research focus of the two camps this year. The payment service providers paid for by using the password + QR codes, quickly occupying the Chinese market with their low hardware requirements and strong compatibility. In the European and American markets, there is not enough trust in this model, and mobile phone manufacturers have also achieved the offline payment function by means of analog bank card flash payment. However, while mobile payments involve a large number of security technologies, there is one technology that is the basis for mobile payment today---Tokenization.
+
 %{I}
 %n this study, the research model is developed based on relevant business model, platform and
 %business ecosystem theories. The final research model consists of three connected perspectives
@@ -610,41 +610,21 @@ tokenization, eSE, QR code, NFC, offline, TOTP.
 % footnotes above bottom floats. This can be corrected via the
 % \fnbelowfloat command of the stfloats package.
 \section{Virtual Bank card binding technology}
-Virtual bank card instead of the real bank card binding in the payment account or mobile terminal and transfer in the transaction.In this section,the Virtual bank card binding technology will be told. First, It is need to know why the virtual bank card need bindind in the mobile phone.Accoding to the PCI DSS and China UnionPay standard,there three main reasons need to explain.
-First,If the magnetic stripe card is skipped, it can be easily copied into a fake card, which is used for fraudulent transactions and brings about capital losses to the cardholder.in addition,If the card number is expired and the validity period, it is easy to move in some e-commerce in fraudulent transactions, bringing the cardholder money losses.moreover,In the online payment and mobile payment environment,the card organization is even more hopeful that it will not change the usage habit of the cardholder completing the transaction with the card number and expiration date, and at the same time effectively improve the payment security.
-\subsection{The process of binding bank card.}
-The payment provider hands over the bank card account (PAN) which the user needs to bind to the corresponding bank server. If the corresponding virtual bank card for this PAN does not exist for this merchant in the public central database,a new virtual is generated and an entry is added to the public central database.At the same time return virtual bank card to the merchant. The merchant binds the token with the user's account as a virtual bank card corresponding to the PAN.
+Virtual bank card instead of the real bank card binding in the payment account or mobile terminal and transfer in the transaction.In this section, the Virtual bank card binding technology will be told. 
 
-However, in order to prevent the payment provider to saving or leaking the user's real bank card information, Alipay has proposed a new virtual bank card binding scheme:
+%%First, It is need to know why the virtual bank card need bindind in the mobile phone.Accoding to the PCI DSS and China UnionPay standard,there three main reasons need to explain.
+%%First,If the magnetic stripe card is skipped, it can be easily copied into a fake card, which is used for fraudulent transactions and brings about capital losses to the cardholder.in addition,If the card number is expired and the validity period, it is easy to move in some e-commerce in fraudulent transactions, bringing the cardholder money losses.moreover,In the online payment and mobile payment environment,the card organization is even more hopeful that it will not change the usage habit of the cardholder completing the transaction with the card number and expiration date, and at the same time effectively improve the payment security.
 
-1, the merchant system pre-save the payment system server authorization certificate. And authorize the signature of the authorization certificate called its default instructions.
-
-2. The merchant system receives a binding request sent by a terminal, where the binding request corresponds to a user account that the user logs in on the merchant system; and returns a preset instruction to the terminal;
-
-3, the terminal to the payment system through the secure channel to send the default instructions and the real bank card number.
-
-4, the payment system generates a virtual bank card number corresponding to the real bank card number. (For each real bank card number generated by the virtual card number is different)
-
-5, the virtual bank card number returned to the terminal.
-
-6, the terminal sends the virtual bank card number to the payment provider.
-
-7, the payment provider bind the virtual bank card to the user accounts.
-
-In this scheme, the payment provider can not get the user's real bank card account information.
-
-\begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.7]{token_shengcheng2.pdf}}
-\caption{Token application process.}
-\label{fig}
-\end{figure}
-
-\subsection{Fundamental of virtual bank card: payment tokenization }
 In our digital age, bank cards have become a popular payment tool. With the increasing popularity of business through the Internet, each company needs to maintain its customers' bank card information in some form. The theft of bank card data is considered to be one of the most serious threats to any company. Such violations will not only bring serious economic losses to the company, but also cause serious damage to the “brand image”.
 
-The Payment Card Industry Security Standards Council (PCI SSC) was established by a major payment card company and is an organization responsible for the best development and deployment.The organization that ensures the security of credit card data. In particular, PCI SSC has developed a standard PCI Data Security Standard (PCI DSS) called "Standards" [11], which specifies the security mechanism card data required to guarantee payment. PCI DSS requires organizations that process card payments to protect cardholder data as they store, transmit, and process them. The practical requirements specified by the PCI DSS are very detailed and complicated. In order to achieve PCI compliance, merchants need to provide security policies regarding the use and use of the document regarding all sensitive information stored in their environment. Considering PCI compliance requires the confidence of its customers for any business. In addition, in some countries, a company that is exposed to theft of sensitive information may face a large amount of fines.
+The Payment Card Industry Security Standards Council (PCI SSC) was established by a major payment card company and is an organization responsible for the best development and deployment. The organization that ensures the security of credit card data. In particular, PCI SSC has developed a standard PCI Data Security Standard (PCI DSS) called "Standards" [11], which specifies the security mechanism card data required to guarantee payment. PCI DSS requires organizations that process card payments to protect cardholder data as they store, transmit, and process them. The practical requirements specified by the PCI DSS are very detailed and complicated. In order to achieve PCI compliance, merchants need to provide security policies regarding the use and use of the document regarding all sensitive information stored in their environment. Considering PCI compliance requires the confidence of its customers for any business. In addition, in some countries, a company that is exposed to theft of sensitive information may face a large amount of fines.
 
 Enterprises, merchants, and payment processors face severe, ongoing challenges securing their networks and high-value sensitive data such as payment cardholder data, to comply with the Payment Card Industry Data Security Standard (PCI DSS) and data privacy laws. Tokenization, which is used as a way of replacing sensitive data like credit card numbers with tokens, is one of the data protection and audit scope reduction methods recommended by the PCI DSS. 
+
+
+
+\subsection{Fundamental of virtual bank card:tokenization }
+
 
 The principle is to verify the transaction by using a payment token instead of a real bank card number so as to prevent card number information leakage risk. Payment tokenization is the process of replacing a traditional bank card master account with a unique numeric value, while ensuring that the value's application is limited to a specific merchant, channel, or device. Payment tags can be used in all aspects of bank card transactions, and existing bank card number based on the same transaction, can be used across industries in the industry, has versatility.
 As the latest cutting-edge technology in the global payment field, payment tokenization technology has its advantages in three aspects:
@@ -655,18 +635,20 @@ Second, payment tags can only be used in a limited transaction scenario, making 
 
 Thirdly, compared with the traditional bank card verification function, the payment tag integrates the functions of personal identification and device information verification, additional verification of payment information and risk rating to conduct transaction legitimacy identification and risk control. Therefore, the tokenization of the payment can not only prevent the leakage of sensitive information of cardholders in all aspects of transaction, but also reduce the probability of fraudulent transactions.
 
+\textbf{Attention:} The conception of token in the different field of computer security has a different meaning. But all have some temporary properties. In identity authentication, when the user logs in for the first time, the server generates a token and returns the token to the client. After that, the client only needs to bring the token to request data, without having to bring the user name and password again. Besides, token is also an object used in Petri net theory. Not only that, there are Access token(a system object representing the subject of access control operations), Session token (a unique identifier of an interaction session), Security token or hardware token (authentication token or cryptographic token, a physical device for computer authentication), Token ring(a network technology in which a token circles in a logical ring),etc. Many people confuse the token in the payment security with the token in the authentication, and believe that the payment can be authenticated as long as the token is presented. This is actually wrong. In the field of mobile payments, Tokenization is the process of substituting a sensitive data element. The token is stored in the mobile terminal instead of the PAN.
+
 \begin{figure}[htbp]
 \centerline{\includegraphics[scale=0.7]{token_shengcheng.pdf}}
 \caption{Token application process.}
 \label{fig}
 \end{figure}
 
-  The international chip card standardization organization EMVCo has defined smart card payment and also defined a token (ie token) as a substitute in the actual card application. Merchants can handle cards and tokens in the same way, which means that there is no need to change the already installed and installed PoS (Point of Sale) terminals. This clever processing is done through a Token Service Provider (TSP) that has the actual card information. When issuing token Tokens, you can flexibly make some restrictions, such as the use of only certain businesses, online use only, offline use, and you can limit the value, time and location of tokens, such as The security level of the device determines its effective time. When necessary, tokens can be destroyed and re-issued. The Tokens solution ensures compatibility with existing infrastructure and saves money. Working with HCE, the token can solve the problem of availability. When the mobile network is unstable, the token is stored locally on the mobile phone and can be paid offline. The EMVCo Payment Token Specification Technical Framework v1.0 provides examples of secure storage of tokens on a device. For example, it can be stored in a trusted execution environment TEE. In addition, tokens can be used through any channel, such as NFC HCE, Internet transactions, and Bluetooth Beacons, so the technology is not limited to PoS terminals.
+  The international chip card standardization organization EMVCo has defined smart card payment and also defined a token as a substitute in the actual card application. Merchants can handle cards and tokens in the same way, which means that there is no need to change the already installed and installed PoS (Point of Sale) terminals. This clever processing is done through a Token Service Provider (TSP) that has the actual card information. When issuing token Tokens, you can flexibly make some restrictions, such as the use of only certain businesses, online use only, offline use, and you can limit the value, time and location of tokens, such as The security level of the device determines its effective time. When necessary, tokens can be destroyed and re-issued. The Tokens solution ensures compatibility with existing infrastructure and saves money. Working with HCE, the token can solve the problem of availability. When the mobile network is unstable, the token is stored locally on the mobile phone and can be paid offline. The EMVCo Payment Token Specification Technical Framework v1.0 provides examples of secure storage of tokens on a device. For example, it can be stored in a trusted execution environment TEE. In addition, tokens can be used through any channel, such as NFC, Internet transactions, and Bluetooth Beacons, so the technology is not limited to PoS terminals.
   
 As described in [10], a tokenization system has the following components:
 
 \textbf{1.A method for token generation}
-A process to create a token corresponding to a primary account number (PAN). Some of the mentioned options are encryption functions, cryptographic hash functions andrandom number generators.
+A process to create a token corresponding to a primary account number (PAN). Some of the mentioned options are encryption functions, cryptographic hash functions and random number generators.
 
 \textbf{2.A token mapping procedure}
 It refers to the method used to associate a token with a PAN. Given a token, this method will allow the system to recover PAN.
@@ -730,6 +712,34 @@ Centralized tokenization involves building a large-scale database (“token vaul
 \end{figure}
 
 \subsubsection{Distributed tokenization technologies}
+
+\subsection{The process of binding bank card.}
+The payment provider hands over the bank card account (PAN) which the user needs to bind to the corresponding bank server. If the corresponding virtual bank card for this PAN does not exist for this merchant in the public central database,a new virtual is generated and an entry is added to the public central database.At the same time return virtual bank card to the merchant. The merchant binds the token with the user's account as a virtual bank card corresponding to the PAN.
+
+However, in order to prevent the payment provider to saving or leaking the user's real bank card information, Alipay has proposed a new virtual bank card binding scheme:
+
+1, the merchant system pre-save the payment system server authorization certificate. And authorize the signature of the authorization certificate called its default instructions.
+
+2. The merchant system receives a binding request sent by a terminal, where the binding request corresponds to a user account that the user logs in on the merchant system; and returns a preset instruction to the terminal;
+
+3, the terminal to the payment system through the secure channel to send the default instructions and the real bank card number.
+
+4, the payment system generates a virtual bank card number corresponding to the real bank card number. (For each real bank card number generated by the virtual card number is different)
+
+5, the virtual bank card number returned to the terminal.
+
+6, the terminal sends the virtual bank card number to the payment provider.
+
+7, the payment provider bind the virtual bank card to the user accounts.
+
+In this scheme, the payment provider can not get the user's real bank card account information.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.7]{token_shengcheng2.pdf}}
+\caption{Token application process.}
+\label{fig}
+\end{figure}
+
 
 \section{Mobile Terminal Security}
 In the mobile payment, the mobile terminal often authenticates the payment and also stores a lot of sensitive information related to the payment, such as the PIN code of the payment APP,fingerprint and the virtual bank card mentioned in the previous section. Therefore, the security of mobile terminals is also increasingly concerned by major mobile phone manufacturers and payment service providers.
