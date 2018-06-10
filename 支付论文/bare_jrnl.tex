@@ -631,14 +631,14 @@ As the latest cutting-edge technology in the global payment field, payment token
 
 First, there is no need to retain sensitive information, cardholder card number and the validity of the card does not appear in the transaction;
 
-Second, payment tags can only be used in a limited transaction scenario, making payments more secure;
+Second, payment tokens can only be used in a limited transaction scenario, making payments more secure;
 
 Thirdly, compared with the traditional bank card verification function, the payment tag integrates the functions of personal identification and device information verification, additional verification of payment information and risk rating to conduct transaction legitimacy identification and risk control. Therefore, the tokenization of the payment can not only prevent the leakage of sensitive information of cardholders in all aspects of transaction, but also reduce the probability of fraudulent transactions.
 
 \textbf{Attention:} The conception of token in the different field of computer security has a different meaning. But all have some temporary properties. In identity authentication, when the user logs in for the first time, the server generates a token and returns the token to the client. After that, the client only needs to bring the token to request data, without having to bring the user name and password again. Besides, token is also an object used in Petri net theory. Not only that, there are Access token(a system object representing the subject of access control operations), Session token (a unique identifier of an interaction session), Security token or hardware token (authentication token or cryptographic token, a physical device for computer authentication), Token ring(a network technology in which a token circles in a logical ring),etc. Many people confuse the token in the payment security with the token in the authentication, and believe that the payment can be authenticated as long as the token is presented. This is actually wrong. In the field of mobile payments, Tokenization is the process of substituting a sensitive data element. The token is stored in the mobile terminal instead of the PAN.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.7]{token_shengcheng.pdf}}
+\centerline{\includegraphics[scale=0.5]{tsp1.png}}
 \caption{Token application process.}
 \label{fig}
 \end{figure}
@@ -663,7 +663,7 @@ This module is a set of mechanisms for creating, using, managing, storing, and p
 It is two basic requirements for tokens and tokenization systems.
 
 \textbf{Format Preserving}
-The token should have the same format as the PAN so that the stored PAN can be easily replaced by the token in the merchant's environment. In addition, it is important to distinguish the token from the PAN token easily.
+The token should have the same format as the PAN so that the stored PAN can be easily replaced by the token in the merchant's environment. At the same time, it has to be detected by the luhn algorithm, In addition, it is important to distinguish the token from the PAN to token and the PAN issuer easily. Finally, it also needs convenient to distinguish the card issuer of the PAN corresponding to the token.
 
 \textbf{Uniqueness}
 The token generation method should be deterministic. The tokens for a specific PAN should be unique,In a specific payment environment two different PANs should be represented by different tokens.
@@ -698,12 +698,126 @@ Centralized tokenization is conventional, database-centric solutions，which req
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[scale=0.4]{tsp.png}}
-\caption{token service provider}
+\caption{tokenization service provider of centralized tokenization scheme}
 \label{fig}
 \end{figure}
  
 Card organizations are highly recommended centralized tokenization technologies. 
 Centralized tokenization involves building a large-scale database (“token vault”), storing each PAN together with a generated token. Figure 3 shows the China UnionPay payment tokenization system framework
+
+
+\subsection{Distributed tokenization technologies}
+Although traditional centralized tokenization has been widely used, it has also been exposed some critical problems[19]:
+
+$ \bullet $ Complexity and cost: Managing large, replicated token databases is difficult and costly, and these databases themselves increase PCI audit scope. 
+
+$ \bullet $ Integrity: In accurate analytics and other application correlation due to credit card numbers sometimes being replaced by more than one token (a side effect of having a distributed token database).
+
+$ \bullet $ Security and risk: Approaches without independent and reviewable security proofs increase breach risk and do not meet QSA(Quality 
+Security Assessor) evidence requirements, and thus cannot achieve PCI compliance. In the event of a breach that leaks cardholder details, merchants using such approaches have no grounds to avoid significant penalties.
+
+$ \bullet $ Performance and scale: Tokenization performance is slow and very difficult to scale.
+
+ PCI use case completeness: Tokenization is not suited to offline environments, such as web browsers or card swipe terminals. Supplementary solutions are required for PCI DSS audit scope reduction in such applications.
+
+In response to these problems, many companies have proposed distributed tokenization schemes one after another. The main feature is that the generation of tokenization is not concentrated in one server, but can be distributed in various places. Each place can generate the same unique token.
+
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=9cm,height=9cm]{dis_token.png}}
+\caption{Distributed Tokenization Scheme of MICRO FOCUS}
+\label{fig}
+\end{figure}
+
+Figure 4 shows the distributed tokenization scheme of MICRO FOCUS[20]. Tokenization equipment can be used for tokenziation and de-tokenization. And it can have multiple and distributed in different geographical locations. User A may exchange tokens for PAN in tokenization equipment A, and may request de-tokenization operations in tokenization equipment B, and vice versa. In this way, there can be no data center dedicated to manage tokenization and de-tokenization, but can operate on any tokenization equipment.
+
+The token generation process of mainstream distributed tokenization scheme consists of the following features:
+
+$ \bullet $ Pre-positioning the same lookup tables to each tokenization equipment. Lookup table of MICRO FOCUS schem[20] as shown in table 1.
+
+$ \bullet $ Using lookup tables to design mapping schemes, often using iterative mapping, rotation, etc.
+
+$ \bullet $ Don't store the mapping relationship between PAN and token. 
+
+The distributed solution relieves some problems of the centralized system to some extent. In particular, the elimination of centralized data centers can greatly reduce costs. However, new issues have also been traced. Once the lookup table leaks, it will have a major impact on the security of the entire solution. Moreover, the lookup table is the same in all local devices. On the other hand, it is not very convenient to withdraw tokens.
+
+
+
+\begin{center}
+\textbf{Table 1}~~Lookup Table.\\
+ \setlength{\tabcolsep}{1mm}{\begin{tabular}{|c|c|} %l(left)居左显示 r(right)居右显示 c居中显示
+\hline 
+TOKEN&SENSITIVE NUMBER\\
+\hline  
+4876 9865&2348 9286\\
+\hline
+7374 2625&2827 6438\\
+\hline
+...&...\\
+\hline
+...&...\\
+\hline
+...&...\\
+\hline
+&\\
+\hline
+&\\
+\hline
+
+\end{tabular}}
+\end{center}
+
+
+
+
+
+
+\subsection{The process of binding bank card.}
+Tokenization is a key link for binding a bank card to a mobile phone, but the security of the entire process also requires the application of multiple technologies. Since distributed tokenization are not widely used, the following are discussed in centralized tokens.
+
+In the entire process, apart from the customer himself, two departments have played a major role:
+
+\subsubsection{TSP(Token Service Provider)} The TSP is mainly responsible for the Token management related work in the Tokenization system, and maintains a series of components related to Token operations. The TSP provides the services provided by these components in the form of APIs for other roles to call, mainly including the following aspects: .
+
+\textbf{1)} Tokenization component;
+ 
+\textbf{2)} De-Tokenization component;
+ 
+\textbf{3)} ID\&V components:During the Token generation process, the user's account number needs to be verified to assign different guarantee levels to the Token. Different guarantee levels limit the range that the Token can use. This verification is performed by the ID\&V component. ID\&V actually accepts sensitive information from a group of users and outputs the user's Token security level after a certain algorithm;
+ 
+\textbf{4)} Token Lifecycle Management Components;
+ 
+\textbf{5)} Token and Card Data Vault:The Token vault is the core of data storage in the TSP. In addition to the mapping between the user Token and the PAN, it also stores the sensitive information that the user uses for the ID\&V process. There is no such thing in the distributed tokenization scheme.
+
+TSP is mainly undertaken by card organizations, banks, or some large financial companies.
+
+\subsubsection{TR(Token Requestor)}
+TR is mainly responsible for two aspects of work in this payment system.
+
+On the one hand, TR needs to provide a set of APIs for developers of electronic wallets. The API includes two parts:
+
+1) The first part of the API provides cardholder lifecycle management, such as user registration, user login, and user revocation.
+
+2) The second part is the interface related to the Token service, including the application, update, unbundling, and loss reporting of the Token.
+
+On the other hand, when the TR receives the Token application request of the user, it needs to call the corresponding API of the TSP to route the request to the corresponding TSP, and then the TSP returns the value of the Token and some other related data and finally forwards it to the user.
+
+In today's market, TR is mainly played by payment service providers. TR first needs to register with the TSP. The registration process and the data involved may differ according to different TSPs. After the registration is completed, TSP assigns a unique ID (Token Requestor ID) to the TR for the TSP to identify the legitimacy of the TR. Each TR ID corresponds to a TSP, so a TR can have multiple TR IDs. After the TR can apply for the Token, the specific way to call the API interface provided by the TSP.
+
+Figure 1 shows the mainstream process of binding bank cards to mobile phones today:
+
+1,Open the payment software app and start binding the bank card and enter PAN;
+
+2,The phone sends the PAN over the encrypted channel to the server of the payment service provider, 
+
+3,The payment provider hands over the bank card account (PAN) which the user needs to bind to the corresponding bank server. If the corresponding virtual bank card for this PAN does not exist for this merchant in the public central database,a new virtual is generated and an entry is added to the public central database.At the same time return virtual bank card to the merchant. The merchant binds the token with the user's account as a virtual bank card corresponding to the PAN.
+
+4,The card company confirms with the card issuing bank of the PAN, and then the card issuing bank sends a random code to the user's mobile phone through the short message, allowing the user to enter the random code on the mobile phone for confirmation.
+
+5,After the user confirms, the issuing bank will reply with confirmation information to the card organization. The card organization uses the TSP to generate a token reply to the payment service provider, which then stores the token on the server and responds to the user's mobile phone.
+
+6,Finally bind tokens to mobile terminals instead of PAN for mobile payment transactions
+
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=9.5cm,height=7cm]{zhifubiaojikuangjia.png}}
@@ -711,12 +825,11 @@ Centralized tokenization involves building a large-scale database (“token vaul
 \label{fig}
 \end{figure}
 
-\subsubsection{Distributed tokenization technologies}
+Figure 3 shows the payment system framework of China UnionPay. Its entire bank card binding process is basically the same as described above. However, during this process, if the payment service provider maliciously saves the PAN, it is difficult to deal with it.
 
-\subsection{The process of binding bank card.}
-The payment provider hands over the bank card account (PAN) which the user needs to bind to the corresponding bank server. If the corresponding virtual bank card for this PAN does not exist for this merchant in the public central database,a new virtual is generated and an entry is added to the public central database.At the same time return virtual bank card to the merchant. The merchant binds the token with the user's account as a virtual bank card corresponding to the PAN.
 
-However, in order to prevent the payment provider to saving or leaking the user's real bank card information, Alipay has proposed a new virtual bank card binding scheme:
+
+However, in order to prevent the payment provider to saving or leaking the user's real bank card information, Alipay has proposed a new virtual bank card binding scheme. As shown in Figure 5:
 
 1, the merchant system pre-save the payment system server authorization certificate. And authorize the signature of the authorization certificate called its default instructions.
 
@@ -735,10 +848,13 @@ However, in order to prevent the payment provider to saving or leaking the user'
 In this scheme, the payment provider can not get the user's real bank card account information.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.7]{token_shengcheng2.pdf}}
+\centerline{\includegraphics[scale=0.5]{tsp2.png}}
 \caption{Token application process.}
 \label{fig}
 \end{figure}
+
+The PAN leak is really avoided in Alibaba's solution.
+
 
 
 \section{Mobile Terminal Security}
@@ -1541,7 +1657,14 @@ Kanniainen L. \emph{Alternatives for banks to offer secure mobile payments[J]}. 
 Coskun V, Ozdenizci B, Ok K. \emph{A Survey on Near Field Communication (NFC) Technology[J]}. Wireless Personal Communications, 2013, 71(3):2259-2294.
 \bibitem{IEEEhowto:kopka}
 Reveilhac M, Pasquet M. \emph{Promising Secure Element Alternatives for NFC Technology[C]}.International Workshop on Near Field Communication. IEEE, 2009:75-80.
-
+\bibitem{IEEEhowto:kopka}
+Micro Focus, \emph{Secure Stateless Tokenization (SST)}, Available at "\url{http://files.asset.microfocus.com/4aa6-5576/en/4aa6-5576.pdf}".
+\bibitem{IEEEhowto:kopka}
+Terence Spies, Mountain View, CA(US),Richard T.Minner, Carmichael, CA(US), \emph{system for protecting sensitive data with distributed tokenization}, US 8595850 B2, 2013-11-26.
+\bibitem{IEEEhowto:kopka}
+Ulf Mattsson, Stamford, CT(US), \emph{distributed tokenization using several substitution steps}, US 8745094 B2, 2014-6-3.
+\bibitem{IEEEhowto:kopka}
+Ulf Mattsson, Cos Cob,CT(US), Yigal Rozenberg, Wilton, CT(US),Vichai Levy, Norwalk, CT(US), \emph{table-connected tokenization}, US 9237006 B2, 2016-1-12. 
 
 \end{thebibliography}
 
