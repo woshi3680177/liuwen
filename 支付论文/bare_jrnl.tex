@@ -610,7 +610,7 @@ tokenization, eSE, QR code, NFC, offline, TOTP.
 % footnotes above bottom floats. This can be corrected via the
 % \fnbelowfloat command of the stfloats package.
 \section{Virtual Bank card binding technology}
-Virtual bank card instead of the real bank card binding in the payment account or mobile terminal and transfer in the transaction.In this section, the Virtual bank card binding technology will be told. 
+Virtual bank card instead of the real bank card binding in the mobile terminal and transfer in the transaction.In this section, the Virtual bank card binding technology will be told. 
 
 %%First, It is need to know why the virtual bank card need bindind in the mobile phone.Accoding to the PCI DSS and China UnionPay standard,there three main reasons need to explain.
 %%First,If the magnetic stripe card is skipped, it can be easily copied into a fake card, which is used for fraudulent transactions and brings about capital losses to the cardholder.in addition,If the card number is expired and the validity period, it is easy to move in some e-commerce in fraudulent transactions, bringing the cardholder money losses.moreover,In the online payment and mobile payment environment,the card organization is even more hopeful that it will not change the usage habit of the cardholder completing the transaction with the card number and expiration date, and at the same time effectively improve the payment security.
@@ -693,7 +693,7 @@ Tokens and tokenization solutions can be implemented in numerous ways, and the s
 
 The level of PCI DSS scope reduction offered by a tokenization solution will also need to be carefully evaluated for each implementation. For example, locations and flows of cardholder data, adequacy of segmentation, and controls around de-tokenization and mapping processes should be reviewed and verified to ensure proper scoping of the CDE and appropriate application of PCI DSS security requirements.[10]
 \subsubsection{Centralized tokenization technologies}
-Centralized tokenization is conventional, database-centric solutions，which requst the token corresponding to the provided PAN from a common central database. If no token corresponding token exists in the common central database at the time of the request, a new token is generated and an entry will be added to the common central database.
+Centralized tokenization is conventional, database-centric solutions，which requst the token corresponding to the provided PAN from a common central database, as described above. If no token corresponding token exists in the common central database at the time of the request, a new token is generated and an entry will be added to the common central database.
 
 
 \begin{figure}[htbp]
@@ -791,6 +791,9 @@ In the entire process, apart from the customer himself, two departments have pla
 
 TSP is mainly undertaken by card organizations, banks, or some large financial companies.
 
+
+
+
 \subsubsection{TR(Token Requestor)}
 TR is mainly responsible for two aspects of work in this payment system.
 
@@ -849,18 +852,20 @@ In this scheme, the payment provider can not get the user's real bank card accou
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[scale=0.5]{tsp2.png}}
-\caption{Token application process.}
+\caption{Token binding process.}
 \label{fig}
 \end{figure}
 
 The PAN leak is really avoided in Alibaba's solution.
 
+The tokenization technology and bank card binding scheme are the bottom layer of mobile payment technology. The former centralized solution needs to solve the problem of large-scale data storage and a single token generation location, and the distributed solution needs to solve the problem of the leakage of the lookup table. The latter needs to solve the problem of PAN being hijacked by a third party during the binding process.
+
 
 
 \section{Mobile Terminal Security}
-In the mobile payment, the mobile terminal often authenticates the payment and also stores a lot of sensitive information related to the payment, such as the PIN code of the payment APP,fingerprint and the virtual bank card mentioned in the previous section. Therefore, the security of mobile terminals is also increasingly concerned by major mobile phone manufacturers and payment service providers.
+After the mobile phone binds the token, it begins to act as a mobile payment terminal. The mobile terminal need often authenticates the payment and also stores a lot of sensitive information, such as the PIN code of the payment APP,fingerprint and the token. Once the mobile payment terminal is invaded by an adversary, the customer will suffer heavy losses. Therefore, the security of mobile terminals is also increasingly concerned by major mobile phone manufacturers and payment service providers.
 
-TEE and eSE are two key technologies for the security of mobile payment mobile terminals today. 
+TEE and eSE are the two key technologies for the security of mobile terminals in mobile payment today.
 
 
 \subsection{TrustZone}
@@ -870,7 +875,7 @@ Based on the OMTP solution, ARM (the world's largest solution provider of embedd
 
 TrustZone conceptually divides SoC hardware and software resources into Secure World and Normal World. All operations that require confidentiality are performed in the secure world (such as fingerprint identification, password processing, data encryption and decryption, and security certification, etc.) The rest of the operations are performed in a non-secure world (such as user operating systems, various applications, etc.), the security world and the non-secure world are converted by a mode named Monitor Mode.
 
-On the processor architecture, TrustZone virtualizes each physical core into two cores, a non-secure core (NS Core), code that runs a non-secure world, and another secure core (Secure Core). The world's code.
+On the processor architecture, TrustZone virtualizes each physical core into two cores, a non-secure core (NS Core), which runs a non-secure world, and another secure core (Secure Core), which run the safe world code.
 
 The two virtual cores operate in a time-sliced manner, occupy physical cores in real time as needed, and switch between the secure world and the non-secure world through Monitor Mode, similar to a multi-application environment under the same CPU, but different from multiple applications. In the program environment, the operating system implements inter-process switching, while the Monitor Mode under Trustzone implements switching between two operating systems on the same CPU.
 
@@ -888,30 +893,27 @@ GlobalPlatform (the world's leading organization for smart card multi-applicatio
 The Trusted Execution Environment (TEE) is a concept proposed by the Global Platform (GP). For the open environment of mobile devices, security issues are also getting more and more attention, not only terminal users, but also service providers, mobile operators, and chip vendors. TEE is an operating environment coexisting with Rich OS  on the device and provides security services to Rich OS. It has its own execution space, which is higher than Rich OS's security level, but lower than the security element (SE, usually a smart card). However, TEE can meet the security needs of most applications. From a cost perspective, TEE provides a balance between security and cost.
  
 \begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.45]{TEE.pdf}}
+\centerline{\includegraphics[scale=0.5]{TEE.pdf}}
 \caption{TEE and Rich Os}
 \label{fig}
 \end{figure}
 
-Among them, the software and hardware resources that TEE can access are separated from Rich OS. TEE provides a secure execution environment for authorized security software (trusted applications, TA) while also protecting the confidentiality, integrity, and access rights of TA's resources and data. To ensure the trusted root of the TEE itself, the TEE is authenticated and isolated from the Rich OS during the secure boot process. In TEE, each TA is independent of each other and cannot be accessed without authorization.
+Among them, the software and hardware resources that TEE can access are separated from Rich OS. TEE provides a secure execution environment for authorized security software (\textbf{trusted applications, TA}) while also protecting the confidentiality, integrity, and access rights of TA's resources and data. To ensure the trusted root of the TEE itself, the TEE is authenticated and isolated from the Rich OS during the secure boot process. In TEE, each TA is independent of each other and cannot be accessed without authorization.
 
 GP has made great efforts in the standardization of TEE. The basic specifications include TEE internal API, TEE client API, and of course, there are a series of additional functional API specifications, as well as application management, debugging functions, security protection profile, etc. In development.
 
 The TEE internal API mainly includes APIs such as key management, cryptographic algorithms, secure storage, secure clock resources and services, and an extended trusted UI. Trusted UI means that when key information is displayed and user key data (such as password) is input, hardware resources such as screen display and keyboard are completely controlled and accessed by TEE, and software in Rich OS cannot be accessed. The internal API is the programming interface that TEE provides to TA;
 
-The TEE external API is the underlying communication interface for the client application (CA) running in the Rich OS to access TA services and data.
+The TEE external API is the underlying communication interface for the client application  unning in the Rich OS to access TA services and data.
 
 
 \subsection{SE}
-Secure Element (SE) is a platform that can install, personalize and manage applications. It is a combination of hardware, software, interfaces, and protocols that can securely store and use credentials for payment, authentication, and other services. Conceptually, SE can be divided into four areas from the paper [17] :
+Secure Element (SE) is a platform that can install, personalize and manage applications. It is a combination of hardware, software, interfaces, and protocols that can securely store and use credentials for payment, authentication, and other services. Conceptually, SE can be divided into two areas from the paper [17] :
 
 $\bullet$ Embedded SEs;
 
 $\bullet$ Removable SEs;
 
-$\bullet$ Flexible SE Solutions;
-
-$\bullet$ Software Based SEs.
 
 \subsubsection{Embedded SE}
 The embedded SE is a chip that is integrated into a mobile phone and cannot be removed. According to research [18], the SE provides the same level of security as smart cards support. The chip is embedded in the handset during the manufacturing process and must be personalized after the device is delivered to the end user [18]
@@ -962,8 +964,14 @@ Processing Speed&Fast&Fast&Slow\\
 \end{tabular}}
 \end{center}
 
-\section{Communication method}
-Mobile payment communication is mainly used for short-distance communication, especially for poor mobile network environment offline payment. Payment information is delivered via these means of communication. Many people regard communication as a means of payment. However, they are only responsible for transmitting payment information. The real means of influencing payment are payment encryption and authentication technologies.
+
+With the support of major chip manufacturers, mobile phones using ARM architecture chips now include Trustzone technology. The gap between the real high-end phones and low-end phones is on eSE. In addition to PIN payment authentication, fingerprints are supported by high-end handsets of major mobile phone manufacturers. iphone X now supports face recognition. It is very necessary to store these sensitive information in eSE.
+
+\section{Payment communication technologies}
+After obtaining a secure payment mobile terminal, how to ensure payment communication security has become a hot topic in this field.
+
+Payment communication technology is intuitively experienced by customers. In the customer's eyes is how to pay the money to the recipient. For example, Alipay, WeChat, etc. are called QR code payment. While Apple, Samsung, etc. are often called NFC payments. In fact, the former only uses a two-dimensional code to transfer one-time payment passwords. What really pays for the payment is the one-time payment password. Whatever the method, as long as you can transfer the one-time payment password, you can conduct a payments, such as audio. The latter's NFC is actually an interactive near-field communication.
+
 \subsection{QR code}
 QR code was invented in 1994 by Denso Wave, a Toyota subsidiary of Japan. The QR code not only has large information capacity, high reliability, and low cost, but also can represent various character information such as Chinese characters and images, and has strong security against fraud and is very convenient to use. Therefore, it quickly became popular in Japan and South Korea. Since then, European and American countries have begun to use it in large quantities. 
 
@@ -1007,7 +1015,7 @@ The Fig 7 shows the structure of the QR code:
 
 \textbf{Check up graphic:}The Check up graphic looks similar to the position detection pattern, but the middle square has only one unit. It is mainly used for the correction of the QR code, especially the correction of the graphic distortion caused by the different camera angles or the uneven surface of the printed object. Depending on the version, the number of correction patterns is not the same. There is no correction pattern for version 1 and version 40 contains 46. Wechat's payment code belongs to version 1 so there is no correction graphics, and Alipay's payment code belongs to version 2, there is one.
 
-\textbf{positioning graphic}The positioning graphic is two alternating dark and light bands, and the table is defined on the two-dimensional code like a ruler.
+\textbf{positioning graphic:}The positioning graphic is two alternating dark and light bands, and the table is defined on the two-dimensional code like a ruler.
 
 \textbf{Format and Version information:}The format information and version information record the format and version of this QR code and have their own separate calculation rules.
 
@@ -1665,6 +1673,12 @@ Terence Spies, Mountain View, CA(US),Richard T.Minner, Carmichael, CA(US), \emph
 Ulf Mattsson, Stamford, CT(US), \emph{distributed tokenization using several substitution steps}, US 8745094 B2, 2014-6-3.
 \bibitem{IEEEhowto:kopka}
 Ulf Mattsson, Cos Cob,CT(US), Yigal Rozenberg, Wilton, CT(US),Vichai Levy, Norwalk, CT(US), \emph{table-connected tokenization}, US 9237006 B2, 2016-1-12. 
+\bibitem{IEEEhowto:kopka}
+Nojiri T. \emph{Two-dimensional code, methods and apparatuses for generating, displaying and reading the same}: US, US 7032823 B2[P]. 2006.
+\bibitem{IEEEhowto:kopka}
+Hara M, Watabe M. \emph{Two dimensional code reading apparatus}: EP, US 5691527 A[P]. 1997.
+\bibitem{IEEEhowto:kopka}
+Hara, Masahiro, Watabe, Motoaki, Nojiri, Tadao , Nagaya, Takayuki, Uchiyama, Yuji.\emph{Optically readable two-dimensional code and method and apparatus using the same}:US 5726435. 1995.
 
 \end{thebibliography}
 
