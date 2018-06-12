@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.3.31)  11 JUN 2018 22:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.3.31)  12 JUN 2018 21:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -326,6 +326,15 @@ LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
 LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
 
 
+LaTeX Warning: Label `fig' multiply defined.
+
+
+LaTeX Warning: Label `fig' multiply defined.
+
+
+LaTeX Warning: Label `fig' multiply defined.
+
+
 LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
 
 
@@ -335,13 +344,37 @@ LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
 LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
 
 
-LaTeX Warning: Label `fig' multiply defined.
+LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
 
 
-LaTeX Warning: Label `fig' multiply defined.
+LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
 
 
-LaTeX Warning: Label `fig' multiply defined.
+LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
+
+
+LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
+
+
+LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
+
+
+LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
+
+
+LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
+
+
+LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
+
+
+LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
+
+
+LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
+
+
+LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
 
 
 LaTeX Warning: Label `IEEEhowto:kopka' multiply defined.
@@ -479,10 +512,10 @@ Missing character: There is no ù in font ptmr7t!
 <tsp1.png, id=10, 450.68375pt x 916.42375pt>
 File: tsp1.png Graphic file (type png)
  <use tsp1.png>
-Package pdftex.def Info: tsp1.png used on input line 641.
+Package pdftex.def Info: tsp1.png used on input line 642.
 (pdftex.def)             Requested size: 225.34131pt x 458.21075pt.
  [2 <./tsp1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 659--662
+Underfull \hbox (badness 10000) in paragraph at lines 660--663
 
  []
 
@@ -499,19 +532,19 @@ Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 684--687
+Underfull \hbox (badness 10000) in paragraph at lines 685--688
 
  []
 
+[3]
 Missing character: There is no Ô in font ptmr7t!
 Missing character: There is no º in font ptmr7t!
 Missing character: There is no å in font ptmr7t!
-<tsp.png, id=14, 598.235pt x 549.05125pt>
+ <tsp.png, id=17, 598.235pt x 549.05125pt>
 File: tsp.png Graphic file (type png)
  <use tsp.png>
-Package pdftex.def Info: tsp.png used on input line 700.
+Package pdftex.def Info: tsp.png used on input line 701.
 (pdftex.def)             Requested size: 239.28975pt x 219.61661pt.
- [3]
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ú in font ptmr7t!
@@ -519,7 +552,7 @@ Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
 
-Underfull \hbox (badness 1946) in paragraph at lines 710--711
+Underfull \hbox (badness 1946) in paragraph at lines 711--712
 []\OT1/ptm/m/n/10 Although tra-di-tional cen-tral-ized to-k-eniza-tion has been
 
  []
@@ -527,101 +560,91 @@ Underfull \hbox (badness 1946) in paragraph at lines 710--711
 <dis_token.png, id=18, 886.31125pt x 671.50874pt>
 File: dis_token.png Graphic file (type png)
  <use dis_token.png>
-Package pdftex.def Info: dis_token.png used on input line 727.
+Package pdftex.def Info: dis_token.png used on input line 728.
 (pdftex.def)             Requested size: 256.077pt x 256.06741pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [4 <./tsp.png> <./dis_token.png>] <zhifubiaojikuangjia.png, id=23, 875.27pt x 
-590.205pt>
+ [4 <./tsp.png> <./dis_token.png>]
+<zhifubiaojikuangjia.png, id=23, 875.27pt x 590.205pt>
 File: zhifubiaojikuangjia.png Graphic file (type png)
 
 <use zhifubiaojikuangjia.png>
-Package pdftex.def Info: zhifubiaojikuangjia.png used on input line 826.
+Package pdftex.def Info: zhifubiaojikuangjia.png used on input line 827.
 (pdftex.def)             Requested size: 270.30252pt x 199.16307pt.
- [5 <./zhifubiaojikuangjia.png>]
-<tsp2.png, id=27, 455.7025pt x 893.3375pt>
+ [5] <tsp2.png, id=27, 455.7025pt x 893.3375pt>
 File: tsp2.png Graphic file (type png)
- <use tsp2.png>
-Package pdftex.def Info: tsp2.png used on input line 854.
+
+<use tsp2.png>
+Package pdftex.def Info: tsp2.png used on input line 855.
 (pdftex.def)             Requested size: 227.85068pt x 446.66765pt.
- [6 <./tsp2.png>]
+ [6 <./zhifubiaojikuangjia.png> <./tsp2.png>]
 <TEE.pdf, id=31, 846.16125pt x 598.48593pt>
 File: TEE.pdf Graphic file (type pdf)
  <use TEE.pdf>
-Package pdftex.def Info: TEE.pdf used on input line 896.
+Package pdftex.def Info: TEE.pdf used on input line 897.
 (pdftex.def)             Requested size: 423.07959pt x 299.24223pt.
  [7 <./TEE.pdf>]
-Underfull \hbox (badness 2253) in paragraph at lines 930--931
+Underfull \hbox (badness 2253) in paragraph at lines 931--932
 \OT1/ptm/m/n/10 SIM, USIM, UIM, etc. are col-lec-tively re-ferred to as
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 940--942
+Underfull \hbox (badness 10000) in paragraph at lines 941--943
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 951--951
+Underfull \hbox (badness 10000) in paragraph at lines 952--952
 []|\OT1/ptm/m/n/10 Low ex-tra
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 951--952
+Underfull \hbox (badness 10000) in paragraph at lines 952--953
 []|\OT1/ptm/m/n/10 High ex-tra
  []
 
 
-Underfull \hbox (badness 3895) in paragraph at lines 955--955
+Underfull \hbox (badness 3895) in paragraph at lines 956--956
 []|\OT1/ptm/m/n/10 Access Con-
  []
 
 
-Underfull \hbox (badness 1688) in paragraph at lines 959--959
+Underfull \hbox (badness 1688) in paragraph at lines 960--960
 []|\OT1/ptm/m/n/10 Ease of De-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 959--959
+Underfull \hbox (badness 10000) in paragraph at lines 960--960
 []|\OT1/ptm/m/n/10 Easy with
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 961--961
+Underfull \hbox (badness 10000) in paragraph at lines 962--962
 []|\OT1/ptm/m/n/10 Processing
  []
 
 [8] <code49.png, id=72, 260.47313pt x 124.96687pt>
 File: code49.png Graphic file (type png)
  <use code49.png>
-Package pdftex.def Info: code49.png used on input line 991.
+Package pdftex.def Info: code49.png used on input line 992.
 (pdftex.def)             Requested size: 260.47249pt x 124.96657pt.
 
 <PDF417.png, id=73, 424.58624pt x 198.7425pt>
 File: PDF417.png Graphic file (type png)
  <use PDF417.png>
-Package pdftex.def Info: PDF417.png used on input line 998.
+Package pdftex.def Info: PDF417.png used on input line 999.
 (pdftex.def)             Requested size: 212.2926pt x 99.371pt.
 
 <QRcode.pdf, id=74, 846.16125pt x 598.48593pt>
 File: QRcode.pdf Graphic file (type pdf)
  <use QRcode.pdf>
-Package pdftex.def Info: QRcode.pdf used on input line 1009.
+Package pdftex.def Info: QRcode.pdf used on input line 1010.
 (pdftex.def)             Requested size: 389.2389pt x 275.30687pt.
  [9 <./code49.png> <./PDF417.png> <./QRcode.pdf>]
-Missing character: There is no ‚ in font ptmr7t!
-Missing character: There is no Ä in font ptmr7t!
-Missing character: There is no ú in font ptmr7t!
-Missing character: There is no ‚ in font ptmr7t!
-Missing character: There is no Ä in font ptmr7t!
-Missing character: There is no ù in font ptmr7t!
-
 <InductivelycoupledNFCantennas.png, id=88, 647.41875pt x 270.00874pt>
 File: InductivelycoupledNFCantennas.png Graphic file (type png)
 
 <use InductivelycoupledNFCantennas.png>
 Package pdftex.def Info: InductivelycoupledNFCantennas.png used on input line 1
-035.
+038.
 (pdftex.def)             Requested size: 226.59995pt x 94.50447pt.
 
 <EquivalentcircuitofinFigur1.png, id=89, 828.09375pt x 454.69875pt>
@@ -629,7 +652,7 @@ File: EquivalentcircuitofinFigur1.png Graphic file (type png)
 
 <use EquivalentcircuitofinFigur1.png>
 Package pdftex.def Info: EquivalentcircuitofinFigur1.png used on input line 104
-3.
+6.
 (pdftex.def)             Requested size: 248.43004pt x 136.41068pt.
  [10 <./InductivelycoupledNFCantennas.png> <./EquivalentcircuitofinFigur1.png>]
 
@@ -638,7 +661,7 @@ File: ComparisonoNFCandotherPANtechnologies.png Graphic file (type png)
 
 <use ComparisonoNFCandotherPANtechnologies.png>
 Package pdftex.def Info: ComparisonoNFCandotherPANtechnologies.png used on inpu
-t line 1095.
+t line 1098.
 (pdftex.def)             Requested size: 257.71217pt x 179.16893pt.
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
@@ -651,20 +674,20 @@ Missing character: There is no ô in font ptmr7t!
 File: NFCinactive.png Graphic file (type png)
 
 <use NFCinactive.png>
-Package pdftex.def Info: NFCinactive.png used on input line 1121.
+Package pdftex.def Info: NFCinactive.png used on input line 1124.
 (pdftex.def)             Requested size: 238.79396pt x 84.31564pt.
  <MSTyuanjian2.png, id=102, 142.5325pt x 125.46875pt>
 File: MSTyuanjian2.png Graphic file (type png)
 
 <use MSTyuanjian2.png>
-Package pdftex.def Info: MSTyuanjian2.png used on input line 1135.
+Package pdftex.def Info: MSTyuanjian2.png used on input line 1138.
 (pdftex.def)             Requested size: 142.53214pt x 125.46843pt.
 
 <Emittingmagneticpulse.png, id=103, 1482.53876pt x 712.6625pt>
 File: Emittingmagneticpulse.png Graphic file (type png)
 
 <use Emittingmagneticpulse.png>
-Package pdftex.def Info: Emittingmagneticpulse.png used on input line 1143.
+Package pdftex.def Info: Emittingmagneticpulse.png used on input line 1146.
 (pdftex.def)             Requested size: 266.84546pt x 128.27371pt.
  [12 <./NFCinactive.png> <./MSTyuanjian2.png> <./Emittingmagneticpulse.png>]
 Missing character: There is no ‚ in font ptmr7t!
@@ -677,37 +700,37 @@ Missing character: There is no ù in font ptmr7t!
 <yinpinwei.png, id=107, 530.98375pt x 103.38625pt>
 File: yinpinwei.png Graphic file (type png)
  <use yinpinwei.png>
-Package pdftex.def Info: yinpinwei.png used on input line 1171.
+Package pdftex.def Info: yinpinwei.png used on input line 1174.
 (pdftex.def)             Requested size: 212.38972pt x 41.35376pt.
 
 <zhuanzhangshifu.pdf, id=108, 598.48593pt x 1654.68187pt>
 File: zhuanzhangshifu.pdf Graphic file (type pdf)
 
 <use zhuanzhangshifu.pdf>
-Package pdftex.def Info: zhuanzhangshifu.pdf used on input line 1185.
+Package pdftex.def Info: zhuanzhangshifu.pdf used on input line 1188.
 (pdftex.def)             Requested size: 347.12209pt x 959.71617pt.
 
 
-LaTeX Warning: Float too large for page by 287.04814pt on input line 1188.
+LaTeX Warning: Float too large for page by 287.04814pt on input line 1191.
 
 <erweimazhifu.png, id=109, 646.415pt x 830.10126pt>
 File: erweimazhifu.png Graphic file (type png)
  <use erweimazhifu.png>
-Package pdftex.def Info: erweimazhifu.png used on input line 1200.
+Package pdftex.def Info: erweimazhifu.png used on input line 1203.
 (pdftex.def)             Requested size: 284.42348pt x 365.24568pt.
 
 [13 <./yinpinwei.png>] <offline.pdf, id=114, 598.48593pt x 846.16125pt>
 File: offline.pdf Graphic file (type pdf)
 
 <use offline.pdf>
-Package pdftex.def Info: offline.pdf used on input line 1215.
+Package pdftex.def Info: offline.pdf used on input line 1218.
 (pdftex.def)             Requested size: 406.96504pt x 575.38205pt.
  [14 <./zhuanzhangshifu.pdf> <./erweimazhifu.png>]
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ô in font ptmr7t!
 
-Overfull \hbox (21.57419pt too wide) in paragraph at lines 1246--1250
+Overfull \hbox (21.57419pt too wide) in paragraph at lines 1249--1253
 \OML/cmm/m/it/10 HOTP\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 K; C\OT1/cmr/m/n/10 ) = 
 (\OML/cmm/m/it/10 Truncate\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 HMAC\OT1/cmr/m/n/10
  (\OML/cmm/m/it/10 K; C\OT1/cmr/m/n/10 ))&0\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 7\
@@ -715,13 +738,13 @@ OML/cmm/m/it/10 FFFFFFF\OT1/cmr/m/n/10 )[]
  []
 
 
-Underfull \hbox (badness 4518) in paragraph at lines 1257--1259
+Underfull \hbox (badness 4518) in paragraph at lines 1260--1262
  \OT1/ptm/m/it/10 3) TOTP(Time-Based One-Time Pass-word): [][] \OT1/ptm/m/n/10 
 Al-go-rithm
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1257--1259
+Underfull \hbox (badness 10000) in paragraph at lines 1260--1262
 
  []
 
@@ -729,7 +752,7 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no à in font cmr10!
 Missing character: There is no í in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 1265--1269
+Underfull \hbox (badness 10000) in paragraph at lines 1268--1272
 
  []
 
@@ -737,27 +760,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 1265--1269
 File: TOTP2.pdf Graphic file (type pdf)
 
 <use TOTP2.pdf>
-Package pdftex.def Info: TOTP2.pdf used on input line 1326.
+Package pdftex.def Info: TOTP2.pdf used on input line 1329.
 (pdftex.def)             Requested size: 524.61456pt x 371.05743pt.
  <QRcode.png, id=179, 544.28343pt x 453.94594pt>
 File: QRcode.png Graphic file (type png)
 
 <use QRcode.png>
-Package pdftex.def Info: QRcode.png used on input line 1332.
+Package pdftex.def Info: QRcode.png used on input line 1335.
 (pdftex.def)             Requested size: 326.57257pt x 272.36966pt.
  <TOTP.pdf, id=180, 845.1575pt x 597.23125pt>
 File: TOTP.pdf Graphic file (type pdf)
  <use TOTP.pdf>
-Package pdftex.def Info: TOTP.pdf used on input line 1338.
+Package pdftex.def Info: TOTP.pdf used on input line 1341.
 (pdftex.def)             Requested size: 549.34587pt x 388.19571pt.
 
 [16 <./TOTP2.pdf> <./QRcode.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1382--1384
+Underfull \hbox (badness 10000) in paragraph at lines 1385--1387
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1385--1386
+Underfull \hbox (badness 10000) in paragraph at lines 1388--1389
 
  []
 
@@ -769,24 +792,24 @@ Missing character: There is no Ç in font ptmr7t!
 File: sanxingMST2.png Graphic file (type png)
 
 <use sanxingMST2.png>
-Package pdftex.def Info: sanxingMST2.png used on input line 1413.
+Package pdftex.def Info: sanxingMST2.png used on input line 1416.
 (pdftex.def)             Requested size: 274.02785pt x 277.89235pt.
  <sanxingNFC2.png, id=298, 743.77875pt x 801.99625pt>
 File: sanxingNFC2.png Graphic file (type png)
 
 <use sanxingNFC2.png>
-Package pdftex.def Info: sanxingNFC2.png used on input line 1419.
+Package pdftex.def Info: sanxingNFC2.png used on input line 1422.
 (pdftex.def)             Requested size: 260.32646pt x 280.70288pt.
  [18 <./sanxingMST2.png> <./sanxingNFC2.png>]
 <NFC_se.pdf, id=302, 846.16125pt x 598.48593pt>
 File: NFC_se.pdf Graphic file (type pdf)
  <use NFC_se.pdf>
-Package pdftex.def Info: NFC_se.pdf used on input line 1435.
+Package pdftex.def Info: NFC_se.pdf used on input line 1438.
 (pdftex.def)             Requested size: 507.70067pt x 359.09433pt.
  [19 <./NFC_se.pdf>] <NFC_cpu.pdf, id=334, 846.16125pt x 598.48593pt>
 File: NFC_cpu.pdf Graphic file (type pdf)
  <use NFC_cpu.pdf>
-Package pdftex.def Info: NFC_cpu.pdf used on input line 1485.
+Package pdftex.def Info: NFC_cpu.pdf used on input line 1488.
 (pdftex.def)             Requested size: 490.77388pt x 347.12209pt.
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
@@ -802,23 +825,23 @@ Missing character: There is no ù in font ptmr7t!
 File: iphone_pay.pdf Graphic file (type pdf)
 
 <use iphone_pay.pdf>
-Package pdftex.def Info: iphone_pay.pdf used on input line 1534.
+Package pdftex.def Info: iphone_pay.pdf used on input line 1537.
 (pdftex.def)             Requested size: 423.07959pt x 569.50127pt.
  <iphone_tsp.pdf, id=366, 846.16125pt x 1139.00531pt>
 File: iphone_tsp.pdf Graphic file (type pdf)
 
 <use iphone_tsp.pdf>
-Package pdftex.def Info: iphone_tsp.pdf used on input line 1544.
+Package pdftex.def Info: iphone_tsp.pdf used on input line 1547.
 (pdftex.def)             Requested size: 313.07477pt x 421.42537pt.
  <datu.pdf, id=367, 1159.33125pt x 1654.68187pt>
 File: datu.pdf Graphic file (type pdf)
 
 <use datu.pdf>
-Package pdftex.def Info: datu.pdf used on input line 1551.
+Package pdftex.def Info: datu.pdf used on input line 1554.
 (pdftex.def)             Requested size: 579.66422pt x 827.33891pt.
 
 
-LaTeX Warning: Float too large for page by 154.67088pt on input line 1554.
+LaTeX Warning: Float too large for page by 154.67088pt on input line 1557.
 
 [22]
 Missing character: There is no ‚ in font ptmr7t!
@@ -875,9 +898,6 @@ Missing character: There is no ú in font ptmri7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
-
-Underfull \vbox (badness 1043) has occurred while \output is active []
-
  [23 <./iphone_pay.pdf> <./iphone_tsp.pdf
 
 pdfTeX warning: pdflatex (file ./iphone_tsp.pdf): PDF inclusion: multiple pdfs 
@@ -901,13 +921,20 @@ Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ô in font ptmr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 1675--1676
+Underfull \hbox (badness 10000) in paragraph at lines 1678--1679
 []\OT1/ptm/m/n/8 Ulf Matts-son, Cos Cob,CT(US), Yi-gal Rozen-berg, Wilton,
  []
 
-[25
-
-] (./bare_jrnl.aux)
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ì in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ì in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ì in font ptmr7t!
+[25] (./bare_jrnl.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -915,7 +942,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  3341 strings out of 493029
  50773 string characters out of 6136234
- 124517 words of memory out of 5000000
+ 127517 words of memory out of 5000000
  6810 multiletter control sequences out of 15000+600000
  46712 words of font info for 84 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
@@ -930,7 +957,7 @@ sfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on bare_jrnl.pdf (25 pages, 3651013 bytes).
+Output written on bare_jrnl.pdf (25 pages, 3653368 bytes).
 PDF statistics:
  527 PDF objects out of 1000 (max. 8388607)
  338 compressed objects within 4 object streams

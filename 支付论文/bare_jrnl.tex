@@ -488,6 +488,7 @@ tokenization, eSE, QR code, NFC, offline, TOTP.
 \section{Introduction}
 \IEEEPARstart{I}n this study, the research will introduce secure payment technologies related to popular mobile payment schemes. Since modern times, payment methods have tremendous changes. People began to get used to paying in cash. After then, technology store cash into magnetic stripe cards and IC cards. Thus people (especially in Europe and the United States) gradually fond of paying by their cards, but today's technology again puts bank cards in mobile phones. mobile payments have become a general trend. With the popularity of mobile payments, mobile payment security has received more and more attention. Although mobile payments have become increasingly convenient, the security issues they face are more complex than ever. Today's major mobile payment solutions can be divided into two camps. One party is based mainly on Alipay, Tencent, Paypal, MasterCard, etc. They are not simply payment providers, but also have some of the bank's functions. The user only interacts with the payment server. After completing the settlement within the server, the server then interacts with the bank. Therefore, the main security technology is used from the user's payment to server authentication. On the other hand, they are Apple, Samsung, Google and other mobile phone manufacturers. In order not to change people's habits of swiping cards, they use their hardware advantages to directly connect with banks and use mobile phones to simulate the entire payment process of the bank cards. Since the IC card itself is very complicated, in order to simulate its functions and maintain the same security, mobile phone manufacturers and banks have jointly developed a large number of software and hardware technologies on mobile terminals. Offline payment (that is, the mobile terminal does not need to pay for networking) is the research focus of the two camps this year. The payment service providers paid for by using the password + QR codes, quickly occupying the Chinese market with their low hardware requirements and strong compatibility. In the European and American markets, there is not enough trust in this model, and mobile phone manufacturers have also achieved the offline payment function by means of analog bank card flash payment. However, while mobile payments involve a large number of security technologies, there is one technology that is the basis for mobile payment today---Tokenization.
 
+In conjunction with the above-mentioned objective, the remainder of this study is organized based on the major research areas of mobile payment security: in Section 2, we present the virtual bank card binding technology. In Section 3, Mobile terminal security technology related to mobile payment are reviewed. Section 4 contains payment communication technologis. In Section 5 onlie payment technologies are discussed, and Section 6 introduce China's Alipay, Wechat offline technology. In Section 7 focus on the technology of using mobile phone to simulate bank card payment. Concurrently, we summarize the entire technology and analyze the advantages and disadvantages and also future development trends.
 %{I}
 %n this study, the research model is developed based on relevant business model, platform and
 %business ecosystem theories. The final research model consists of three connected perspectives
@@ -977,14 +978,14 @@ QR code was invented in 1994 by Denso Wave, a Toyota subsidiary of Japan. The QR
 
 QR code payment is very popular in China, people can almost go out without wallets and bank cards. You only need to show the QR code on your mobile phone to be able to pay in most places even without network. However, why is it possible to authorize payment with the QR code?
 
-However, the QR code itself cannot make payment authorization, since the actual payment authorization is the payment certificate which encoded in the QR code. The payment certificate is a series of digits(which we calld \textbf{payment password}). You can authorize payment with this numbers. So the role of the QR code in mobile payment is to transmit this series of numbers. The specific technology of payment certificate will be told in section 4.
+However, the QR code itself cannot make payment authorization, since the actual payment authorization is the one-time payment password which encoded in the QR code. The one-time payment password is a series of digits(which we calld \textbf{payment password}). You can authorize payment with this numbers. So the role of the QR code in mobile payment is to transmit this series of numbers. The specific technology of one-time payment password will be told in section 6.
 
 In this subsection, the QR code technology will be introduce.
 
 The QR code is one of the two-dimensional code, which is similar to the magnetic stripe. The magnetic stripe transforms the information into a track through a certain law, and the two-dimensional code transforms the information into a graph. Reading the magnetic stripe reads the track through the reader and then converts back to the original information, while the two-dimensional code reads the graphics through the camera and then converts back to the original information.
 
 \textbf{Stacked two dimensional bar code:} It consists of multiple rows of bar codes stacked together. Its shape is similar to that of one-dimensional codes. The encoding principle is similar to the encoding principle of the same dimension codes. It has the same or similar characteristics as the one-dimensional bar code in terms of coding design, reading mode, and verification principle, and can even be read and scanned with the same device, except that the reading and decoding algorithms are different from the one-dimensional bar code. Larger capacity but usually does not have error correction.
-Representatives are:
+Representatives are cod 49(shows at Fig 7) and PDF 417(shows at Fig 8):
 
 
 \begin{figure}[htbp]
@@ -1023,13 +1024,15 @@ The Fig 7 shows the structure of the QR code:
 
 
 \subsection{NFC}
+NFC is a technology that mobile phone manufacturers strongly recommend in the field of payment communications. Many new mobile phones released by Apple, Samsung, Google, Xiaomi, Huawei, etc. all support NFC. 
+
 Near field communication (NFC) is a wireless technology operating in the short range of four to ten centimeters for communication. It is based on radio frequency identification (RFID) technology. For a communication, an NFC device generates a radio frequency in 13.56 MHz spectrum. A receiver could receive the data through the principle of magnetic inductive coupling if it lies in a close proximity. Transmitter and receiver are small chipsets which are able to be embedded in devices such as mobile phones, POS (Point Of Sale) terminals, cards posters and many other items. 
 
-The NFC forum (www.nfcforum.org) was formed in 2004 aimed at standardizing NFC technology. It defines NFC as: NFC is a short-range wireless connectivity technology (also known as ISO 18092) that provides intuitive, simple, and safe communication between electronic devices. Operating at the frequency of 13.56 MHz and limited short range communicating distance, NFC supports data rate of 106 Kbps, 212 Kbps and 424 Kbps. Therefore, NFC is suitable for transmission of short information or messages within small time interval. 
+The NFC forum was formed in 2004 aimed at standardizing NFC technology. It defines NFC as: NFC is a short-range wireless connectivity technology (also known as ISO 18092) that provides intuitive, simple, and safe communication between electronic devices. Operating at the frequency of 13.56 MHz and limited short range communicating distance, NFC supports data rate of 106 Kbps, 212 Kbps and 424 Kbps. Therefore, NFC is suitable for transmission of short information or messages within small time interval. 
 
 In recent days, NFC technology is being widely popular among mobile phone vendors and related fields. This is because NFC is compatible with already existing popular technologies such as RFID, smartcards and contactless cards. It means that stores and systems equipped with the existing technologies should not replace their infrastructure in order to support NFC. 
 
-The incorporation of NFC into mobile devices has augmented capability of mobile phones and it is predicted to have potential to do more. This phenomenon has brought forward various works in terms of NFC transactions. At the same time, however, there are serious concerns in different terms such as privacy, user satisfaction, speed, usability, etc. Moreover, it is replacing various popular devices such as RFID tags. Hence, it is important to evaluate the performance of NFC technology and where it stands. In this paper, we have presented the brief insight to NFC technology and analyzed its performance as a mobile payment solution in terms of various factors. The mobile payment means passing of funds to vendor/merchant by customer to confirm the payment. The term “mobile” is used to represent the means to be able to move freely and easily.
+The incorporation of NFC into mobile devices has augmented capability of mobile phones and it is predicted to have potential to do more. This phenomenon has brought forward various works in terms of NFC transactions. At the same time, however, there are serious concerns in different terms such as privacy, user satisfaction, speed, usability, etc. Moreover, it is replacing various popular devices such as RFID tags. Hence, it is important to evaluate the performance of NFC technology and where it stands. 
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[scale=0.35]{InductivelycoupledNFCantennas.png}}
@@ -1037,7 +1040,7 @@ The incorporation of NFC into mobile devices has augmented capability of mobile 
 \label{fig}
 \end{figure}
 
-NFC devices communicate through the magnetically induced signals. Therefore, duringtransmission, energy is coupled between transceivers instead of electromagnetic radiation as in traditional wireless communication. The magnetic induction is discussed in detail in []. The magnetic induction theory and its application to NFC are also discussed. Figure 4 shows inductively coupled NFC antennas separated by short distance usually in the units of centimeters. Within close proximity, information can be exchanged between these transceivers by magnetic induction. Equivalent circuit diagram of these antennas is shown in Figure 5.Mathematical derivation of power at the receiver for given circuit is derived in [2], where power at the receiver can be expressed as
+NFC devices communicate through the magnetically induced signals. Therefore, during transmission, energy is coupled between transceivers instead of electromagnetic radiation as in traditional wireless communication. The magnetic induction is discussed in detail in []. The magnetic induction theory and its application to NFC are also discussed. Figure 4 shows inductively coupled NFC antennas separated by short distance usually in the units of centimeters. Within close proximity, information can be exchanged between these transceivers by magnetic induction. Equivalent circuit diagram of these antennas is shown in Figure 5.Mathematical derivation of power at the receiver for given circuit is derived in [2], where power at the receiver can be expressed as
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[scale=0.3]{EquivalentcircuitofinFigur1.png}}
@@ -1063,7 +1066,7 @@ $\mu_{r},\mu_{R}$                        : Permeability of air (=1),
            
 $D$           : Relative permeability of transmitter and receiver antenna coil core, and Distance between transmitter and receiver antenna.
 
-An NFC system basically consists of three components as shown in Figure 5. This is the typical casewhen an NFC phone reads an NFC tag and communicates with the backend server [3-5]. In some cases, NFC tag can be another NFC phone or also there would be no need to contact backend server [6-7]. In essence, an NFC mobile system consists of an NFC tag, an NFC chip embedded mobile phone
+An NFC system basically consists of three components as shown in Figure 5. This is the typical case when an NFC phone reads an NFC tag and communicates with the backend server [3-5]. In some cases, NFC tag can be another NFC phone or also there would be no need to contact backend server [6-7]. In essence, an NFC mobile system consists of an NFC tag, an NFC chip embedded mobile phone
 and a backend server.
 
 The security of NFC can be confirmed to some extent. However, as it is a wireless technology, some security issues are inevitable [12-13]:
@@ -1679,6 +1682,33 @@ Nojiri T. \emph{Two-dimensional code, methods and apparatuses for generating, di
 Hara M, Watabe M. \emph{Two dimensional code reading apparatus}: EP, US 5691527 A[P]. 1997.
 \bibitem{IEEEhowto:kopka}
 Hara, Masahiro, Watabe, Motoaki, Nojiri, Tadao , Nagaya, Takayuki, Uchiyama, Yuji.\emph{Optically readable two-dimensional code and method and apparatus using the same}:US 5726435. 1995.
+\bibitem{IEEEhowto:kopka}
+Coskun V, Ozdenizci B, Ok K. \emph{A Survey on Near Field Communication (NFC) Technology[M]}. Kluwer Academic Publishers, 2013.
+\bibitem{IEEEhowto:kopka}
+Vedat Coskun, Busra Ozdenizci, Kerem Ok. \emph{The Survey on Near Field Communication[J]}. 2015, 15(6):13348-13405.
+\bibitem{IEEEhowto:kopka}
+Brown, T.W.C.; Diakos, T. \emph{On the Design of NFC Antennas for Contactless Payment Applications}. In Proceedings of the 5th European Conference on Antennas and Propagation (EUCAP), Rome, Italy, 11–15 April 2011; pp. 44–47.
+\bibitem{IEEEhowto:kopka}
+Gebhart, M.; Szoncso, R. O\emph{ptimizing Design of Smaller Antennas for Proximity Transponders}.
+In Proceedings of the IEEE Second International Workshop on Near Field Communication,
+Monaco, 20 April 2010; pp. 77–82.
+\bibitem{IEEEhowto:kopka}
+Coskun V, Ozdenizci B, Ok K. \emph{A Survey on Near Field Communication (NFC) Technology[J]}. Wireless Personal Communications, 2013, 71(3):2259-2294.
+\bibitem{IEEEhowto:kopka}
+Coskun V, Ok K, Ozdenizci B. \emph{Near Field Communication (NFC): From Theory to Practice[J]}. 2012, 13(March 10):816-825.
+
+\bibitem{IEEEhowto:kopka}
+Roland M, Langer J. D, \emph{igital Signature Records for the NFC Data Exchange Format[C]// Second International Workshop on Near Field Communication}. IEEE, 2010:71-76.
+\bibitem{IEEEhowto:kopka}
+Aziza H. \emph{NFC Technology in Mobile Phone Next-Generation Services[C]}, Second International Workshop on Near Field Communication. IEEE Computer Society, 2010:21-26.
+\bibitem{IEEEhowto:kopka}
+Luca G D, Lillo P, Mainetti L, et al. \emph{The use of NFC and Android technologies to enable a KNX-based smart home[C]}, International Conference on Software, Telecommunications and Computer Networks. IEEE, 2013:1-7.
+
+\bibitem{IEEEhowto:kopka}
+Coskun V, Ok K, Ozdenizci B. \emph{Professional NFC Application Development for Android[M]}. Wiley, 2013.
+\bibitem{IEEEhowto:kopka}
+Plos T, Hutter M, Cavaliere F, et al. \emph{Security-Enabled Near-Field Communication Tag With Flexible Architecture Supporting Asymmetric Cryptography[J]}. IEEE Transactions on Very Large Scale Integration Systems, 2013, 21(11):1965-1974.
+
 
 \end{thebibliography}
 
