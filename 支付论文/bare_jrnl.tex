@@ -1022,52 +1022,81 @@ The Fig 7 shows the structure of the QR code:
 
 \textbf{Data and Error Correction code:}After the error correction coding of the data is completed, the final code word sequence is constructed in a certain order for the data code word and the error correction code word. The low code word of each data block is in front of the sequence, and the data code word is arranged in front of the error correction code. According to the first codeword of data block 1, the first codeword of data block 2, ..., the last codeword of data block n; the first codeword of error correction code 1, error correction The second codeword of code 2, ..., the last codeword of error correction code n
 
+\subsection{Audio}
 
-\subsection{NFC}
-NFC is a technology that mobile phone manufacturers strongly recommend in the field of payment communications. Many new mobile phones released by Apple, Samsung, Google, Xiaomi, Huawei, etc. all support NFC. 
+The audio protocol we are talking about today for sonic communication is generally from the technical documentation of chirp which is a novel application for "transmitting" files via voice issued by the American startup Animal Systems.
 
-Near field communication (NFC) is a wireless technology operating in the short range of four to ten centimeters for communication. It is based on radio frequency identification (RFID) technology. For a communication, an NFC device generates a radio frequency in 13.56 MHz spectrum. A receiver could receive the data through the principle of magnetic inductive coupling if it lies in a close proximity. Transmitter and receiver are small chipsets which are able to be embedded in devices such as mobile phones, POS (Point Of Sale) terminals, cards posters and many other items. 
+Acoustic wave transmission is a set of technical solutions that use sound to achieve fast transmission of files: Cross-platform technology is used to implement data transmission between any device that can send sound waves and receive sound waves.There are also a large number of applications in mobile payments.
 
-The NFC forum was formed in 2004 aimed at standardizing NFC technology. It defines NFC as: NFC is a short-range wireless connectivity technology (also known as ISO 18092) that provides intuitive, simple, and safe communication between electronic devices. Operating at the frequency of 13.56 MHz and limited short range communicating distance, NFC supports data rate of 106 Kbps, 212 Kbps and 424 Kbps. Therefore, NFC is suitable for transmission of short information or messages within small time interval. 
+\subsubsection{encoding}
+The principle of the audio protocol is simple and easy to implement. Create a table with 32 characters and map each character to a frequency table. The frequency table is generated based on the music theory through the calculation of sound.Each character is represented by the pitch of one frequency, so there are 32 frequencies, 0 corresponds to 1760 Hz, 1 corresponds to 1864 Hz,..., v corresponds to 10.5 kHz, and the adjacent frequency differs by a half interval.
 
-In recent days, NFC technology is being widely popular among mobile phone vendors and related fields. This is because NFC is compatible with already existing popular technologies such as RFID, smartcards and contactless cards. It means that stores and systems equipped with the existing technologies should not replace their infrastructure in order to support NFC. 
+The audio produced by Chirp contains 20 characters. Each character is generated with a sine wave of the corresponding frequency. Each sine wave lasts 87.2 ms. If the sampling rate is 44.1 kHz, then each character is about 3846 samples. The whole audio is about 20*87.2ms=1.744s, because each character is represented by a different frequency, it sounds like music.
 
-The incorporation of NFC into mobile devices has augmented capability of mobile phones and it is predicted to have potential to do more. This phenomenon has brought forward various works in terms of NFC transactions. At the same time, however, there are serious concerns in different terms such as privacy, user satisfaction, speed, usability, etc. Moreover, it is replacing various popular devices such as RFID tags. Hence, it is important to evaluate the performance of NFC technology and where it stands. 
+A complete sound packet contains 20 tones (ie 20 characters), one tone every 87.2 milliseconds. The first two bits are headers and use “hj” to notify the receiver to start receiving. The middle 10 bits are valid information bits, which are effective transmission information, that is, Key values are mapped after the frequency information. The last 8 bits are the RS check digits. The RS parity check algorithm calculates the middle 10 bits and generates 8-bit parity information.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.35]{InductivelycoupledNFCantennas.png}}
+\centerline{\includegraphics[scale=0.4]{yinpinwei.png}}
 \caption{A complete sound packet.}
 \label{fig}
 \end{figure}
 
-NFC devices communicate through the magnetically induced signals. Therefore, during transmission, energy is coupled between transceivers instead of electromagnetic radiation as in traditional wireless communication. The magnetic induction is discussed in detail in []. The magnetic induction theory and its application to NFC are also discussed. Figure 4 shows inductively coupled NFC antennas separated by short distance usually in the units of centimeters. Within close proximity, information can be exchanged between these transceivers by magnetic induction. Equivalent circuit diagram of these antennas is shown in Figure 5.Mathematical derivation of power at the receiver for given circuit is derived in [2], where power at the receiver can be expressed as
+\subsubsection{decoding}
+
+Chirp describes the technical details of relying on sound for data communication between a smart device, but in fact, the audio protocol of the sound wave communication can be arbitrarily designed by itself, for example, changing the sound in the chirp audio protocol to double-frequency sound, even multi-tone sound. In order to increase the information capacity per unit time, thereby increasing the transmission speed, this is all possible, as long as there is a demand for this application.
+
+The receiver needs to record the sound and perform it and fault-tolerant processing. Its relatively high requirements on the algorithm, noise reduction and fault-tolerant processing are critical to the correct information
+
+\subsection{NFC}
+NFC is a technology that mobile phone manufacturers strongly recommend in the field of payment communications. Many new mobile phones released by Apple, Samsung, Google, Xiaomi, Huawei, etc. all support NFC. 
+
+
+Near Field Communication (NFC) is a wireless technology that can communicate within a short distance of four to ten centimeters. It is based on radio frequency identification (RFID) technology. For communication, NFC devices generate radio frequencies in the 13.56 MHz spectrum. If the receiver is close, data can be received by the magnetic inductive coupling principle. Transmitters and receivers are small chipsets that can be embedded in handsets, POS (Point of Sale) terminals, cards, and other devices.
+
+
+The NFC Forum was established in 2004 to standardize NFC technology. It defines NFC as: NFC is a short-range wireless connection technology (also known as ISO 18092) that provides intuitive, simple and secure communication between electronic devices. The NFC operating frequency is 13.56 MHz and the communication distance is limited, supporting data rates of 106 Kbps, 212 Kbps, and 424 Kbps. Therefore, NFC is suitable for transmitting short messages or messages in short time intervals.
+
+NFC not only improves security and data transmission efficiency, but also has interactivity. More importantly, NFC is compatible with existing popular technologies (such as RFID, smart card contactless cards). This means that existing shops and systems do not need to replace their infrastructure to support NFC.
+
+NFC technology is a key technology for mobile phone manufacturers to enter mobile payment. On the surface, the mobile payment market today is mainly the QR code battle NFC. Therefore, it is very important to evaluate the performance of NFC technology and its location.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.3]{EquivalentcircuitofinFigur1.png}}
-\caption{A complete sound packet.}
+\centerline{\includegraphics[scale=0.45]{Inductively_couled_near-field.png}}
+\caption{Inductively coupled near-field system.}
+\label{fig}
+\end{figure}
+
+NFC devices communicate through magnetic induction signals. Therefore, during transmission, energy is coupled between the transceivers, rather than electromagnetic radiation as in traditional wireless communications. Magnetic induction is discussed in detail in [37-38]. Magnetic induction theory and its application in NFC are also discussed. Figure 10 shows a short range inductively coupled NFC antenna, usually in centimeters. In close proximity, information can be exchanged between these transceivers via magnetic induction. The equivalent circuit diagram of these antennas is shown in Figure 11. The power mathematical derivation at the receiver of a given circuit is derived in [37], where the power of the receiver can be expressed as:
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.35]{EquivalentcircuitofinFigur1.png}}
+\caption{The equivalent circuit of a pair of antennas.}
 \label{fig}
 \end{figure}
 
 $$ P_{R}(\omega)=P_{T}Q_{T}Q_{R}\eta_{T}\eta_{T}(r_{T}^{3}\mu_{0}\mu_{R}r_{R}^{3}\mu_{0}\mu_{R}\pi^{2})/(r_{T}^{3}+d^{2})^{3}.$$
 
-where 
+where:
 
-$P_{T}$    :Transmission power,
+$P_{T}$    :Transmission power;
            
-$Q_{T},Q_{R}$           : Q-factors of transmitter and receiver antenna,
-          
-$\eta_{T},\eta_{R}$    : Efficiency of transmitter and receiver antenna,              
+ $\eta_{T}=R_{S}/(R_{S}+R_{LT}),\eta_{R}=R_{L}/
+(R_{L}+R_{LR})$:Efficiency of transmitter and receiver antenna:
                       
-$r_{T},r_{R}$            : Efficiency of transmitter and receiver antenna,
-           
-$\mu_{0}$                          : Radii of transmitter and receiver antenna coil,
-           
-$\mu_{r},\mu_{R}$                        : Permeability of air (=1),
-           
-$D$           : Relative permeability of transmitter and receiver antenna coil core, and Distance between transmitter and receiver antenna.
 
-An NFC system basically consists of three components as shown in Figure 5. This is the typical case when an NFC phone reads an NFC tag and communicates with the backend server [3-5]. In some cases, NFC tag can be another NFC phone or also there would be no need to contact backend server [6-7]. In essence, an NFC mobile system consists of an NFC tag, an NFC chip embedded mobile phone
-and a backend server.
+
+
+$Q_{T}=\omega_{0}L_{T}/(R_{LT}+R_{S}),Q_{R}=\omega_{0}L_{R}/(R_{LR}+R_{L})$         : Quality factors of transmitter and receiver antenna,;
+
+$r_{T},r_{R}$            : Radius of transmitter and receiver;
+           
+$\mu_{0}$                          :  Permeability of air (=1);
+           
+$\mu_{T},\mu_{R}$                        :Relative permeability of transmitter and receiver antenna coil core ;
+           
+$d$           :Distance between receiver and transmitter antenna.
+
+The device that starts communications is called the initiator, and the responder is called the target. NFC smartphones and NFC readers use their own power supply and therefore are active devices, while NFC tags use the other party's power supply and are therefore called passive devices. All initiator devices are usually active devices, but the target device can be active or passive, depending on the mode of operation.
 
 The security of NFC can be confirmed to some extent. However, as it is a wireless technology, some security issues are inevitable [12-13]:
 
@@ -1089,42 +1118,80 @@ For data modification, the attacker should generate his own RF field based on th
 
 However, the three major mainstream payments using NFC payment now are Samsung Pay, Apple Pay, and Google pay. Its essence of TOTP technology, in the middle of the attack, will reveal a great security risk. These are mentioned in section 5.
 
-\textbf{Lost devices and abandoned connections}
+\textbf{4,Lost devices and abandoned connections:}
 NFC-enabled mobile devices are easily lost. However, they contain important information such as credit cards and personal data. Therefore, anyone who finds missing devices can use it just like using a lost credit card. In this case, manual security in the mobile device is the only solution, such as secure access to the phone through some PIN code or personal identification number.
 
 On the other hand, short NFC communications can be abandoned without closing after use. These abandoned connections can be used by attackers for a variety of purposes. Therefore, communication timeout techniques should be implemented to avoid such attacks.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[scale=0.25]{ComparisonoNFCandotherPANtechnologies.png}}
-\caption{Comparison of NFC and other PAN technologies}
+\caption{Comparison of NFC and other communication technologies}
 \label{fig}
 \end{figure}
 
-An NFC system basically consists of three components as shown in Figure 5. This is the typical case when an NFC phone reads an NFC tag and communicates with the backend server [4-6]. In some cases, however, NFC tag can be another NFC phone or also there would be no need to contact backend server [7-8]. In essence, an NFC mobile system consists of an NFC tag, an NFC chip embedded mobile phone and a backend server.
+\
+\
 
-An NFC tag is generally embedded in items (from which it can be read) such as smart posters [4],POS, electronic devices, etc. It is a small chip usually hidden behind a sticker with NFC logo on it in order to make users aware of its existence. These tags usually contain small data based on their applications such as uniform resource identifiers (URIs), contact information, authentication credentials, valuable information, etc.
+NFC communication involves three types of NFC devices: smart phones, NFC tags, and NFC readers. The possible interaction styles between NFC devices provide three different modes of operation, as shown in Figure 14,15,16: Card reader/writer mode, peer-to-peer mode and card emulation operations mode [39-40].
+
+
+\subsubsection{NFC tag}
+NFC tags are usually embedded in items (which can be read from them),such as POS, electronic devices, etc. It is a small chip that is usually hidden on a sticker with an NFC logo in order to make the user aware of its presence. These tags often contain small data with valuable information based on their application.
+
+\subsubsection{NFC smartphone}
+NFC smartphone is the mobile phone that can use the NFC communication function, which is typically composed of various integrated circuits such as the NFC communication module. The NFC communication module is composed of:
+
+$\bullet$ NFC Contactless Front-end (NFC CLF);
+
+$\bullet$ NFC antenna;
+
+$\bullet$ an integrated chipset referred to as an NFC Controller (NFCC):manage the emission and reception of the signals;
+
+
+$\bullet$ modulation/demodulation.
+
+
 
 NFC chips are embedded within mobile hand-sets enabling them to read NFC tags. Mobile phone industry has shown several NFC mobile phones manufactured in last few years. It is also possible to include NFC chip within Subscriber Identity Module (SIM) card or even in micro SD cards. Therefore, hand-sets manufactured without NFC chips from industry can also be made ‘NFC-equipped’ by inserting NFC-SIM or NFC-micro SD cards.
 
 The NFC phones have several applications installed to utilize NFC capabilities based on the implementation of the system. It can also emulate existing cards such as credit cards, point cards, identity cards etc to give experience of these traditional schemes within a single mobile phone. Hence, a user is give experience of having 'everything' within their mobile device.
 
-NFC phone could communicate to the backend server through different mobile communication technology. Service provided by the backend server might vary according to applications. For an instance, it could be a simple web page for reserving movie ticket, issuing receipts, or highly secure financial transaction service. Therefore, communication between handsets and backend server needs to implement secure connection.
+The SE(mentioned in the section 3)of NFC technology enables secure storage and secured transactions among NFC smartphone [18]. Currently, the promising SE alternatives for NFC transactions are eSE, SIM-based SE(rSE), and Host Card Emulation (HCE). For the eSE option, the NFC Controller is connected to the SE through either Single Wire Protocol (SWP) [41] or NFC Wired Interface  [42]. SWP is the most commonly used protocol between the NFC interface and the SE. It can be used for all SE-form factors and provides optimal interoperability with multiple protocols [43].
 
 Similar to RFID, NFC can also communicate on active/passive mode [9]. This means that an active NFC device is the one with power supply and generates radio field. The NFC device working on passive mode gets power supply through the active devices radiation. On the other hand, both the NFC devices can also work in active/active mode where both the devices are active devices with their own power supply. Generally, NFC can operate on three modes [4].
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.25]{Card_Emulation_Mode.png}}
+\caption{Card Emulation Mode.}
+\label{fig}
+\end{figure}
+
+
 
 An NFC enabled phone acts as a tag or a kind of contactless card in card emulation mode. These tags can be read by existing traditional card readers. For an instance, it can be used as an identity card at school or office to unlock door, activate personal devices such as PC, printers, etc. Also, most
 common usage would be to emulate credit cards or points cards which can be used at POS terminals for
 payments.
 
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.25]{Reader_Writer_mode.png}}
+\caption{Peer to Peer mode.}
+\label{fig}
+\end{figure}
+
+
+
 An NFC has a predefined data format called NDEF data format. When an NFC phone is in read/write mode, it can read from or write data to supported tag types. Particular example usage of read/write mode is to access URI from smart posters, download short manuals of electronic devices, check out bus - arrival information at bus stops, etc.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.25]{Peer-to_Peer.png}}
+\caption{Reader/Writer mode.}
+\label{fig}
+\end{figure}
+
+
 
 The peer to peer mode adds quality functionality to NFC phones. In this mode, two NFC phones can exchange data with each other when brought to close proximity. For an example, two business partners can transfer their virtual business cards with each other by bringing their NFC-enabled phones close to
 each other. Another popular usage is for connection handoff to other standard technology; NFC connection can be used to set-up Bluetooth pairing or Wi-Fi setup. After successful setup, the handset can use the Bluetooth or Wi-Fi connections.
-\begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.3]{NFCinactive.png}}
-\caption{NFC in active/passive mode}
-\label{fig}
-\end{figure}
 
 
 \subsection{MST}
@@ -1157,30 +1224,7 @@ Like a traditional credit or debit card, magnetic fields include your payment in
 Near Field Communication (NFC) allows two devices to be located a few inches apart to exchange information. NFC payments require merchants to upgrade old terminals to NFC-enabled payment terminals. Magnetic Secure Transmission (MST) Sends magnetic signals from compatible devices to the payment terminal's reader (emulates card swiping physical payment cards). The MST payment does not require the merchant to upgrade the payment terminal so that Samsung payment can be used on almost all payment terminals with a card reader. Some payment terminals may require software updates. Samsung Pay uses NFC and MST to send payment information to the terminal. Whether using NFC or MST, transactions are seamless, providing a better user experience. Both technologies are equally secure, using a unique digital card number instead of the actual payment card number. Your information is confidential and secure. Only the payment network of your bank and credit card will provide transaction information.
 
 
-\subsection{Audio}
 
-The audio protocol we are talking about today for sonic communication is generally from the technical documentation of chirp which is a novel application for "transmitting" files via voice issued by the American startup Animal Systems.
-
-Acoustic wave transmission is a set of technical solutions that use sound to achieve fast transmission of files: Cross-platform technology is used to implement data transmission between any device that can send sound waves and receive sound waves.There are also a large number of applications in mobile payments.
-
-\subsubsection{encoding}
-The principle of the audio protocol is simple and easy to implement. Create a table with 32 characters and map each character to a frequency table. The frequency table is generated based on the music theory through the calculation of sound.Each character is represented by the pitch of one frequency, so there are 32 frequencies, 0 corresponds to 1760 Hz, 1 corresponds to 1864 Hz,..., v corresponds to 10.5 kHz, and the adjacent frequency differs by a half interval.
-
-The audio produced by Chirp contains 20 characters. Each character is generated with a sine wave of the corresponding frequency. Each sine wave lasts 87.2 ms. If the sampling rate is 44.1 kHz, then each character is about 3846 samples. The whole audio is about 20*87.2ms=1.744s, because each character is represented by a different frequency, it sounds like music.
-
-A complete sound packet contains 20 tones (ie 20 characters), one tone every 87.2 milliseconds. The first two bits are headers and use “hj” to notify the receiver to start receiving. The middle 10 bits are valid information bits, which are effective transmission information, that is, Key values are mapped after the frequency information. The last 8 bits are the RS check digits. The RS parity check algorithm calculates the middle 10 bits and generates 8-bit parity information.
-
-\begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.4]{yinpinwei.png}}
-\caption{A complete sound packet.}
-\label{fig}
-\end{figure}
-
-\subsubsection{decoding}
-
-Chirp describes the technical details of relying on sound for data communication between a smart device, but in fact, the audio protocol of the sound wave communication can be arbitrarily designed by itself, for example, changing the sound in the chirp audio protocol to double-frequency sound, even multi-tone sound. In order to increase the information capacity per unit time, thereby increasing the transmission speed, this is all possible, as long as there is a demand for this application.
-
-The receiver needs to record the sound and perform it and fault-tolerant processing. Its relatively high requirements on the algorithm, noise reduction and fault-tolerant processing are critical to the correct information
 
 \section{online payment technologies}
 
@@ -1623,7 +1667,7 @@ The authors would like to thank...
 % argument is your BibTeX string definitions and bibliography database(s)
 %\bibliography{IEEEabrv,../bib/paper}
 %
-% <OR> manually copy in the resultant .bbl file
+% <OR> manually copy in the resultant .bCoskun V, Ok K, Ozdenizci B. Near Field Communication (NFC): From Theory to Practice[J]. 2012, 13(March 10):816-825.bl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
 \begin{thebibliography}{1}
@@ -1708,6 +1752,22 @@ Luca G D, Lillo P, Mainetti L, et al. \emph{The use of NFC and Android technolog
 Coskun V, Ok K, Ozdenizci B. \emph{Professional NFC Application Development for Android[M]}. Wiley, 2013.
 \bibitem{IEEEhowto:kopka}
 Plos T, Hutter M, Cavaliere F, et al. \emph{Security-Enabled Near-Field Communication Tag With Flexible Architecture Supporting Asymmetric Cryptography[J]}. IEEE Transactions on Very Large Scale Integration Systems, 2013, 21(11):1965-1974.
+\bibitem{IEEEhowto:kopka}
+Agbinya J I, Selvaraj N, Ollett A, et al.\emph{ SIZE AND CHARACTERISTICS OF THE 'CONE OF SILENCE' IN NEAR-FIELD MAGNETIC INDUCTION COMMUNICATIONS[J]}. 京都大学防災研究所年報, 2009, 2:p621-640.
+\bibitem{IEEEhowto:kopka}
+Agbinya J I. \emph{Power Equations and Capacity Performance of Magnetic Induction Communication Systems[J]}. Wireless Personal Communications, 2012, 64(4):831-845.
+\bibitem{IEEEhowto:kopka}
+Coskun V, Ok K, Ozdenizci B. \emph{Near Field Communication (NFC): From Theory to Practice[J]}. 2012, 13(March 10):816-825.
+
+\bibitem{IEEEhowto:kopka}
+Coskun V, Ok K, Ozdenizci B. \emph{Professional NFC Application Development for Android[J]}. Wiley John + Sons, 2013.
+\bibitem{IEEEhowto:kopka}
+ETSI TS 102 613, Smart Cards; UICC - Contactless Front-end (CLF) Interface; Part 1: Physical and data link layer characteristics, Technical Specification, ETSI TS. Available online:\url{http://www.etsi.org/deliver/etsi_ts/102600_102699/102613/07.03.00_60/ts_102613v070300p.pdf}(accessed on 13 April 2015).
+\bibitem{IEEEhowto:kopka}
+ECMA 373: Near Field Communication Wired Interface (NFC-WI), ECMA International.Available online:\url{http://www.ecma-international.org/publications/standards/Ecma-373.htm}
+(accessed on 13 April 2015).
+\bibitem{IEEEhowto:kopka}
+NFC Stepping Stones 2011, SIM Alliance, White Paper. Available online: \url{http://simalliance.org/nfc/nfc-technical-releases/} (accessed on 13 April 2015).
 
 
 \end{thebibliography}
