@@ -694,7 +694,7 @@ Tokens and tokenization solutions can be implemented in numerous ways, and the s
 
 The level of PCI DSS scope reduction offered by a tokenization solution will also need to be carefully evaluated for each implementation. For example, locations and flows of cardholder data, adequacy of segmentation, and controls around de-tokenization and mapping processes should be reviewed and verified to ensure proper scoping of the CDE and appropriate application of PCI DSS security requirements.[10]
 \subsubsection{Centralized tokenization technologies}
-Centralized tokenization is conventional, database-centric solutions，which requst the token corresponding to the provided PAN from a common central database, as described above. If no token corresponding token exists in the common central database at the time of the request, a new token is generated and an entry will be added to the common central database.
+Centralized tokenization is conventional, database-centric solutions, which requst the token corresponding to the provided PAN from a common central database, as described above. If no token corresponding token exists in the common central database at the time of the request, a new token is generated and an entry will be added to the common central database.
 
 
 \begin{figure}[htbp]
@@ -1305,7 +1305,7 @@ Algorithm formula:
 \\
 $$TOTP = HOTP(K, TC)$$
 
-$\bullet$ $TC=f((unixtime(now) − unixtime(T0)) / TS)$;
+$\bullet$ $TC=f((unixtime(now)-unixtime(T0)) / TS)$;
 
 $\bullet$ T0:The time step to start the calculation;
 
@@ -1438,7 +1438,7 @@ Samsung Pay uses NFC and MST technologies.
 
 Samsung Pay uses both NFC and MST to send payment information to the terminal. The transaction is seamless, whether using NFC or MST, allowing for a better user experience.
 
-Both technologies are equally secure, using a unique digital card number in place of the actual card number. The information is kept private and secure, and only the bank and the card's payment network will have information on the transaction。
+Both technologies are equally secure, using a unique digital card number in place of the actual card number. The information is kept private and secure, and only the bank and the card's payment network will have information on the transaction.
 
 Samsung's payment technology also uses TOTP technology and virtual bank card technology. The following steps can be known from Fig 21:
 
@@ -1753,7 +1753,7 @@ Coskun V, Ok K, Ozdenizci B. \emph{Professional NFC Application Development for 
 \bibitem{IEEEhowto:kopka}
 Plos T, Hutter M, Cavaliere F, et al. \emph{Security-Enabled Near-Field Communication Tag With Flexible Architecture Supporting Asymmetric Cryptography[J]}. IEEE Transactions on Very Large Scale Integration Systems, 2013, 21(11):1965-1974.
 \bibitem{IEEEhowto:kopka}
-Agbinya J I, Selvaraj N, Ollett A, et al.\emph{ SIZE AND CHARACTERISTICS OF THE 'CONE OF SILENCE' IN NEAR-FIELD MAGNETIC INDUCTION COMMUNICATIONS[J]}. 京都大学防災研究所年報, 2009, 2:p621-640.
+Agbinya J I, Selvaraj N, Ollett A, et al.\emph{ SIZE AND CHARACTERISTICS OF THE 'CONE OF SILENCE' IN NEAR-FIELD MAGNETIC INDUCTION COMMUNICATIONS[J]}. Annual report of Institute of Disaster Prevention, Kyoto University, 2009, 2:p621-640.
 \bibitem{IEEEhowto:kopka}
 Agbinya J I. \emph{Power Equations and Capacity Performance of Magnetic Induction Communication Systems[J]}. Wireless Personal Communications, 2012, 64(4):831-845.
 \bibitem{IEEEhowto:kopka}
