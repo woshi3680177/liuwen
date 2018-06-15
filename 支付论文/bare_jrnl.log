@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.3.31)  14 JUN 2018 22:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.3.31)  15 JUN 2018 12:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -788,7 +788,7 @@ Overfull \hbox (21.57419pt too wide) in paragraph at lines 1324--1328
 OML/cmm/m/it/10 FFFFFFF\OT1/cmr/m/n/10 )[] 
  []
 
-[15 <./offline.pdf>]
+
 Underfull \hbox (badness 4518) in paragraph at lines 1335--1337
  \OT1/ptm/m/it/10 3) TOTP(Time-Based One-Time Pass-word): [][] \OT1/ptm/m/n/10 
 Al-go-rithm
@@ -799,7 +799,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1335--1337
 
  []
 
-
+[15 <./offline.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 1343--1347
 
  []
@@ -1054,7 +1054,7 @@ sfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on bare_jrnl.pdf (26 pages, 3660208 bytes).
+Output written on bare_jrnl.pdf (26 pages, 3660067 bytes).
 PDF statistics:
  533 PDF objects out of 1000 (max. 8388607)
  340 compressed objects within 4 object streams
