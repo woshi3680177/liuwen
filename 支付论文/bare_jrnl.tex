@@ -968,19 +968,31 @@ Processing Speed&Fast&Fast&Slow\\
 
 With the support of major chip manufacturers, mobile phones using ARM architecture chips now include Trustzone technology. The gap between the real high-end phones and low-end phones is on eSE. In addition to PIN payment authentication, fingerprints are supported by high-end handsets of major mobile phone manufacturers. iphone X now supports face recognition. It is very necessary to store these sensitive information in eSE.
 
-\section{Payment communication technologies}
+\section{Payment communication security technologies}
 After obtaining a secure payment mobile terminal, how to ensure payment communication security has become a hot topic in this field.
 
-Payment communication technology is intuitively experienced by customers. In the customer's eyes is how to pay the money to the recipient. For example, Alipay, WeChat, etc. are called QR code payment. While Apple, Samsung, etc. are often called NFC payments. In fact, the former only uses a two-dimensional code to transfer one-time payment passwords. What really pays for the payment is the one-time payment password. Whatever the method, as long as you can transfer the one-time payment password, you can conduct a payments, such as audio. The latter's NFC is actually an interactive near-field communication.
+Payment communication technology is intuitively experienced by customers. In the customer's eyes is how to pay the money to the recipient. So people often use it to name payment. For example, Alipay, WeChat, etc. are called QR code payment. While Apple, Samsung, etc. are often called NFC payments. In fact, the former only uses a two-dimensional code to transfer one-time payment passwords. What really pays for the payment is the one-time payment password. Whatever the method, as long as you can transfer the one-time payment password, you can conduct a payments, another way such as audio. The latter's NFC is actually an interactive near-field communication.
 
 \subsection{QR code}
 QR code was invented in 1994 by Denso Wave, a Toyota subsidiary of Japan. The QR code not only has large information capacity, high reliability, and low cost, but also can represent various character information such as Chinese characters and images, and has strong security against fraud and is very convenient to use. Therefore, it quickly became popular in Japan and South Korea. Since then, European and American countries have begun to use it in large quantities. 
 
 QR code payment is very popular in China, people can almost go out without wallets and bank cards. You only need to show the QR code on your mobile phone to be able to pay in most places even without network. However, why is it possible to authorize payment with the QR code?
 
-However, the QR code itself cannot make payment authorization, since the actual payment authorization is the one-time payment password which encoded in the QR code. The one-time payment password is a series of digits(which we calld \textbf{payment password}). You can authorize payment with this numbers. So the role of the QR code in mobile payment is to transmit this series of numbers. The specific technology of one-time payment password will be told in section 6.
 
-In this subsection, the QR code technology will be introduce.
+
+\subsubsection{QR code working principle}
+
+The QR code itself cannot make payment authorization, since the actual payment authorization is the one-time payment password which encoded in the QR code. The one-time payment password is a series of digits(which we calld \textbf{payment password}，shows on Fig 10). You can authorize payment with this numbers. So the role of the QR code in mobile payment is to transmit this series of numbers. The specific technology of one-time payment password will be told in section 6.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.46]{QR_decode.png}}
+\caption{Qne-time payment password}
+\label{fig}
+\end{figure}
+
+
+\
+
 
 The QR code is one of the two-dimensional code, which is similar to the magnetic stripe. The magnetic stripe transforms the information into a track through a certain law, and the two-dimensional code transforms the information into a graph. Reading the magnetic stripe reads the track through the reader and then converts back to the original information, while the two-dimensional code reads the graphics through the camera and then converts back to the original information.
 
@@ -1022,6 +1034,25 @@ The Fig 7 shows the structure of the QR code:
 
 \textbf{Data and Error Correction code:}After the error correction coding of the data is completed, the final code word sequence is constructed in a certain order for the data code word and the error correction code word. The low code word of each data block is in front of the sequence, and the data code word is arranged in front of the error correction code. According to the first codeword of data block 1, the first codeword of data block 2, ..., the last codeword of data block n; the first codeword of error correction code 1, error correction The second codeword of code 2, ..., the last codeword of error correction code n
 
+\subsubsection{QR code payment security analysis}
+QR code is only for data transmission, and its security is based entirely on one-time passwords.
+
+\textbf{1,Eavesdropping :} QR code is very easy to be eavesdropped, such as implanting a Trojan on a mobile phone, or placing a miniature camera on a PoS machine. 
+
+
+\textbf{2,Data Modification}
+The QR code itself is encoded and decoded by a fixed standard, so it is easy to tamper with after its own generation. However, one-time payment passwords cannot be easily tampered with without knowing algorithms and keys. So QR code payment can resist data modification
+
+\textbf{3,Man in the middle Attack:} QR code can only be transmitted in one direction. There is no man-in-the-middle attack.
+
+
+
+\textbf{4,Lost devices:}
+Anyone who finds a lost device can use it just like a lost credit card. In this case, manual security in mobile devices is the only solution, such as secure access to the phone via some PIN code or personal identification number.
+
+
+
+
 \subsection{Audio}
 
 The audio protocol we are talking about today for sonic communication is generally from the technical documentation of chirp which is a novel application for "transmitting" files via voice issued by the American startup Animal Systems.
@@ -1046,6 +1077,8 @@ A complete sound packet contains 20 tones (ie 20 characters), one tone every 87.
 Chirp describes the technical details of relying on sound for data communication between a smart device, but in fact, the audio protocol of the sound wave communication can be arbitrarily designed by itself, for example, changing the sound in the chirp audio protocol to double-frequency sound, even multi-tone sound. In order to increase the information capacity per unit time, thereby increasing the transmission speed, this is all possible, as long as there is a demand for this application.
 
 The receiver needs to record the sound and perform it and fault-tolerant processing. Its relatively high requirements on the algorithm, noise reduction and fault-tolerant processing are critical to the correct information
+
+The security analysisof Audio payment is almost the same as QR code.
 
 \subsection{NFC}
 NFC is a technology that mobile phone manufacturers strongly recommend in the field of payment communications. Many new mobile phones released by Apple, Samsung, Google, Xiaomi, Huawei, etc. all support NFC. 
@@ -1194,7 +1227,7 @@ The RF layer of NFC communication is based on the ISO/IEC 14443 contactless smar
 
 \
 
-\subsubsection{NFC security analysis}
+\subsubsection{NFC payment security analysis}
 
 The security of NFC can be confirmed to some extent. However, as it is a wireless technology, some security issues are inevitable [12-13]:
 
@@ -1208,9 +1241,7 @@ Attackers may use different RF fields to tamper with data. However, the attacker
 
 
 \textbf{4,Lost devices:}
-Anyone who finds a lost device can use it just like a lost credit card. In this case, manual security in mobile devices is the only solution, such as secure access to the phone via some PIN code or personal identification number.
-
-On the other hand, short NFC communications can be abandoned without closing after use. These abandoned connections can be used by attackers for a variety of purposes. Therefore, communication timeout techniques should be implemented to avoid such attacks.
+Manual security in mobile devices is the only solution. On the other hand, short NFC communications can be abandoned without closing after use. These abandoned connections can be used by attackers for a variety of purposes. Therefore, communication timeout techniques should be implemented to avoid such attacks.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[scale=0.25]{ComparisonoNFCandotherPANtechnologies.png}}
@@ -1218,19 +1249,26 @@ On the other hand, short NFC communications can be abandoned without closing aft
 \label{fig}
 \end{figure}
 
-
-
 \
 
 Through the introduction of NFC we know that NFC has high security but the hardware requirements are much higher than QR code and Audio. And need to be compatible with a variety of protocols. What is even more inconvenient is that many PoS machines in shopping malls (especially in some less developed areas) do not become NFC readers and do not support NFC. These have become obstacles to the promotion of NFC.
 
 
 \subsection{MST}
-Magnetic Secure Transmission (MST) is a technology that can transmit magnetic signals that simulate the magnetic stripe on a traditional payment card. The MST sends a magnetic signal from your device to the reader of the payment terminal (simulating the physical card swiping without upgrading the terminal's software or hardware). Almost all payment terminals with card readers can use MST technology. Some payment terminals may require software updates. Simply select a card from Samsung Pay and transfer the payment information by moving the device within one inch of the payment terminal. Your transaction and payment information will use tokenization for privacy and security. MST is more secure than using traditional payment cards and is as secure as using Near Field Communication (NFC) payments.
 
-The technology was developed and patented by LoopPay. Samsung previously acquired the company to deploy its Samsung Pay service.The biggest highlight of Samsung Pay and Apple Pay is support for magnetic stripe card payments.
 
-Figure 3 shows the components of the payment accessory that LoopPay made for Samsung. By using AC current, the coil will generate a magnetic field.If the correct magnetic field is generated, the coil can communicate with a credit card reader.In fact, the principle of MST is to emit a magnetic field.
+In order to solve the compatibility problem of the old magnetic stripe cards mentioned in the last subsection, Samsung also uses MST technology in addition to NFC technology on its own mobile phones.
+
+
+The technology was developed and patented by LoopPay. Samsung previously acquired the company to deploy its Samsung Pay service.The biggest highlight of Samsung Pay compare to Apple Pay and Android pay is support for magnetic stripe card payments.
+
+\
+
+\subsubsection{MST working principle}
+Magnetic Secure Transmission (MST) is a technology that can transmit magnetic signals that simulate the magnetic stripe on a traditional payment card. The MST sends a magnetic signal from your device to the reader of the payment terminal (simulating the physical card swiping without upgrading the terminal's software or hardware). Almost all payment terminals with card readers can use MST technology. Some payment terminals may require software updates. Simply select a card from Samsung Pay and transfer the payment information by moving the device within one inch of the payment terminal. With the help of tokenization technology, MST is not afraid of being copied like a traditional magnetic stripe card. At the same time, its compatibility with today's PoS devices is also higher than NFC.
+
+
+Figure 18 shows the components of the payment accessory that LoopPay made for Samsung. By using AC current, the coil will generate a magnetic field.If the correct magnetic field is generated, the coil can communicate with a credit card reader(Figure 19).
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[scale=1]{MSTyuanjian2.png}}
@@ -1238,7 +1276,6 @@ Figure 3 shows the components of the payment accessory that LoopPay made for Sam
 \label{fig}
 \end{figure}
 
-However, payment security is not solved by a copper coil.The MST application has three protection mechanisms: Payment Tokenization, eSE (hardware security module) bank card information protection, KNOX, and fingerprint/password authentication.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[scale=0.18]{Emittingmagneticpulse.png}}
@@ -1246,16 +1283,48 @@ However, payment security is not solved by a copper coil.The MST application has
 \label{fig}
 \end{figure}
 
-For Token, the user needs to enter the card information and send it to the card organization for verification. After the card organization passes the verification, a token will be generated for this card and the token will be sent to the device. The credit card information is not directly stored on the device. Token is stored in an independent security chip (SE chip) and used to replace the bank card number. It can be understood that the Token and the bank card number are equivalent, but even if the Token leaks, the bank card information cannot be reversed. Only when fingerprint or password authentication passes can the token be read out through the MST. Token's storage and management is governed by Samsung's own KNOX security platform.High-risk behaviors such as equipment modification occur, and KNOX can invalidate sensitive data on the device.
+
 
 In other words, when using Samsung Pay's magnetic card payment mode, the key technical step is how this Token is sent. The MST generates a dynamic magnetic field through an induction coil and can be changed according to the user-defined time limit. If your mobile device is within 3 inches of the reader, you will be able to identify the magnetic field.
 
 Like a traditional credit or debit card, magnetic fields include your payment information. The magnetic field only exists when the user chooses to send the payment information, and the magnetic field will automatically disappear once the distance between the mobile device and the reader exceeds 3 inches. This means that the attacker must be very close to the payment process to steal the payment data.
 
-Near Field Communication (NFC) allows two devices to be located a few inches apart to exchange information. NFC payments require merchants to upgrade old terminals to NFC-enabled payment terminals. Magnetic Secure Transmission (MST) Sends magnetic signals from compatible devices to the payment terminal's reader (emulates card swiping physical payment cards). The MST payment does not require the merchant to upgrade the payment terminal so that Samsung payment can be used on almost all payment terminals with a card reader. Some payment terminals may require software updates. Samsung Pay uses NFC and MST to send payment information to the terminal. Whether using NFC or MST, transactions are seamless, providing a better user experience. Both technologies are equally secure, using a unique digital card number instead of the actual payment card number. Your information is confidential and secure. Only the payment network of your bank and credit card will provide transaction information.
+\
+
+\subsubsection{MST payment security analysis}
+In fact, the principle of MST is to emit a magnetic field. However, payment security cannot be solved by a copper coil. The simple principle of electro-magnetism is only the basic theory of this technology. However, payment security is not solved by a copper coil.The MST application has three protection mechanisms: Payment Tokenization, eSE (hardware security module) bank card information protection, KNOX, and fingerprint/password authentication.
+
+\textbf{1,Eavesdropping :} MST does not provide a defense mechanism against eavesdropping. In [46], the authors found that using a small packet-sized loop antenna can effectively collect signals at a distance of at least 2 meters from the signal source. Therefore, eavesdropping attacks are effective for MST.
+
+\textbf{2,Data Modification}
+The MST information obtained by eavesdropping can be decoded by the method shown in [46], but it is difficult to obtain the information obtained after tampering. For example, add a signature after the information.
 
 
+\textbf{3,Man in the middle Attack:}
+NFC can prevent this kind of attack to a great extent, but MST is difficult to prevent. The middleman can completely interfere with the transaction when the mobile phone interacts with the PoS, and then after the MST information is obtained, it can be consumed on other PoS machines[46].
 
+\textbf{4,Lost devices:}
+The same as NFC. 
+
+\
+
+
+Although MST has greatly improved its compatibility, its security has been greatly reduced. The MST payment can be considered in some situations where the security requirement is not high or only the magnetic stripe card is supported. It can be seen that for Samsung, MST payment is only a supplement to NFC payment.
+
+\subsection{comparision}
+
+
+\begin{center}
+\textbf{Table 1}~~Comparison.\\
+ \setlength{\tabcolsep}{1mm}{\begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|} %l(left)居左显示 r(right)居右显示 c居中显示
+\hline 
+&QR code&Audio&MST&NFC\\
+\hline 
+Information transmission&Coupling of magnetic filed&&&\\
+\hline
+ 
+\end{tabular}}
+\end{center}
 
 \section{online payment technologies}
 
@@ -1514,6 +1583,11 @@ NFC technology has been around for more than a decade and has been called promis
 \caption{NFC card emulation with a secure element.}
 \label{fig}
 \end{figure}
+
+For Token, the user needs to enter the card information and send it to the card organization for verification. After the card organization passes the verification, a token will be generated for this card and the token will be sent to the device. The credit card information is not directly stored on the device. Token is stored in an independent security chip (SE chip) and used to replace the bank card number. It can be understood that the Token and the bank card number are equivalent, but even if the Token leaks, the bank card information cannot be reversed. Only when fingerprint or password authentication passes can the token be read out through the MST. Token's storage and management is governed by Samsung's own KNOX security platform.High-risk behaviors such as equipment modification occur, and KNOX can invalidate sensitive data on the device.
+
+Near Field Communication (NFC) allows two devices to be located a few inches apart to exchange information. NFC payments require merchants to upgrade old terminals to NFC-enabled payment terminals. Magnetic Secure Transmission (MST) Sends magnetic signals from compatible devices to the payment terminal's reader (emulates card swiping physical payment cards). The MST payment does not require the merchant to upgrade the payment terminal so that Samsung payment can be used on almost all payment terminals with a card reader. Some payment terminals may require software updates. Samsung Pay uses NFC and MST to send payment information to the terminal. Whether using NFC or MST, transactions are seamless, providing a better user experience. Both technologies are equally secure, using a unique digital card number instead of the actual payment card number. Your information is confidential and secure. Only the payment network of your bank and credit card will provide transaction information.
+
 
 
 \subsubsection{HCE(host-based card emulation)}
@@ -1805,6 +1879,12 @@ NFC Analog, NFC Forum, Technical Specification. Available online: \url{http://nf
 NFC Digital Protocol, NFC Forum, Technical Specification. Available online: \url{http://nfc-forum.org/our-work/specifications-and-application-documents/} (accessed on 13 April 2015).
 \bibitem{IEEEhowto:kopka}
 NFC Activity, NFC Forum, Technical Specification. Available online: \url{http://nfc-forum.org/our-work/specifications-and-application-documents/} (accessed on 13 April 2015).
+\bibitem{IEEEhowto:kopka}
+Xiaolong Bai and Zhe Zhou and XiaoFeng Wang and Zhou Li and Xianghang Mi and Nan Zhang and Tongxin Li and Shi-Min Hu and Kehuan Zhang,
+\emph{Picking Up My Tab: Understanding and Mitigating Synchronized Token Lifting and Spending in Mobile Payment}, 26th {USENIX} Security Symposium ({USENIX} Security 17), 2017, 978-1-931971-40-9, Vancouver, BC, 593--608,
+\url{https://www.usenix.org/conference/usenixsecurity17/technical-sessions/presentation/bai},{USENIX} Association.
+
+
 
 \end{thebibliography}
 
