@@ -373,6 +373,8 @@
 
 \author{Wenzheng Liu,~\IEEEmembership{~NUDT,}
         Xiaofeng Wang,~\IEEEmembership{~NUDT,}
+        Wei Peng,~\IEEEmembership{~NUDT,}
+        
         %and~Jane~Doe,~\IEEEmembership{Life~Fellow,~IEEE}% <-this % stops a space
 \thanks{M. Shell was with the Department
 of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta,
@@ -618,7 +620,7 @@ Virtual bank card instead of the real bank card binding in the mobile terminal a
 
 In our digital age, bank cards have become a popular payment tool. With the increasing popularity of business through the Internet, each company needs to maintain its customers' bank card information in some form. The theft of bank card data is considered to be one of the most serious threats to any company. Such violations will not only bring serious economic losses to the company, but also cause serious damage to the “brand image”.
 
-The Payment Card Industry Security Standards Council (PCI SSC) was established by a major payment card company and is an organization responsible for the best development and deployment. The organization that ensures the security of credit card data. In particular, PCI SSC has developed a standard PCI Data Security Standard (PCI DSS) called "Standards" [11], which specifies the security mechanism card data required to guarantee payment. PCI DSS requires organizations that process card payments to protect cardholder data as they store, transmit, and process them. The practical requirements specified by the PCI DSS are very detailed and complicated. In order to achieve PCI compliance, merchants need to provide security policies regarding the use and use of the document regarding all sensitive information stored in their environment. Considering PCI compliance requires the confidence of its customers for any business. In addition, in some countries, a company that is exposed to theft of sensitive information may face a large amount of fines.
+The Payment Card Industry Security Standards Council (PCI SSC) was established by major payment card company and is an organization responsible for the best development and deployment. The organization that ensures the security of credit card data. In particular, PCI SSC has developed a standard PCI Data Security Standard (PCI DSS) called "Standards" [11], which specifies the security mechanism card data required to guarantee payment. PCI DSS requires organizations that process card payments to protect cardholder data as they store, transmit, and process them. The practical requirements specified by the PCI DSS are very detailed and complicated. In order to achieve PCI compliance, merchants need to provide security policies regarding the use and use of the document regarding all sensitive information stored in their environment. Considering PCI compliance requires the confidence of its customers for any business. In addition, in some countries, a company that is exposed to theft of sensitive information may face a large amount of fines.
 
 Enterprises, merchants, and payment processors face severe, ongoing challenges securing their networks and high-value sensitive data such as payment cardholder data, to comply with the Payment Card Industry Data Security Standard (PCI DSS) and data privacy laws. Tokenization, which is used as a way of replacing sensitive data like credit card numbers with tokens, is one of the data protection and audit scope reduction methods recommended by the PCI DSS. 
 
@@ -1059,7 +1061,7 @@ The audio protocol we are talking about today for sonic communication is general
 
 Acoustic wave transmission is a set of technical solutions that use sound to achieve fast transmission of files: Cross-platform technology is used to implement data transmission between any device that can send sound waves and receive sound waves.There are also a large number of applications in mobile payments.
 
-\subsubsection{encoding}
+\subsubsection{Audio working principle}
 The principle of the audio protocol is simple and easy to implement. Create a table with 32 characters and map each character to a frequency table. The frequency table is generated based on the music theory through the calculation of sound.Each character is represented by the pitch of one frequency, so there are 32 frequencies, 0 corresponds to 1760 Hz, 1 corresponds to 1864 Hz,..., v corresponds to 10.5 kHz, and the adjacent frequency differs by a half interval.
 
 The audio produced by Chirp contains 20 characters. Each character is generated with a sine wave of the corresponding frequency. Each sine wave lasts 87.2 ms. If the sampling rate is 44.1 kHz, then each character is about 3846 samples. The whole audio is about 20*87.2ms=1.744s, because each character is represented by a different frequency, it sounds like music.
@@ -1072,7 +1074,7 @@ A complete sound packet contains 20 tones (ie 20 characters), one tone every 87.
 \label{fig}
 \end{figure}
 
-\subsubsection{decoding}
+
 
 Chirp describes the technical details of relying on sound for data communication between a smart device, but in fact, the audio protocol of the sound wave communication can be arbitrarily designed by itself, for example, changing the sound in the chirp audio protocol to double-frequency sound, even multi-tone sound. In order to increase the information capacity per unit time, thereby increasing the transmission speed, this is all possible, as long as there is a demand for this application.
 
@@ -1243,11 +1245,6 @@ Attackers may use different RF fields to tamper with data. However, the attacker
 \textbf{4,Lost devices:}
 Manual security in mobile devices is the only solution. On the other hand, short NFC communications can be abandoned without closing after use. These abandoned connections can be used by attackers for a variety of purposes. Therefore, communication timeout techniques should be implemented to avoid such attacks.
 
-\begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.25]{ComparisonoNFCandotherPANtechnologies.png}}
-\caption{Comparison of NFC and other communication technologies}
-\label{fig}
-\end{figure}
 
 \
 
@@ -1296,12 +1293,12 @@ In fact, the principle of MST is to emit a magnetic field. However, payment secu
 
 \textbf{1,Eavesdropping :} MST does not provide a defense mechanism against eavesdropping. In [46], the authors found that using a small packet-sized loop antenna can effectively collect signals at a distance of at least 2 meters from the signal source. Therefore, eavesdropping attacks are effective for MST.
 
-\textbf{2,Data Modification}
+\textbf{2,Data Modification:}
 The MST information obtained by eavesdropping can be decoded by the method shown in [46], but it is difficult to obtain the information obtained after tampering. For example, add a signature after the information.
 
 
 \textbf{3,Man in the middle Attack:}
-NFC can prevent this kind of attack to a great extent, but MST is difficult to prevent. The middleman can completely interfere with the transaction when the mobile phone interacts with the PoS, and then after the MST information is obtained, it can be consumed on other PoS machines[46].
+MST code can only be transmitted in one direction. There is no man-in-the-middle attack.
 
 \textbf{4,Lost devices:}
 The same as NFC. 
@@ -1312,74 +1309,122 @@ The same as NFC.
 Although MST has greatly improved its compatibility, its security has been greatly reduced. The MST payment can be considered in some situations where the security requirement is not high or only the magnetic stripe card is supported. It can be seen that for Samsung, MST payment is only a supplement to NFC payment.
 
 \subsection{comparision}
+QR code and Audio have high hardware compatibility. Even a very cheap mobile phone also can supports this payment method, and the cost is very low. This may be an important reason for it large-scale promotion in China. Because of its inability to defend against eavesdropping attacks, its security is a big problem. NFC is just the opposite. Under the premise of terminal security, Samsung's MST payment security is similar to that of QR code, but it requires the moderate cost and hardware.
 
 
 \begin{center}
-\textbf{Table 1}~~Comparison.\\
- \setlength{\tabcolsep}{1mm}{\begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|} %l(left)居左显示 r(right)居右显示 c居中显示
+\textbf{Table 2}~~.\\
+ \setlength{\tabcolsep}{1mm}{\begin{tabular}{|p{2cm}|p{1.4cm}|p{1.4cm}|p{1.4cm}|p{1.4cm}|} %l(left)居左显示 r(right)居右显示 c居中显示
 \hline 
-&QR code&Audio&MST&NFC\\
-\hline 
-Information transmission&Coupling of magnetic filed&&&\\
+&QR code&Audio&NFC&MST\\
 \hline
- 
+Cost of device&Low&Low&High&Moderate\\
+\hline
+Auth and Encry&No&No&Yes&No\\
+\hline
+Data Transmission Direction&One-way&One-way&Two-way&One-way\\
+\hline
+Hardware compatibility&High&High&Low&Low\\
+\hline
+Eavesdropping Attack&effective&effective&ineffective&effective\\
+\hline
+Data Modification&ineffective&ineffective&ineffective&ineffective\\
+\hline
+Man in the middle Attack&*&*&ineffective&*\\
+\hline
+Loss of device protection&Rely on terminal security&Rely on terminal security&Rely on terminal security&Rely on terminal security\\
+\hline
+
+
+
 \end{tabular}}
 \end{center}
 
-\section{online payment technologies}
-
-\begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.58]{zhuanzhangshifu.pdf}}
-\caption{Token application process.}
-\label{fig}
-\end{figure}
 
 
-Internet transfer payment technology, as the name suggests, is a transfer payment via the Internet.Different from the PC terminal, the network transfer payment at the mobile terminal needs to pay for the support of the client's app.
+\section{Online payment}
+This section and the next section mainly describe the payment technology of payment service providers. Payment service providers mainly refer to Alibaba, Tencent, paypal and others. Their mobile payment technology is mainly divided into network transfer payment and offline payment.
+
+
+Network transfer payment technology, as the name suggests, is a transfer payment via the Internet. Different from the PC terminal, the network transfer payment at the mobile terminal needs to pay for the support of the client's app.
 
 Network transfer payment technology is mainly based on the security of tokenization technology.
 
+\subsection{Network transfer payment process}
+The customer can obtain a URL by scanning the QR code, etc., and pay the store through the specific website address. This approach is more like a mobilization of previous web page payments. After the server receives the payment information, there are two situations:
 
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.5]{Onlie_pay.png}}
+\caption{Online payment.}
+\label{fig}
+\end{figure}
+
+\textbf{Pay with your account balance}: In this way, the payment service provider does not need to interact with the bank, but can only perform settlement within the server.
+
+\textbf{Pay with your bank card}: The payment service provider will give the card corresponding tokens , bills and other information to the card organization. The latter continues to interact with the issuing bank and complete the payment. t should be noted that the transaction is actually completed by the issuing bank paying money to the payment service provider's account on the bank's account, and then the payment service provider adds the corresponding balance to the customer's account on the server of the customer.
 
 \subsection{scan the QR code}
 In the scan code payment scenario, the QR code is actually a url with some parameters. The scan code will initiate the transfer. The two-dimensional code is actually only an account medium, a data storage body, which itself is not the result of the payment innovation. The existing various QR code payment only replaces the data carrier of the original payment means with a two-dimensional code. Similar chip content with bank cards. Is an account of the embodiment. 
 \begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.44]{erweimazhifu.png}}
-\caption{App payment.}
+\centerline{\includegraphics[scale=0.42]{erweimazhifu.png}}
+\caption{Network payment system.}
 \label{fig}
 \end{figure}
+
 \subsection{Through email}
 
 \section{offline payment technologies}
-Offline payment is a payment method which the most prominent feature is that the paying party do not need connecting to the Internet, which means only one party need communicate with the payment server.It is widely welcomed due to its ease of use. In China today, this type of payment method can be seen everywhere, from large shopping malls to small supermarket chains. Even in the underground shopping malls with poor network signals, the surrounding areas of the city, and tourist attractions in the mountains, as long as a mobile phone in hand, you can pay for you. 
+Offline payment is a payment method which the most prominent feature is that the paying party do not need connecting to the Internet, which means only one party need communicate with the payment server. It is widely welcomed due to its ease of use. This type of payment method can be seen everywhere, from large shopping malls to small supermarket chains. Even in the underground shopping malls with poor network signals, the surrounding areas of the city, and tourist attractions in the mountains, as long as a mobile phone in hand, you can pay for you. 
 
-Off-line payment is mainly provided by two major technologies, one mainly provided  by large-scale payment service providers such as Alipay, Tencent, UnionPay, Wal-Mart, and Amazon. It mainly binds the bank card to the account of the corresponding payment provider and uses the TOTP technology to generate the payment password and use the account number to pay. Another source is mainly provided by large mobile terminals or system providers, such as Apple, Samsung, and Google. It mainly binds the bank card to the mobile phone terminal and simulates the bank card payment method and pays for direct connection to the bank.
+It mainly binds the bank card to the account of the corresponding payment provider and uses the TOTP technology to generate the payment password to pay. Figure 22 shows the entire process of offline payment from client to bank, including TOTP payment represented by Alipay and Wechat.
 
-Figure 15 shows the entire process of offline payment from client to bank, including TOTP payment represented by Alipay and analog bank card payment represented by Samsung.
+As the Fig 22 shows, after the TOTP is generated by the mobile phone, QR code or audio is used as a medium to pass TOTP to the shop. The shop transmits the TOTP and payment information to the server of the payment service provider through which decodes the TOTP and certification. If certified, the subsequent process is exactly the same as online payment.
 
-First look at the former, after the TOTP is generated by the mobile phone, the QR code or audio is used as a carrier to the store. The store transmits the TOTP plus payment information to the server of the payment service provider, decodes the TOTP and completes the settlement. At this time, the payment provider The money in the customer's account in the database is transferred to the store's account.
+
 \begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.68]{offline.pdf}}
+\centerline{\includegraphics[scale=0.5]{Offline_payment.png}}
 \caption{Offline payment.}
 \label{fig}
 \end{figure}
+
+\subsection{One-time password payment system}
+
+
+
+After the terminal installs the client and starts the application for the first time, the server can generate a unique token and the device ID corresponding to the token.
+
+$\bullet$ Token: The seed used to generate the OTP code. 
+
+$\bullet$ Device ID: Used to uniquely identify the terminal.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.4]{TOTP2.pdf}}
+\caption{Time-Based One-Time Password.}
+\label{fig}
+\end{figure}
+
+After sending the token and the device ID to each terminal, the server needs to store the mapping relationship between the token and the device ID.
+
+The terminal generates the OTP using the token, ID and the TOTP algorithm. The payment service provider server uses the same token, ID and decryption algorithm to verify the OTP.
+
 \subsection{Time-Based One-Time Password:The key to offline payment}
 one of the technical prototypes of the off-line payment is a one-time password (OTP) widely used in the industry. Products using this technology include Alipay and WeChat, as well as hardware equipment such as bank U shields and game tokens.
 
-Regardless of Alipay or WeChat, they scanned the payment using 18-digit digitally-generated barcodes and QR codes. This 18-digit number is the payment password. 
+Regardless of Alipay or WeChat, they scanned the payment using 18-digit digitally-generated barcodes and QR codes(Fig 7). This 18-digit number is the one-time password. 
 
+\
 
 \subsubsection{HMAC(Message Authentication Code Algorithm Based on Hash Function)}
 Algorithm formula:
-$$HMAC(K, m) = H((K^{\prime} xor opad) || H ((K^{\prime} xor ipad) || m)) $$
+$$HMAC(K, m) = H((K^{\prime}~xor~opad) || H ((K^{\prime}~xor~ipad) || m)) $$
 
-$\bullet$ H:hash functio4;
+$\bullet$ H:hash function;
 
 $\bullet$ K:shared secret key;
 
 $\bullet$:$K^{\prime}$ calculated by K(key) (The hash function of this scheme is SHA-1, MD5, RIPEMD-128/160, and the size of $K^{\prime}$ is 64 bytes, followed by 0);
 
-$\bullet$ xor;
 
 $\bullet$ opad:outer HASH padding value, 0x5c5c5c.... Length equal to K’ $K^{\prime}$;
 
@@ -1389,18 +1434,25 @@ $\bullet$ m:a message input;
 
 $\bullet$ $||$:Indicates connection.
 
+\
+
 \subsubsection{HOTCP(HMAC-based One-Time Password)}
 Algorithm formula:
 \\
-$HOTP(K,C) = (Truncate(HMAC(K,C))\&0x7FFFFFFF) 
-\\mod 10^{d}$
+$HOTP(K,C) = (Truncate(HMAC(K,C)) ~\& 
+\\0x7FFFFFFF)mod 10^{d}$
 
 $\bullet$ C:counter;
 
 $\bullet$ Truncate:after processing will get a 32bit unsigned integer;
 
 $\bullet$ A d-bit numeric password is obtained with a d-squared modulus operation of 10.
+
+\
+
 \subsubsection{TOTP(Time-Based One-Time Password)}
+
+
 Algorithm formula:
 \\
 $$TOTP = HOTP(K, TC)$$
@@ -1412,16 +1464,22 @@ $\bullet$ T0:The time step to start the calculation;
 $\bullet$ TS:Time Step.
 \\
 \\
-After the terminal installs the client and starts the application for the first time, the server can generate a unique token and the device ID corresponding to the token.
 
-$\bullet$ Token: The seed used to generate the OTP code.
 
-$\bullet$ Device ID: Used to uniquely identify the terminal.
 
-After sending the token and the device ID to each terminal, the server needs to store the mapping relationship between the token and the device ID.
 
+
+Figure 23 is a TOTP generation algorithm that Alipay used.
 
 The terminal calculates the dynamic password by using the pre-stored token and the current time as input values of the first preset algorithm.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.55]{TOTP.pdf}}
+\caption{Time-Based One-Time Password.}
+\label{fig}
+\end{figure}
+
+
 
 The first preset algorithm may be an arbitrarily formed irreversible algorithm
                            
@@ -1431,26 +1489,30 @@ The first preset algorithm may be an arbitrarily formed irreversible algorithm
 
                            $3$, challenge response algorithm (OCRA);
 
-Alipay and moust of payment server provider now mainly uses TOTP technology
-
-
+\
 
 
 The first information can be any of the following:
 
-1, dynamic password: such as: 123456.
+1, dynamic password: a sequence of random numbers.
 
-2, the combination of dynamic password and current time value: such as: 123456 (dynamic password) 20160503110232 (current time value)
+2, the combination of dynamic password and current time value: such as: 765645 (dynamic password) 20160503110232 (current time value)
 
 3, device ID and dynamic password:
 
 4, device ID and dynamic password + current time value.
+
+\
 
 The first information including the above-mentioned dynamic password is used as the input value of the second preset algorithm, and the second information is calculated.
 
 The second preset algorithm is an irreversible algorithm such as: HMAC, MD5, or HMAC-SHA algorithm.
 
  second information is generally obtained with the token and the first information as input values
+
+\
+
+The authentication algorithm is as follows:
 
 1, find the corresponding token with the device ID of the authentication password
 
@@ -1463,38 +1525,33 @@ If it is found that a certain trusted dynamic oral delivery is consistent with t
 
 
 
-10: device ID
-
-20: Dynamic password
-
-30: second information
-
 \begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.62]{TOTP2.pdf}}
-\caption{Time-Based One-Time Password.}
-\label{fig}
-\end{figure}
-
-\begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.6]{QRcode.png}}
+\centerline{\includegraphics[scale=0.4]{OTP.png}}
 \caption{Offline payment.}
 \label{fig}
 \end{figure}
 
-\begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.65]{TOTP.pdf}}
-\caption{Time-Based One-Time Password.}
-\label{fig}
-\end{figure}
+The latest TOTP algorithm of Alipay and WeChat is different from this, but the basic ideas and methods are similar.
 
 
-\subsection{IC card and its imitation payment}
+
+
+
+
+
+
+
+\section{Mobile phone emulate IC card}
+Mobile phone manufacturers’ technology in mobile payment is mainly embodied in the combination of hardware and software. Samsung’s KNOX and eSE, Apple’s co-processor, and Google’s HCE technology allow users’ bank cards to be securely bound to their phones.
+
 IC card credit card payment is the main portable payment method before mobile payment. Especially in Europe and the United States, it has become a payment method that many people have become accustomed to. Therefore, Samsung, Apple, Google and other large European and American Internet companies have taken a different path from companies such as Alibaba and Tencent when they entered the payment industry.
 
 Different from the use of the two-dimensional code, audio, and other means. They work directly with banks and  are committed to using mobile phones to simulate IC card payments which hope to have a swipe experience on the mobile phone.
 
+
 \subsection{bank card}
-The bank card is divided by the interface and can be divided into:
+
+At the beginning, we briefly introduced the bank card, the bank card is divided by the interface and can be divided into:
 
 \textbf{magnetic card;}
 
@@ -1523,52 +1580,24 @@ The subdivision of chips can be divided into
 
 
 
-
-
-\section{Mobile phone emulate IC card}
-With the gradual deployment of Android Pay, Apple Pay and Samsung Pay, mobile payments have returned to the public eye and the comparative articles on several types of payment have not been uncommon in recent days. This article mainly discusses the similarities and differences between several payment methods from a technical point of view.
-\\
-
-Apple Pay and Android Pay each serve as a system-level payment application (Apple Pay by iOS, Android Pay by Android), not only play the role of application, but also has a God perspective, as a system feature for other applications developers A unified payment gateway. In other words, other shopping and service applications can invoke APIs of Apple Pay or Android Pay in the development code to charge consumers, for example, purchasing a movie ticket. Before the application is almost always linked to VISA or MasterCard online payment allows users to fill in the cardholder name, card number, expiration date, code and other safety information, each time you have to fill in the shopping (the site should not and can not be saved), or combined with OTP (one-time password) certification, This is a hassle and a safety hazard (previously PC-based cookies were hacked, or consumer websites saved user-card information, such as previous Ctrip, resulting in theft of credit card information); application developers can now call Pay, allowing users to choose their own credit card has been added to pay, users do not need to fill in a form, a key shopping, the real charge to pay to do.\\
-
-Relative to the online payment (in short, that is connected with the Internet, the payment of data through the network transmission), offline payment is a physical payment, you need a terminal device chargeback, in most cases, POS machines. In order to replace the traditional credit card with credit card spending, NFC + Pay way allows consumers to use a cell phone, rather than a variety of cards for "flash" consumption. Pay only needs the POS machine to support NFC without any other modification. Therefore, offline entity merchants accept this payment method exactly as the acceptance of non-connected bank cards such as MasterCard Pay Pass, Visa Pay Wave, China Union Pay Flash Quick Pass , There is no promotion barriers, but also to speed up the deployment of wireless POS machines coupled with a heavy weight.
-
-\subsection{sumsung pay}
-Samsung Pay uses NFC and MST technologies. 
+\subsection{Sumsung pay}
+In order to be able to simulate the bank card payment as much as possible, Samsung used two sets of payment plans, which are the aforementioned NFC and solutions.
 
 Samsung Pay uses both NFC and MST to send payment information to the terminal. The transaction is seamless, whether using NFC or MST, allowing for a better user experience.
 
-Both technologies are equally secure, using a unique digital card number in place of the actual card number. The information is kept private and secure, and only the bank and the card's payment network will have information on the transaction.
+In order to improve the security of mobile phones, Samsung developed KNOX in terms of software. KNOX is a solution that guarantees end-to-end security. It provides defensive-grade security protection from hardware to application layer. KNOX integrates the Android System Security Enhancement Kit (SE Android) developed by the National Security Agency of the United States and applications. Hardware and Android Framework integrity management services. At the application layer, KNOX provides a "container" solution that isolates the mobile device from its office use and personal use.
 
-Samsung's payment technology also uses TOTP technology and virtual bank card technology. The following steps can be known from Fig 21:
-
-\textbf{1, }The client first submits bank card-related information on the app. Samsung takes them to the bank or card organization in exchange for a virtual silver card and secret value and binds it with the user account. In addition to being stored on the server, it is also stored in the KNOX of the client's mobile phone.
-
-\textbf{2, }Combine the virtual line card with the secret value and add the TOTP algorithm to get a one-time payment password. The following is a guess. When the payment is made again, the first 6 digits and the last 4 digits of the password are the same as the virtual bank card. The middle 8 digits are TOTP passwords.
-
-\textbf{3,}The payment password using MST or NFC encoding, and simulate the physical bank card payment method in pos credit card. The payment password and the pos machine ID are transmitted to the bank server via the payment network.
-
-\textbf{4,}The bank server obtains the virtual bank card by decrypting the TOTP, and obtains the real bank card through the de-tokenization technology. Finally, the bank card is used for real payment, and the payment completion information is returned to the Samsung server.
-
-Samsung's MST payments and NFC payments are analog bank card payments. Not only that, S and C will be displayed behind the pos card number on the pos machine.
-
-In fact, this means that the physical card swiping method. S means the media representing the card is a magnetic stripe. I means that use the intergated chip. C and Q are the non-contact transactions.
-
-It can be concluded that Samsung's payment, while simulating the physical card payment on the surface, essentially uses the core technologies of mobile offline payment, namely, tokenization and TOTP.
+Samsung uses security combination of eSE and trustzone in terms of hardware. In terms of hardware, Samsung uses the security combination of eSE and trustzone. Sensitive data such as PINs, tokens, fingerprint etc. are stored in the eSE, and payment operations are performed under the TEE.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.35]{sanxingMST2.png}}
-\caption{samsung pay service architecture.}
+\centerline{\includegraphics[scale=0.4]{samxing_pay.png}}
+\caption{Samsung payment.}
 \label{fig}
 \end{figure}
 
-\begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.35]{sanxingNFC2.png}}
-\caption{samsung pay service architecture.}
-\label{fig}
-\end{figure}
 
-\subsection{google pay}
+
+\subsection{Google pay}
 On February 20, 2018, Google announced that it has integrated Android Pay and Google Wallet, officially launched a new payment service Google Pay
 
 \subsubsection{Android Pay}Android Pay is a mobile payment service launched by Google in 2015. It is based on the foundation of Google's electronic money package. It allows users to store credit or financial cards in mobile phones and use Near Field Communication (NFC) to transmit them. Card information to complete the payment process to replace the past credit card payment methods, while the original Google e-money packs still exist, mainly supporting network-based Play Store shopping and some application-based point-to-point payments.
@@ -1639,14 +1668,14 @@ The doubts about mobile payment will be even more amplified on Android Pay. Beca
 \label{fig}
 \end{figure}
 
-\subsection{apple pay}
-Apple pays only NFC payments, and its technology is very similar to Samsung's NFC technology, but Apple's use of the scene is not Samsung. Because it does not support magnetic stripe payments, it supports Apple payments on many older devices that only support magnetic stripe payments.
+\subsection{Apple pay}
+Apple Pay only supports NFC payments, and its technology is very similar to Samsung's NFC technology. Since it does not support the magnetic stripe payment, many older devices that only support magnetic stripe payments cannot use Apple pay. Therefore, Apple's payment is more limited than Samsung's payment.
 
-By comparison, it is not difficult to see that Apple Pay and Samsung Pay have an essential difference from China’s Alipay/WeChat. Apple Pay and Samsung Pay do not have their own account ecology. They are only used to replace bank cards for online and offline consumption, eliminating the need to carry bank cards or memories, but are limited to only supporting their own models, and their audiences are relatively Narrower.
+By comparison, it is not difficult to see that Apple Pay and Samsung Pay have an essential difference from China’s Alipay/WeChat. Apple Pay and Samsung Pay do not have their own account ecology. They are only used to replace bank cards for online and offline consumption, eliminating the need to carry bank cards, but are limited to only supporting their own models, and their audiences are relatively Narrower.
 
 Apple's core technology is still Tokenization. Not only that, Apple is also one of the promoters of the Payment Token specification.Although almost all foreign or domestic analysis articles have intentionally or unintentionally mentioned that Apple Pay has implemented the EMVCo specification, so far no official information from Apple or EMVCo has mentioned that Apple Pay has implemented the Tokenisation specification of EMVCo, but The process of adding a card to Apple Pay is very similar to that of EMVCo's request token. At this time, Apple plays the role of a “token requester” (the specification of EMVCo explicitly mentions that the device manufacturer that makes mobile payment can be One of the main categories of token requestors), the bank or payment network plays the role of a token service provider. In addition, the dynamic security code that provides basic security for Apple Pay transactions is very similar to the method of generating and using the Token Cryptogram of the EMVCo specification. Rethinking that Visa and MasterCard have disclosed their tokenization services after the launch of Apple Pay, we have reason to believe that Apple Pay actually implements the Tokenisation specification of EMVCo.
 
-Like the Samsung, the ios system has an application called wallet. When you bind a card, you need to connect to an Apple Pay server.Similarly, the Apple Pay server will also request the virtual bank card from the bank or card organization server with the bank card information submitted by the user.
+Like the Samsung, the ios system has an application called wallet. When you bind a card, you need to connect to an Apple Pay server. Similarly, the Apple Pay server will also request the virtual bank card from the bank or card organization server with the bank card information submitted by the user.
 
 The mobile phone and Apple Pay server do not save the full bank card number, and only store the unique Device Account Number in the SE. (The payment credentials generated by DAN's iPhone device information and Token encryption can effectively prevent the leakage of credit card information.
 
@@ -1654,11 +1683,7 @@ Apple Pay is a product that integrates various technologies and resources. Its c
 
 
 
-\textbf{Secure Element:} The short name SE, which is often referred to as a security element, is an electronic component that resists physical attacks. It contains a microprocessor, storage, and encryption/decryption hardware. It can be used independently (for example, a chip card) or embedded in other devices. Medium (eg, Apple Pay and Google Wallet) provide high security services. Apple Pay uses the form of eSE. Specifically, Apple Pay uses industry standards. A secure element that is compatible with the electronic trading requirements of the financial industry by running the Java Card Platform (JCP). SE is the core of Apple Pay security. In essence, all payment processing and security related to Apple Pay are under the responsibility of SE. Other components only play a supporting role.
-
-The SE(Secure Element) technology is based on the Secure Element specification released by the GlobalPlatform organization. The GlobalPlatform organization is an international standards organization that develops security chip technology standards. Important members include ARM, AMD, AT\&T, China Mobile, VISA, Apple, Samsung, Huawei, etc.
-
-Secure Element is a GP card specification compliant Java card that can contain multiple security domains corresponding to different issuing banks or payment network entities. These security domains are shared with corresponding management parties for verifying identity and secure communication of management parties. The key. Personalized data from card issuing banks or payment networks, encrypted using these shared keys, can be securely distributed to the corresponding security domain, thus completing the personalization process for payment of Applet, which is the same as traditional payment card personals. The process is similar
+\textbf{Embedded Secure Element:} As described in section 3.
     
     \textbf{NFC controller:} NFC controller. In the context of Apple Pay, the NFC controller acts as a router. It is connected to three different external entities: external near-field devices (eg, point-of-sale (POS), point-of-sale), and applications. The processor (AP, Application Processor) and Secure Element, in turn, form two communication channels: the application processor's communication channel to the Secure Element, and the communication channel between the POS and the Secure Element.
     
@@ -1668,8 +1693,6 @@ Secure Element is a GP card specification compliant Java card that can contain m
    
     \textbf{Secure Enclave:} Secure Enclave is an internal secure execution environment for iOS devices. It can be used to process sensitive information. For example, the data acquired by Touch ID's fingerprint imaging sensor needs to be passed to Secure Enclave for the actual fingerprinting process. For Apple Pay, Secure Element manages the certification process and makes payment transactions possible.
     Secure Enclave is a coprocessor packaged together by the Apple A7 and subsequent series of application processors. It has its own secure boot process and personalized software update process, and it is separate from the application processor where the iOS system is located. Secure Enclave uses encryption (using a temporary generated key encryption) physical memory (a portion of the physical memory shared by the application processor) for business processing and has its own hardware random number generator. Secure Enclave communicates with the application processor through the interrupt-driven mailbox and shared memory, and provides all cryptographic services related to data protection key management.
-
-The ARM TrustZone technology we are familiar with is essentially a virtualization technology that divides processor state into secure and non-secure states, and cooperates with other buses and security attributes on peripherals to achieve security throughout the entire hardware system. Like Secure Enclave, ARM TrustZone has its own secure boot process and personalized software update process. It also has its own hardware random number generator (and other similar security peripherals), and is also driven by the interrupt between the same application processor. Monitor mode and shared memory for communication. It can be seen that the security features provided by Secure Enclave have not exceeded the scope of ARM TrustZone technology.
 
 
 Apple has never mentioned that Secure Enclave is an implementation of the ARM TrustZone security extension technology (although according to the description of several secure communication channels in the official Apple documentation, Secure Enclave is probably an implementation of the ARM TrustZone technology), we are still It is impossible to determine whether the Secure Enclave is an independent coprocessor or an application processor running state (both architectures can provide the required security features of Secure Enclave), this needs to be announced by Apple for more details of the implementation of Secure Enclave, At present, it can be concluded that the security features provided by Secure Enclave can also be implemented
@@ -1683,8 +1706,8 @@ The implementation is similar to the process of communicating with Touch ID and 
 
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.5]{iphone_pay.pdf}}
-\caption{Iphone security payment.}
+\centerline{\includegraphics[scale=0.7]{iphone_pay.pdf}}
+\caption{Apple pay for payment.}
 \label{fig}
 \end{figure}
     
@@ -1693,17 +1716,25 @@ The implementation is similar to the process of communicating with Touch ID and 
  using ARM TrustZone technology.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.37]{iphone_tsp.pdf}}
-\caption{Iphone security payment component.}
+\centerline{\includegraphics[scale=0.6]{iphone_tsp.pdf}}
+\caption{Apple pay for token application.}
 \label{fig}
 \end{figure}
 
 \section{Disscusion and security comparison}
 \begin{figure*}[htbp]
-\centerline{\includegraphics[scale=0.5]{datu.pdf}}
-\caption{Time-Based One-Time Password.}
+\centerline{\includegraphics[scale=0.48]{datu.pdf}}
+\caption{Mobile payment framework.}
 \label{fig}
 \end{figure*}
+
+
+\begin{figure*}[htbp]
+\centerline{\includegraphics[scale=0.48]{tec.pdf}}
+\caption{Mobile payment technology framework.}
+\label{fig}
+\end{figure*}
+
 
 
 \section{Conclusion}
