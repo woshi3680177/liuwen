@@ -652,7 +652,7 @@ After getting the token, the phone can use it to initiate mobile payment.
 
 In the mobile payment process, payment service providers such as Alipay, WeChat,etc are very similar to those of mobile phone manufacturers such as Samsung, Apple, etc, but the entire payment process and technology are completely different.
 
-The right side of Figure 1 describes the payment process of Alipay, WeChat, etc. The process is as follows：
+The right side of Figure 1 describes the payment process of Alipay, WeChat,  etc. The process is as follows:
 
 1, The mobile terminal generates a time-based one-time password (TOTP) and transmits it to the PoS machine through the QR code or audio;
 
@@ -664,7 +664,7 @@ The right side of Figure 1 describes the payment process of Alipay, WeChat, etc.
 
 \textbf{attention}:Alipay, WeChat, etc. all have their own accounts in the bank. The process of transferring money to users' Alipay and WeChat accounts is actually transferring money to Alipay and WeChat bank accounts. So when the user pays with the account balance, the money is actually in the bank account of Alipay or WeChat and has not moved.
 
-The left side of Figure 1 describes the payment process of Samsung, Apple,etc. The process is as follows：
+The left side of Figure 1 describes the payment process of Samsung, Apple,etc. The process is as follows:
 
 1, Mobile phone simulates bank card payment mode through hardware;
 
@@ -687,7 +687,7 @@ As can be seen from the above, Alipay, WeChat, etc. not only provide payment ser
 \subsection{Mobile payment security technoligies}
 This section mainly introduces relevant security technologies through the payment process.
 
-The key technology at the bottom is tokenization, which is divided into centralized tokenization and distributed tokenization. The core technology of former is　central database mapping technology, The core technology of latter is　distrubuted lookup table.
+The key technology at the bottom is tokenization, which is divided into centralized tokenization and distributed tokenization. The core technology of former is central database mapping technology, The core technology of latter is distrubuted lookup table.
 
 Mobile terminal security technologies are mainly trustzone and SE technologies. The former provides a secure operating environment and the latter provides secure storage.
 
@@ -1071,7 +1071,7 @@ QR code payment is very popular in China, people can almost go out without walle
 
 \subsubsection{QR code working principle}
 
-The QR code itself cannot make payment authorization, since the actual payment authorization is the one-time payment password which encoded in the QR code. The one-time payment password is a series of digits(which we calld \textbf{payment password}，shows on Fig 10). You can authorize payment with this numbers. So the role of the QR code in mobile payment is to transmit this series of numbers. The specific technology of one-time payment password will be told in section 6.
+The QR code itself cannot make payment authorization, since the actual payment authorization is the one-time payment password which encoded in the QR code. The one-time payment password is a series of digits(which we calld \textbf{payment password}, shows on Fig 10). You can authorize payment with this numbers. So the role of the QR code in mobile payment is to transmit this series of numbers. The specific technology of one-time payment password will be told in section 6.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[scale=0.46]{QR_decode.png}}
