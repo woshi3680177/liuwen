@@ -687,9 +687,39 @@ As can be seen from the above, Alipay, WeChat, etc. not only provide payment ser
 \subsection{Mobile payment security technoligies}
 This section mainly introduces relevant security technologies through the payment process.
 
-The key technology at the bottom is tokenization, which is divided into centralized tokenization and distributed tokenization. The core technology of former is central database mapping technology, The core technology of latter is distrubuted lookup table.
 
-Mobile terminal security technologies are mainly trustzone and SE technologies. The former provides a secure operating environment and the latter provides secure storage.
+The token mentioned above mainly uses tokenization technology, which is divided into centralized tokenization and distributed tokenization and the key technology of former is central database mapping technology, the latter is distrubuted lookup table. Detailed in the third section.
+
+In addition to storing a large amount of sensitive information, the mobile terminal will also act as the initiator of mobile payment, so the security of the mobile terminal is receiving unprecedented attention. Mobile terminal security technologies are mainly:
+ 
+$\bullet$ trustzone: provides a secure operating environment;
+
+$\bullet$ SE: securely store and use credentials for payment, authentication, and other services.
+
+Detailed in the fourth section.
+
+
+After the mobile terminal is secure, its communication with the PoS machine requires not only security but also the user experience. Given the difference in authentication technology, there are many cases
+
+Alipay,Wechat,etc:
+
+$\bullet$ QR code;
+
+$\bullet$ Audio(only Alipay).
+
+Samsung,Apple,Google,etc:
+
+$\bullet$ NFC;
+
+$\bullet$ MST(only Samsung);
+
+Detailed in the fifth section.
+
+Communication technology is only responsible for interacting with the PoS machine, and the payment authentication technology is truly able to complete the payment. The same two camps use completely different technologies.
+
+Alipay,Wechat,etc: Use a time-based one-time payment password(TOTP),Use a time-based one-time payment password, each password is valid only for that minute and can only be used once. Detailed in the sixth section.
+
+Samsung,Apple,Google,etc: Use the same payment method as a bank contactless card, using NFC's interactive features to authenticate payments using RSA, hash functions, and digital certificates.Detailed in the seventh section.
 
 
 
