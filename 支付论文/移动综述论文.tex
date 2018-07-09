@@ -436,7 +436,7 @@ GA, 30332 USA e-mail: (see http://www.michaelshell.org/contact.html).}% <-this %
 % As a general rule, do not put math, special symbols or citations
 % in the abstract or keywords.
 \begin{abstract}
-With mobile payments popular all over the world, people almost no need to bring a wallet, the bank card is stored directly in the mobile phone and also allows the users to conduct a payment anytime and anywhere. While providing convenience to people, it also brings more payment security issues. This paper carefully discussed the overall technical framework of payment and conducted a layered analysis of the entire payment process from the mobile phone to the bank. classifies mobile payment and gives the structure and model of the mobile payment system. Discussing mobile payment security from the perspective of security technology, involving secure payment token technology, secure payment mobile terminal technology, secure payment authentication technology, secure payment communication technology. Finally, from the perspective of security technology mentioned above to analysis today's mainstream mobile payment solutions such as Alipay, Wechat pay, Samsung pay, Google pay and Apple pay are analyzed, The main features and security discussion are held for each scheme, pointing out the respective deficiencies and directions for improvement. 
+With mobile payments popular all over the world, people almost no need to bring a wallet, the bank card is stored directly in the mobile phone and also allows the users to conduct a payment anytime and anywhere. While providing convenience to people, it also brings more payment security issues. This paper carefully discussed the overall technical framework of payment and conducted a layered analysis of the entire payment process from the mobile phone to the bank. Classifies mobile payment and gives the structure and model of the mobile payment system. Discussing mobile payment security from the perspective of security technology, involving secure payment token technology, secure payment mobile terminal technology, secure payment authentication technology, secure payment communication technology. Finally, from the perspective of security technology mentioned above to analysis today's mainstream mobile payment solutions such as Alipay, Wechat pay, Samsung pay, Google pay and Apple pay are analyzed, The main features and security discussion are held for each scheme, pointing out the respective deficiencies and directions for improvement. 
 
 
 
@@ -493,17 +493,19 @@ tokenization, eSE, QR code, NFC, offline, TOTP.
  
 %\hfill August 26, 2015
 \section{Introduction}
-\IEEEPARstart
-Since modern times, payment methods have tremendous changes. People began to pay in cash. Then, technology deposits cash into magnetic stripe cards and IC cards. Thus people (especially in Europe and the United States) gradually fond of paying by their cards, but today's technology again puts bank cards into mobile phones. mobile payments have become a general trend. Today, mobile payments are beginning to dominate the market worldwide. In China, from luxury shopping malls to simple roadside stalls, there are almost no places that do not support mobile payments. People go out without cash, take the bus and subway swiped mobile phones, and simply scan the QR code for dining and shopping. In Europe and the United States, mobile phones continue to perform credit card operations as a substitute for bank cards. Samsung, Google and Apple have joined MasterCard, Visa and other card organizations to promote their respective payment programs, almost every mall can see the logo of Samsung pay, Google pay, Apple pay. In other parts of the world, mobile payments are also slowly entering people’s lives, regardless of poverty and wealth. The day it completely occupied the market will come back sooner or later.
+\IEEEPARstart{S}ince modern times, payment methods have tremendous changes. People began to pay in cash. Then, technology deposits cash into magnetic stripe cards and IC cards. Thus people (especially in Europe and the United States) gradually fond of paying by their cards, but today's technology again puts bank cards into mobile phones. Mobile payments have become a general trend and are beginning to dominate the market worldwide. In China, from luxury shopping malls to simple roadside stalls, there are almost no places that do not support mobile payments. People go out without cash, take the bus and subway swiped mobile phones, and simply scan the QR code for dining and shopping. In Europe and the United States, mobile phones continue to perform credit card operations as a substitute for bank cards. Samsung, Google and Apple have joined MasterCard, Visa and other card organizations to promote their respective payment programs, almost every mall can see the logo of them. In other parts of the world, mobile payments are also slowly entering people’s lives, regardless of poverty and wealth. The day it completely occupied the market will come back sooner or later.
 
-Today's major mobile payment solutions can be divided into two camps. One party is based mainly on Alipay, Tencent, Paypal, MasterCard, etc. They are not simply payment providers, but also have some of the bank's functions. The user only interacts with the payment server. After completing the settlement within the server, the server then interacts with the bank. Therefore, the main security technology is used from the user's payment to server authentication. On the other hand, they are Apple, Samsung, Google and other mobile phone manufacturers. In order not to change people's habits of swiping cards, they use their hardware advantages to directly connect with banks and use mobile phones to simulate the entire payment process of the bank cards. Since the IC card itself is very complicated, in order to simulate its functions and maintain the same security, mobile phone manufacturers and banks have jointly developed a large number of software and hardware technologies on mobile terminals. Offline payment (that is, the mobile terminal does not need to pay for networking) is the research focus of the two camps this year. The payment service providers paid for by using the password + QR codes, quickly occupying the Chinese market with their low hardware requirements and strong compatibility. In the European and American markets, there is not enough trust in this model, and mobile phone manufacturers have also achieved the offline payment function by means of analog bank card flash payment. Then there is the security issue of the mobile terminal, ie how the mobile terminal stores sensitive information and guarantees data security in the payment process. The technologies involved are trustzone and eSE.
+Regarding the definition of mobile payment, the global payment-related organizations all have given their own definitions. But the definition of mobile payment forums is recognized in the industry: mobile payment, also called mobile payment, refers to the transaction of both parties for certain goods  or service, using a mobile terminal device as a carrier, a commercial transaction implemented through a mobile communication network. The mobile terminal used for mobile payment may be a mobile phone, a PDA, a mobile PC, or the like.
 
-The security issues of mobile payments are mainly divided into several categories. The first is the bank card binding problem, that is, in what form, what way the bank card is bound to the mobile phone. The technologies involved are tokenization and bank card binding security scheme. Then there is the security issue of the mobile terminal, how the mobile terminal stores sensitive information and guarantees data security in the payment process. The technologies involved are trustzone and eSE. Finally, secure payment authentication and communication issues,how to ensure the security and authentication of mobile payments from mobile phones to banks.
+The classification of mobile payments varies from different perspectives. According to the distance of mobile payment, it can be divided into the near-field payment and the far-field payment. The far-field payment mainly includes online shopping payment and various online payment, while the near-field payment is mainly used for transportation payment and supermarket shopping. In addition, according to the network requirements of the user's mobile terminal, it can be divided into offline payment and online payment.
+Finally, from the perspective of the entire payment technology and the main body of payment, this article divides mobile payment into bank-led and TPC-led(third-party payment companies led). TPC-led mobile payments are based mainly on Alipay, Tencent, Paypal, etc and bank-led mobile payment are jointly provided by various bank and mobile phone manufacturers.
+
+
+The security issues of mobile payments are mainly divided into several categories. The first is the bank card binding problem, that is, in what form, what way the bank card is bound to the mobile phone. The technologies involved are tokenization and bank card binding security scheme. Then there is the security issue of the mobile terminal, how the mobile terminal stores sensitive information and guarantees data security in the payment process. The technologies involved are trustzone and eSE. Finally, secure payment authentication and communication issues, how to ensure the security and authentication of mobile payments from mobile phones to banks.
 
 %{I}n this study, the research will introduce secure payment technologies related to popular mobile payment schemes. Since modern times, payment methods have tremendous changes. People began to get used to paying in cash. After then, technology store cash into magnetic stripe cards and IC cards. Thus people (especially in Europe and the United States) gradually fond of paying by their cards, but today's technology again puts bank cards in mobile phones. mobile payments have become a general trend. With the popularity of mobile payments, mobile payment security has received more and more attention. Although mobile payments have become increasingly convenient, the security issues they face are more complex than ever. Today's major mobile payment solutions can be divided into two camps. One party is based mainly on Alipay, Tencent, Paypal, MasterCard, etc. They are not simply payment providers, but also have some of the bank's functions. The user only interacts with the payment server. After completing the settlement within the server, the server then interacts with the bank. Therefore, the main security technology is used from the user's payment to server authentication. On the other hand, they are Apple, Samsung, Google and other mobile phone manufacturers. In order not to change people's habits of swiping cards, they use their hardware advantages to directly connect with banks and use mobile phones to simulate the entire payment process of the bank cards. Since the IC card itself is very complicated, in order to simulate its functions and maintain the same security, mobile phone manufacturers and banks have jointly developed a large number of software and hardware technologies on mobile terminals. Offline payment (that is, the mobile terminal does not need to pay for networking) is the research focus of the two camps this year. The payment service providers paid for by using the password + QR codes, quickly occupying the Chinese market with their low hardware requirements and strong compatibility. In the European and American markets, there is not enough trust in this model, and mobile phone manufacturers have also achieved the offline payment function by means of analog bank card flash payment. However, while mobile payments involve a large number of security technologies, there is one technology that is the basis for mobile payment today---Tokenization.%
-
-In conjunction with the above-mentioned objective, the remainder of this study is organized based on the major research areas of mobile payment security: in Section 2, Introduce the structure and model of the entire mobile payment system
-in Section 3, we present the virtual bank card binding technology. In Section 4, Mobile terminal security technology related to mobile payment are reviewed. Section 5 contains payment communication technologis. In Section 6 onlie payment technologies are discussed, and Section 7 introduce China's Alipay, Wechat offline technology. In Section 8 focus on the technology of using mobile phone to simulate bank card payment. Concurrently, we summarize the entire technology and analyze the advantages and disadvantages and also future development trends.
+In conjunction with the above-mentioned objective, the remainder of this study is organized based on the major research areas of mobile payment security: in Section 2, Introduce the mobile payment system structure and security technology framework.
+in Section 3, we present the bank card binding technology. In Section 4, Mobile terminal security technology related to mobile payment are reviewed. Section 5 contains payment communication technologis. In Section 6 and section 7 are introduced TPC-led payment security. In Section 8 focus on the bank-led payment security. Concurrently, we summarize the entire technology and analyze the advantages and disadvantages and also future development trends.
 %{I}
 %n this study, the research model is developed based on relevant business model, platform and
 %business ecosystem theories. The final research model consists of three connected perspectives
@@ -625,12 +627,16 @@ in Section 3, we present the virtual bank card binding technology. In Section 4,
 % Note that, LaTeX2e, unlike IEEE journals/conferences, places
 % footnotes above bottom floats. This can be corrected via the
 % \fnbelowfloat command of the stfloats package.
-\section{Mobile payment security system}
-In this section will introduce the entire mobile payment system structure. First introduce the process of mobile payment, also explain the related technologies and ideas involved. Grasp the entire mobile payment from a macro perspective and analyze it in detail in later sections. Mobile payment will then be analyzed from a security technology perspective, from hardware security technology to payment authentication technology.
-
-\subsection{Mobile payment process model}
+\section{Mobile payment system structure and Security technology framework}
+In this section will introduce the entire mobile payment system structure and security. First introduce the process of mobile payment, also simple explain the related technologies and ideas involved. And then, the important part of the payment process will be taken out separately and its related security technology will be introduced. The following sections are discussed and compared according to this technical category.
 
 
+
+\subsection{Mobile payment system structure}
+In the introduction we have divided mobile payments into bank-led and TPC-led. This section introduces the entire mobile payment process based on this classification.
+
+   
+We introduce the whole process through Figure 1. The left half of the way represents TPC-led mobile payment and the right half represents bank-led.
 
 The first process to introduce is bank card binding. Different from traditional bank card payments, our PANs(bank card number) are not allowed to stored on the phone or the server of  Alibaba or Samsung, or be transmitted over the network frequently. Therefore, the token is used to perform related operations instead of the real PAN.
 
@@ -645,14 +651,19 @@ The left and right of Figure 1 describes the bank card binding process:
 4, the mobile terminal will save the token
 
 
-
 No matter which payment software you use, what is really bound to the phone is the token, which we also call a virtual bank card. This technique and its security analysis is covered in detail in the next section.
 
-After getting the token, the phone can use it to initiate mobile payment. 
+\subsubsection{The payment process of TPC-led}
+TPC-led is based mainly on Alipay, Tencent, Paypal, etc. They are not simply payment providers, but also have some of the bank's functions. The user only interacts with the TPC. After completing the settlement within the TPC server, TPC sever interacts with the card orgination and bank. 
 
-In the mobile payment process, payment service providers such as Alipay, WeChat,etc are very similar to those of mobile phone manufacturers such as Samsung, Apple, etc, but the entire payment process and technology are completely different.
+TPC-led mainly consists of two payment methods. one is TOTP payment, the other is transfer payment.
+
 
 The right side of Figure 1 describes the payment process of Alipay, WeChat,  etc. The process is as follows:
+
+\
+
+TOTP payment:
 
 1, The mobile terminal generates a time-based one-time password (TOTP) and transmits it to the PoS machine through the QR code or audio;
 
@@ -662,7 +673,23 @@ The right side of Figure 1 describes the payment process of Alipay, WeChat,  etc
 
 3.2, Case 2, if the user is using a virtual bank card payment. The server will transmit the token and transaction information to the card organization (China UnionPay, Visa, MasterCard, etc.). After the card organization obtains the token, it can find the corresponding PAN through de-tokenization and contact the issuing bank to complete the transaction.
 
+\
+
+Transfer payment:
+
+1, The user uses the mobile phone to scan the QR code of the store counter or the other way to obtain the URL and pay at the website;
+
+2, TPC server receives the payment request from the use;
+
+3, The same as TOTP payment.
+
 \textbf{attention}:Alipay, WeChat, etc. all have their own accounts in the bank. The process of transferring money to users' Alipay and WeChat accounts is actually transferring money to Alipay and WeChat bank accounts. So when the user pays with the account balance, the money is actually in the bank account of Alipay or WeChat and has not moved.
+
+\
+
+\subsubsection{The payment process of bank-led}
+bank-led mobile payment are jointly provided by various bank and mobile phone manufacturers. In order not to change people's habits of swiping cards, they use their hardware advantages to directly connect with banks and use mobile phones to simulate the entire payment process of the bank cards. Since the IC card itself is very complicated, in order to simulate its functions and maintain the same security, mobile phone manufacturers and banks have jointly developed a large number of software and hardware technologies on mobile terminals.
+
 
 The left side of Figure 1 describes the payment process of Samsung, Apple,etc. The process is as follows:
 
@@ -673,6 +700,8 @@ The left side of Figure 1 describes the payment process of Samsung, Apple,etc. T
 3, The PoS obtains the TOTP generated by the token or the token and the TOTP will directly communicate with the card organization after adding the information required by other contactless cards or magnetic stripe cards.
 
 4, After the card organization obtains the token, it can find the corresponding PAN through de-tokenization and contact the issuing bank to complete the transaction.
+
+\
 
 As can be seen from the above, Alipay, WeChat, etc. not only provide payment services for users, but also bear a certain degree of banking functions. And Samsung, Apple, etc. just to provide users with convenient payment.
 
@@ -685,8 +714,7 @@ As can be seen from the above, Alipay, WeChat, etc. not only provide payment ser
 
 
 \subsection{Mobile payment security technoligies}
-This section mainly introduces relevant security technologies through the payment process.
-
+This subsection mainly introduces relevant security technologies through the payment process. The entire technical framework is shown in Figure 2.
 
 The token mentioned above mainly uses tokenization technology, which is divided into centralized tokenization and distributed tokenization and the key technology of former is central database mapping technology, the latter is distrubuted lookup table. Detailed in the third section.
 
@@ -699,15 +727,15 @@ $\bullet$ SE: securely store and use credentials for payment, authentication, an
 Detailed in the fourth section.
 
 
-After the mobile terminal is secure, its communication with the PoS machine requires not only security but also the user experience. Given the difference in authentication technology, there are many cases
+After the mobile terminal is secure, its communication with the PoS machine requires not only security but also the user experience. Based on different payment classifications, there are,
 
-Alipay,Wechat,etc:
+TPC-led:
 
 $\bullet$ QR code;
 
 $\bullet$ Audio(only Alipay).
 
-Samsung,Apple,Google,etc:
+bank-led:
 
 $\bullet$ NFC;
 
@@ -715,22 +743,22 @@ $\bullet$ MST(only Samsung);
 
 Detailed in the fifth section.
 
-Communication technology is only responsible for interacting with the PoS machine, and the payment authentication technology is truly able to complete the payment. The same two camps use completely different technologies.
+Communication technology is only responsible for interacting with the PoS machine, and the payment authentication technology is truly able to complete the payment. The two camps use completely different technologies.
 
-Alipay,Wechat,etc: Use a time-based one-time payment password(TOTP),Use a time-based one-time payment password, each password is valid only for that minute and can only be used once. Detailed in the sixth section.
+TPC-led: Use a time-based one-time payment password(TOTP),Use a time-based one-time payment password, each password is valid only for that minute and can only be used once. Detailed in the sixth section.
 
-Samsung,Apple,Google,etc: Use the same payment method as a bank contactless card, using NFC's interactive features to authenticate payments using RSA, hash functions, and digital certificates.Detailed in the seventh section.
+bank-led: Use the same payment method as a bank contactless card, using NFC's interactive features to authenticate payments using RSA, hash functions, and digital certificates.Detailed in the seventh section.
 
 
 
 \begin{figure*}[htbp]
 \centerline{\includegraphics[scale=0.48]{tec.pdf}}
-\caption{Mobile payment technology framework.}
+\caption{Mobile payment security technology framework.}
 \label{fig}
-\end{figure*}
+\end{figure*} 
 
-\section{Virtual Bank card binding technology}
-Virtual bank card instead of the real bank card binding in the mobile terminal and transfer in the transaction.In this section, the Virtual bank card binding technology will be told. 
+\section{Bank card binding security}
+Token(Virtual bank card) instead of the real bank card binding in the mobile terminal and transfer in the transaction.In this section, the bank card binding technology will be told. 
 
 %%First, It is need to know why the virtual bank card need bindind in the mobile phone.Accoding to the PCI DSS and China UnionPay standard,there three main reasons need to explain.
 %%First,If the magnetic stripe card is skipped, it can be easily copied into a fake card, which is used for fraudulent transactions and brings about capital losses to the cardholder.in addition,If the card number is expired and the validity period, it is easy to move in some e-commerce in fraudulent transactions, bringing the cardholder money losses.moreover,In the online payment and mobile payment environment,the card organization is even more hopeful that it will not change the usage habit of the cardholder completing the transaction with the card number and expiration date, and at the same time effectively improve the payment security.
@@ -1459,8 +1487,8 @@ Loss of device protection&Rely on terminal security&Rely on terminal security&Re
 
 
 
-\section{Online payment}
-This section and the next section mainly describe the payment technology of payment service providers. Payment service providers mainly refer to Alibaba, Tencent, paypal and others. Their mobile payment technology is mainly divided into network transfer payment and offline payment.
+\section{TPC-led payment security: network transfer payment}
+This section and the next section mainly describe the TPC-led payment security. TPC mainly refer to Alibaba, Tencent, paypal and others. Their mobile payment technology is mainly divided into network transfer payment and offline payment.
 
 
 Network transfer payment technology, as the name suggests, is a transfer payment via the Internet. Different from the PC terminal, the network transfer payment at the mobile terminal needs to pay for the support of the client's app.
@@ -1489,10 +1517,9 @@ In the scan code payment scenario, the QR code is actually a url with some param
 \label{fig}
 \end{figure}
 
-\subsection{Through email}
 
-\section{offline payment technologies}
-Offline payment is a payment method which the most prominent feature is that the paying party do not need connecting to the Internet, which means only one party need communicate with the payment server. It is widely welcomed due to its ease of use. This type of payment method can be seen everywhere, from large shopping malls to small supermarket chains. Even in the underground shopping malls with poor network signals, the surrounding areas of the city, and tourist attractions in the mountains, as long as a mobile phone in hand, you can pay for you. 
+\section{TPC-led payment security: TOTP payment}
+TOTP payment is a payment method which the most prominent feature is that the paying party do not need connecting to the Internet, which means only one party need communicate with the payment server. It is widely welcomed due to its ease of use. This type of payment method can be seen everywhere, from large shopping malls to small supermarket chains. Even in the underground shopping malls with poor network signals, the surrounding areas of the city, and tourist attractions in the mountains, as long as a mobile phone in hand, you can pay for you. 
 
 It mainly binds the bank card to the account of the corresponding payment provider and uses the TOTP technology to generate the payment password to pay. Figure 22 shows the entire process of offline payment from client to bank, including TOTP payment represented by Alipay and Wechat.
 
@@ -1658,7 +1685,7 @@ The latest TOTP algorithm of Alipay and WeChat is different from this, but the b
 
 
 
-\section{Mobile phone emulate IC card}
+\section{Bank-led payment security}
 Mobile phone manufacturers’ technology in mobile payment is mainly embodied in the combination of hardware and software. Samsung’s KNOX and eSE, Apple’s co-processor, and Google’s HCE technology allow users’ bank cards to be securely bound to their phones.
 
 IC card credit card payment is the main portable payment method before mobile payment. Especially in Europe and the United States, it has become a payment method that many people have become accustomed to. Therefore, Samsung, Apple, Google and other large European and American Internet companies have taken a different path from companies such as Alibaba and Tencent when they entered the payment industry.
