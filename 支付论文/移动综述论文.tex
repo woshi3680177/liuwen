@@ -627,29 +627,26 @@ In Section 3, we present the bank card binding technology. In Section 4, Mobile 
 % footnotes above bottom floats. This can be corrected via the
 % \fnbelowfloat command of the stfloats package.
 \section{Secure Mobile payment structure and Security framework}
-In this section will introduce the entire mobile payment system structure and security. First introduce the process of mobile payment, also simple explain the related technologies and ideas involved. And then, the important part of the payment process will be taken out separately and its related security technology will be introduced. The following sections are discussed and compared according to this technical category.
+In this section will introduce the mobile payment system structure and security. First introduce the process of mobile payment, also simple explain the related technologies and ideas involved. And then, the important part of the payment process will be taken out separately and its related security technology will be introduced. The following sections are discussed and compared according to this technical category.
 
 
 
 \subsection{Mobile payment system structure}
-In this section will introduce the entire mobile payment system structure and security. First, present the process of mobile payment, also simply explain the related technologies and ideas involved. And then, the vital part of the payment process will be taken out separately, and its associated security technology will be introduced. The following sections are discussed and compared according to this technical category.
+According to the introduction, the mobile payment can be divided to be TPB-led and Bank-led. In figure 1, we give the whole structure of the mobile payment
 
-In the introduction, we have divided mobile payments into bank-led and TPC-led. This section introduces the entire mobile payment process based on this classification.
-
-   
-We introduce the whole process through Figure 1. The left half of the way represents TPC-led mobile payment, and the right half represents bank-led.
+The left of the way represents TPC-led mobile payment, and the represents bank-led.
 
 The first process to introduce is bank card binding. Different from traditional bank card payments, our PANs(bank card number) are not allowed to store on the phone or the server of  Alibaba or Samsung or be transmitted over the network frequently. Therefore, the token is used to perform related operations instead of the real PAN.
 
 The left and right of Figure 1 describe the bank card binding process:
 
-1, The customer opens the payment app and enters the bank card number on the binding bank card interface.
+P1, The customer opens the payment app and enters the bank card number on the binding bank card interface.
 
-2, The mobile terminal sends the bank card number to the server of the payment provider through the secure communication network.
+P2, The mobile terminal sends the bank card number to the server of the payment provider through the secure communication network.
 
-3, the server interacts with the card organization and obtains the token of the bank card, saves and returns it to the mobile terminal
+P3, the server interacts with the card organization and obtains the token of the bank card, saves and returns it to the mobile terminal
 
-4, the mobile terminal will save the token
+P4, the mobile terminal will save the token
 
 
 No matter which payment software you use, what is indeed bound to the phone is the token, which we also call a virtual bank card. This technique and its security analysis are covered in detail in the next section.
@@ -666,40 +663,28 @@ The right side of Figure 1 describes the payment process of Alipay, WeChat,  etc
 
 TOTP payment:
 
-1, The mobile terminal generates a time-based one-time password (TOTP) and transmits it to the PoS machine through the QR code or audio;
+T1, The mobile terminal generates a time-based one-time password (TOTP) and transmits it to the PoS machine through the QR code or audio;
 
-2, The store PoS sends the TOTP and transaction information to the payment service provider's server via a secure communication network, which will analyze the TOTP certified payment and confirm the payer;
+T2, The store PoS sends the TOTP and transaction information to the payment service provider's server via a secure communication network, which will analyze the TOTP certified payment and confirm the payer;
 
-3.1, Case 1, if the user is using account balance payment, the server will internally settle and complete the transaction, end;
+T3.1, Case 1, if the user is using account balance payment, the server will internally settle and complete the transaction, end;
 
-3.2, Case 2, if the user is using a virtual bank card payment. The server will transmit the token and transaction information to the card organization (China UnionPay, Visa, MasterCard, etc.). After the card organization obtains the token, it can find the corresponding PAN through de-tokenization and contact the issuing bank to complete the transaction.
+T3.2, Case 2, if the user is using a virtual bank card payment. The server will transmit the token and transaction information to the card organization (China UnionPay, Visa, MasterCard, etc.). After the card organization obtains the token, it can find the corresponding PAN through de-tokenization and contact the issuing bank to complete the transaction.
 
 \
 
-Transfer payment:
+Online transfer payment:
 
-1, The user uses the mobile phone to scan the QR code of the store counter or the other way to obtain the URL and pay at the website;
+O1, The user uses the mobile phone to scan the QR code of the store counter or the other way to obtain the URL and pay at the website;
 
-2, The TPC server receives the payment request from the user;
+O2, The TPC server receives the payment request from the user;
 
-3, The same as TOTP payment.
+O3, The same as TOTP payment.
 
 \textbf{attention}: Alipay, WeChat, etc. all have their accounts in the bank. The process of transferring money to users' Alipay and WeChat accounts is moving money to Alipay and WeChat bank accounts. So when the user pays with the account balance, the money is actually in the bank account of Alipay or WeChat and has not moved.
 
 \
 
-
-Transfer payment:
-
-1, The user uses the mobile phone to scan the QR code of the store counter or the other way to obtain the URL and pay at the website;
-
-2, TPC server receives the payment request from the use;
-
-3, The same as TOTP payment.
-
-\textbf{attention}:Alipay, WeChat, etc. all have their own accounts in the bank. The process of transferring money to users' Alipay and WeChat accounts is actually transferring money to Alipay and WeChat bank accounts. So when the user pays with the account balance, the money is actually in the bank account of Alipay or WeChat and has not moved.
-
-\
 
 \subsubsection{The payment process of bank-led}
 Various bank and mobile phone manufacturers jointly provide bank-led mobile payment. In order not to change people's habits of swiping cards, they use their hardware advantages to connect with banks directly and use mobile phones to simulate the entire payment process of the bank cards. Since the IC card itself is very complicated, to reproduce its functions and maintain the same security, mobile phone manufacturers and banks have jointly developed a large number of software and hardware technologies on mobile terminals.
@@ -707,13 +692,13 @@ Various bank and mobile phone manufacturers jointly provide bank-led mobile paym
 
 The left side of Figure 1 describes the payment process of Samsung, Apple, etc. The process is as follows:
 
-1, Mobile phone simulates bank card payment mode through hardware;
+B1, Mobile phone simulates bank card payment mode through hardware;
 
-2, Activate payment by fingerprint or PIN and use NFC to simulate the process of contactless card consumption to interact with PoS machine. Samsung mobile phone can also simulate the consumption of magnetic stripe card by MST. 
+B2, Activate payment by fingerprint or PIN and use NFC to simulate the process of contactless card consumption to interact with PoS machine. Samsung mobile phone can also simulate the consumption of magnetic stripe card by MST. 
 
-3, The PoS obtains the TOTP generated by the token or the token and the TOTP will directly communicate with the card organization after adding the information required by other contactless cards or magnetic stripe cards.
+B3, The PoS obtains the TOTP generated by the token or the token and the TOTP will directly communicate with the card organization after adding the information required by other contactless cards or magnetic stripe cards.
 
-4, After the card organization obtains the token, it can find the corresponding PAN through de-tokenization and contact the issuing bank to complete the transaction.
+B4, After the card organization obtains the token, it can find the corresponding PAN through de-tokenization and contact the issuing bank to complete the transaction.
 
 \
 

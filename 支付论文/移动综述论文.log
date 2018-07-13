@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.5.28)  11 JUL 2018 22:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.3.31)  13 JUL 2018 09:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **ÁßªÂä®ÁªºËø∞ËÆ∫Êñá.tex
 (./ÁßªÂä®ÁªºËø∞ËÆ∫Êñá.tex
-LaTeX2e <2018-04-01> patch level 2
-Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (./IEEEtran.cls
 Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
 -- See the "IEEEtran_HOWTO" manual for usage information.
@@ -13,13 +13,13 @@ Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
 \@IEEEtrantmpdimenA=\dimen102
 \@IEEEtrantmpdimenB=\dimen103
 \@IEEEtrantmpdimenC=\dimen104
-\@IEEEtrantmpcountA=\count80
-\@IEEEtrantmpcountB=\count81
-\@IEEEtrantmpcountC=\count82
+\@IEEEtrantmpcountA=\count79
+\@IEEEtrantmpcountB=\count80
+\@IEEEtrantmpcountC=\count81
 \@IEEEtrantmptoksA=\toks14
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 503.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 -- Using 8.5in x 11in (letter) paper.
@@ -91,90 +91,99 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \IEEEiednormlabelsep=\dimen118
 \IEEEiedmathlabelsep=\dimen119
 \IEEEiedtopsep=\skip41
-\c@section=\count83
-\c@subsection=\count84
-\c@subsubsection=\count85
-\c@paragraph=\count86
-\c@IEEEsubequation=\count87
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@IEEEsubequation=\count86
 \abovecaptionskip=\skip42
 \belowcaptionskip=\skip43
-\c@figure=\count88
-\c@table=\count89
-\@IEEEeqnnumcols=\count90
-\@IEEEeqncolcnt=\count91
-\@IEEEsubeqnnumrollback=\count92
+\c@figure=\count87
+\c@table=\count88
+\@IEEEeqnnumcols=\count89
+\@IEEEeqncolcnt=\count90
+\@IEEEsubeqnnumrollback=\count91
 \@IEEEquantizeheightA=\dimen120
 \@IEEEquantizeheightB=\dimen121
 \@IEEEquantizeheightC=\dimen122
 \@IEEEquantizeprevdepth=\dimen123
-\@IEEEquantizemultiple=\count93
+\@IEEEquantizemultiple=\count92
 \@IEEEquantizeboxA=\box26
 \@IEEEtmpitemindent=\dimen124
 \IEEEPARstartletwidth=\dimen125
-\c@IEEEbiography=\count94
+\c@IEEEbiography=\count93
 \@IEEEtranrubishbin=\box27
-) (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks15
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/trig.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 99.
+Package graphics Info: Driver file: pdftex.def on input line 95.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count94
 ))
 \Gin@req@height=\dimen126
 \Gin@req@width=\dimen127
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2017/09/02 v2.17a AMS math features
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/03/03 v2.15a AMS math features
 \@mathmargin=\skip44
 
 For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsgen.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks16
 \ex@=\dimen128
 ))
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsbsy.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen129
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsopn.sty
-Package: amsopn 2016/03/08 v2.02 operator names
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count95
-LaTeX Info: Redefining \frac on input line 213.
+LaTeX Info: Redefining \frac on input line 199.
 \uproot@=\count96
 \leftroot@=\count97
-LaTeX Info: Redefining \overline on input line 375.
+LaTeX Info: Redefining \overline on input line 297.
 \classnum@=\count98
 \DOTSCASE@=\count99
-LaTeX Info: Redefining \ldots on input line 472.
-LaTeX Info: Redefining \dots on input line 475.
-LaTeX Info: Redefining \cdots on input line 596.
+LaTeX Info: Redefining \ldots on input line 394.
+LaTeX Info: Redefining \dots on input line 397.
+LaTeX Info: Redefining \cdots on input line 518.
 \Mathstrutbox@=\box28
 \strutbox@=\box29
 \big@size=\dimen130
-LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
 \macc@depth=\count100
 \c@MaxMatrixCols=\count101
 \dotsspace@=\muskip10
@@ -195,13 +204,13 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \multlinegap=\skip45
 \multlinetaggap=\skip46
 \mathdisplay@stack=\toks20
-LaTeX Info: Redefining \[ on input line 2817.
-LaTeX Info: Redefining \] on input line 2818.
+LaTeX Info: Redefining \[ on input line 2735.
+LaTeX Info: Redefining \] on input line 2736.
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/algorithms/algorithmic.sty
+(/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithmic.sty
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \c@ALC@unique=\count107
@@ -211,21 +220,18 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 \ALC@tlm=\skip47
 \algorithmicindent=\skip48
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/array.sty
-Package: array 2018/04/07 v2.4g Tabular extension package (FMi)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen137
-\ar@mcellbox=\box30
 \extrarowheight=\dimen138
 \NC@list=\toks21
 \extratabsurround=\skip49
 \backup@length=\skip50
-\ar@cellbox=\box31
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/url/url.sty
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)
-(./ÁßªÂä®ÁªºËø∞ËÆ∫Êñá.aux
+) (./ÁßªÂä®ÁªºËø∞ËÆ∫Êñá.aux
 
 LaTeX Warning: Label `fig' multiply defined.
 
@@ -474,11 +480,11 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 353.
 LaTeX Font Info:    ... okay on input line 353.
 
 -- Lines per column: 58 (exact).
-(/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count111
 \scratchdimen=\dimen139
-\scratchbox=\box32
+\scratchbox=\box30
 \nofMPsegments=\count112
 \nofMParguments=\count113
 \everyMPshowfont=\toks22
@@ -487,504 +493,663 @@ LaTeX Font Info:    ... okay on input line 353.
 \MPnumerator=\count115
 \makeMPintoPDFobject=\count116
 \everyMPtoPDFconversion=\toks23
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
-
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-)))
-(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
-
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
-)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2018/01/30 v0.27 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-[1{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ô in font ptmr7t!
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-[2]
-<datu.pdf, id=13, 1633.60312pt x 1139.00531pt>
+<datu.pdf, id=10, 1633.60312pt x 1139.00531pt>
 File: datu.pdf Graphic file (type pdf)
-<use datu.pdf>
-Package pdftex.def Info: datu.pdf  used on input line 723.
+ <use datu.pdf>
+Package pdftex.def Info: datu.pdf used on input line 708.
 (pdftex.def)             Requested size: 784.1206pt x 546.71634pt.
-
-Underfull \hbox (badness 3668) in paragraph at lines 761--762
+ [2] [3 <./datu.pdf>]
+Underfull \hbox (badness 3668) in paragraph at lines 746--747
 []\OT1/ptm/m/n/10 TPC-led: Use a time-based one-time pay-ment pass-
  []
 
-<tec.pdf, id=14, 1633.60312pt x 1139.00531pt>
+<tec.pdf, id=57, 1633.60312pt x 1139.00531pt>
 File: tec.pdf Graphic file (type pdf)
-<use tec.pdf>
-Package pdftex.def Info: tec.pdf  used on input line 769.
+ <use tec.pdf>
+Package pdftex.def Info: tec.pdf used on input line 754.
 (pdftex.def)             Requested size: 784.1206pt x 546.71634pt.
-[3] [4 <./datu.pdf>] [5 <./tec.pdf>]
-<tsp1.png, id=112, 450.68375pt x 916.42375pt>
-File: tsp1.png Graphic file (type png)
-<use tsp1.png>
-Package pdftex.def Info: tsp1.png  used on input line 803.
-(pdftex.def)             Requested size: 225.34131pt x 458.21075pt.
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 821--824
+<tsp1.png, id=58, 450.68375pt x 916.42375pt>
+File: tsp1.png Graphic file (type png)
+ <use tsp1.png>
+Package pdftex.def Info: tsp1.png used on input line 788.
+(pdftex.def)             Requested size: 225.34131pt x 458.21075pt.
+ [4] [5 <./tec.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 806--809
 
  []
 
 [6 <./tsp1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 846--849
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+
+Underfull \hbox (badness 10000) in paragraph at lines 831--834
 
  []
 
 <tsp.png, id=116, 598.235pt x 549.05125pt>
 File: tsp.png Graphic file (type png)
-<use tsp.png>
-Package pdftex.def Info: tsp.png  used on input line 862.
+ <use tsp.png>
+Package pdftex.def Info: tsp.png used on input line 847.
 (pdftex.def)             Requested size: 239.28975pt x 219.61661pt.
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
 
-Underfull \hbox (badness 1946) in paragraph at lines 872--873
+Underfull \hbox (badness 1946) in paragraph at lines 857--858
 []\OT1/ptm/m/n/10 Although tra-di-tional cen-tral-ized to-k-eniza-tion has been
 
  []
 
-[7 <./tsp.png>]
-<dis_token.png, id=121, 886.31125pt x 671.50874pt>
+<dis_token.png, id=117, 886.31125pt x 671.50874pt>
 File: dis_token.png Graphic file (type png)
-<use dis_token.png>
-Package pdftex.def Info: dis_token.png  used on input line 889.
+ <use dis_token.png>
+Package pdftex.def Info: dis_token.png used on input line 874.
 (pdftex.def)             Requested size: 256.077pt x 256.06741pt.
- [8 <./dis_token.png>]
+ [7 <./tsp.png>] [8 <./dis_token.png>]
 <zhifubiaojikuangjia.png, id=125, 875.27pt x 590.205pt>
 File: zhifubiaojikuangjia.png Graphic file (type png)
+
 <use zhifubiaojikuangjia.png>
-Package pdftex.def Info: zhifubiaojikuangjia.png  used on input line 988.
+Package pdftex.def Info: zhifubiaojikuangjia.png used on input line 973.
 (pdftex.def)             Requested size: 270.30252pt x 199.16307pt.
-<tsp2.png, id=126, 455.7025pt x 893.3375pt>
+ <tsp2.png, id=126, 455.7025pt x 893.3375pt>
 File: tsp2.png Graphic file (type png)
+
 <use tsp2.png>
-Package pdftex.def Info: tsp2.png  used on input line 1016.
+Package pdftex.def Info: tsp2.png used on input line 1001.
 (pdftex.def)             Requested size: 227.85068pt x 446.66765pt.
- [9 <./zhifubiaojikuangjia.png>]
+ [9 <./zhifubiaojikuangjia.png> <./tsp2.png>]
 <TEE.pdf, id=130, 846.16125pt x 598.48593pt>
 File: TEE.pdf Graphic file (type pdf)
-<use TEE.pdf>
-Package pdftex.def Info: TEE.pdf  used on input line 1058.
+ <use TEE.pdf>
+Package pdftex.def Info: TEE.pdf used on input line 1043.
 (pdftex.def)             Requested size: 423.07959pt x 299.24223pt.
- [10 <./tsp2.png>]
-Underfull \hbox (badness 2253) in paragraph at lines 1092--1093
+ [10]
+Underfull \hbox (badness 2253) in paragraph at lines 1077--1078
 \OT1/ptm/m/n/10 SIM, USIM, UIM, etc. are col-lec-tively re-ferred to as
  []
 
-[11 <./TEE.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1102--1104
+
+Underfull \hbox (badness 10000) in paragraph at lines 1087--1089
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1113--1113
+Underfull \hbox (badness 10000) in paragraph at lines 1098--1098
 []|\OT1/ptm/m/n/10 Low ex-tra
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1113--1114
+Underfull \hbox (badness 10000) in paragraph at lines 1098--1099
 []|\OT1/ptm/m/n/10 High ex-tra
  []
 
 
-Underfull \hbox (badness 3895) in paragraph at lines 1117--1117
+Underfull \hbox (badness 3895) in paragraph at lines 1102--1102
 []|\OT1/ptm/m/n/10 Access Con-
  []
 
 
-Underfull \hbox (badness 1688) in paragraph at lines 1121--1121
+Underfull \hbox (badness 1688) in paragraph at lines 1106--1106
 []|\OT1/ptm/m/n/10 Ease of De-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1121--1121
+Underfull \hbox (badness 10000) in paragraph at lines 1106--1106
 []|\OT1/ptm/m/n/10 Easy with
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1123--1123
+Underfull \hbox (badness 10000) in paragraph at lines 1108--1108
 []|\OT1/ptm/m/n/10 Processing
  []
 
-<QR_decode.png, id=171, 371.3875pt x 681.54625pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11 <./TEE.pdf>] <QR_decode.png, id=171, 371.3875pt x 681.54625pt>
 File: QR_decode.png Graphic file (type png)
-<use QR_decode.png>
-Package pdftex.def Info: QR_decode.png  used on input line 1149.
+ <use QR_decode.png>
+Package pdftex.def Info: QR_decode.png used on input line 1134.
 (pdftex.def)             Requested size: 170.84032pt x 313.51508pt.
-[12 <./QR_decode.png>]
-<code49.png, id=175, 260.47313pt x 124.96687pt>
+
+<code49.png, id=172, 260.47313pt x 124.96687pt>
 File: code49.png Graphic file (type png)
-<use code49.png>
-Package pdftex.def Info: code49.png  used on input line 1165.
+ <use code49.png>
+Package pdftex.def Info: code49.png used on input line 1150.
 (pdftex.def)             Requested size: 260.47249pt x 124.96657pt.
-<PDF417.png, id=176, 424.58624pt x 198.7425pt>
+ [12 <./QR_decode.png>] <PDF417.png, id=176, 424.58624pt x 198.7425pt>
 File: PDF417.png Graphic file (type png)
-<use PDF417.png>
-Package pdftex.def Info: PDF417.png  used on input line 1172.
+ <use PDF417.png>
+Package pdftex.def Info: PDF417.png used on input line 1157.
 (pdftex.def)             Requested size: 212.2926pt x 99.371pt.
+
 <QRcode.pdf, id=177, 846.16125pt x 598.48593pt>
 File: QRcode.pdf Graphic file (type pdf)
-<use QRcode.pdf>
-Package pdftex.def Info: QRcode.pdf  used on input line 1183.
+ <use QRcode.pdf>
+Package pdftex.def Info: QRcode.pdf used on input line 1168.
 (pdftex.def)             Requested size: 389.2389pt x 275.30687pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [13 <./code49.png> <./PDF417.png> <./QRcode.pdf>]
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+
 <yinpinwei.png, id=192, 530.98375pt x 103.38625pt>
 File: yinpinwei.png Graphic file (type png)
-<use yinpinwei.png>
-Package pdftex.def Info: yinpinwei.png  used on input line 1231.
+ <use yinpinwei.png>
+Package pdftex.def Info: yinpinwei.png used on input line 1216.
 (pdftex.def)             Requested size: 212.38972pt x 41.35376pt.
+
 <Inductively_couled_near-field.png, id=193, 555.07375pt x 360.34625pt>
 File: Inductively_couled_near-field.png Graphic file (type png)
+
 <use Inductively_couled_near-field.png>
-Package pdftex.def Info: Inductively_couled_near-field.png  used on input line 
-1258.
+Package pdftex.def Info: Inductively_couled_near-field.png used on input line 1
+243.
 (pdftex.def)             Requested size: 249.78087pt x 162.15431pt.
-<EquivalentcircuitofinFigur1.png, id=194, 828.09375pt x 454.69875pt>
+ [14 <./yinpinwei.png> <./Inductively_couled_near-field.png>]
+<EquivalentcircuitofinFigur1.png, id=197, 828.09375pt x 454.69875pt>
 File: EquivalentcircuitofinFigur1.png Graphic file (type png)
+
 <use EquivalentcircuitofinFigur1.png>
-Package pdftex.def Info: EquivalentcircuitofinFigur1.png  used on input line 12
-66.
+Package pdftex.def Info: EquivalentcircuitofinFigur1.png used on input line 125
+1.
 (pdftex.def)             Requested size: 289.83716pt x 159.14694pt.
 
-[14 <./yinpinwei.png>]
-<Reader_Writer_mode.png, id=202, 930.47626pt x 425.59pt>
+<Reader_Writer_mode.png, id=198, 930.47626pt x 425.59pt>
 File: Reader_Writer_mode.png Graphic file (type png)
+
 <use Reader_Writer_mode.png>
-Package pdftex.def Info: Reader_Writer_mode.png  used on input line 1347.
+Package pdftex.def Info: Reader_Writer_mode.png used on input line 1332.
 (pdftex.def)             Requested size: 232.61848pt x 106.39723pt.
-<Peer-to_Peer.png, id=203, 928.46875pt x 413.545pt>
+
+<Peer-to_Peer.png, id=199, 928.46875pt x 413.545pt>
 File: Peer-to_Peer.png Graphic file (type png)
-<use Peer-to_Peer.png>
-Package pdftex.def Info: Peer-to_Peer.png  used on input line 1363.
+ <use Peer-to_Peer.png>
+Package pdftex.def Info: Peer-to_Peer.png used on input line 1348.
 (pdftex.def)             Requested size: 232.11662pt x 103.38599pt.
- [15 <./Inductively_couled_near-field.png> <./EquivalentcircuitofinFigur1.png> 
-<./Reader_Writer_mode.png>]
+
+[15 <./EquivalentcircuitofinFigur1.png> <./Reader_Writer_mode.png>]
 <Card_Emulation_Mode.png, id=207, 947.54pt x 426.59375pt>
 File: Card_Emulation_Mode.png Graphic file (type png)
+
 <use Card_Emulation_Mode.png>
-Package pdftex.def Info: Card_Emulation_Mode.png  used on input line 1375.
+Package pdftex.def Info: Card_Emulation_Mode.png used on input line 1360.
 (pdftex.def)             Requested size: 236.88441pt x 106.64816pt.
+
 <Protocol_emulation.png, id=208, 969.6225pt x 399.4925pt>
 File: Protocol_emulation.png Graphic file (type png)
+
 <use Protocol_emulation.png>
-Package pdftex.def Info: Protocol_emulation.png  used on input line 1384.
+Package pdftex.def Info: Protocol_emulation.png used on input line 1369.
 (pdftex.def)             Requested size: 271.49245pt x 111.85713pt.
  [16 <./Peer-to_Peer.png> <./Card_Emulation_Mode.png> <./Protocol_emulation.png
 >]
 <MSTyuanjian2.png, id=212, 142.5325pt x 125.46875pt>
 File: MSTyuanjian2.png Graphic file (type png)
-<use MSTyuanjian2.png>
-Package pdftex.def Info: MSTyuanjian2.png  used on input line 1430.
+ <use MSTyuanjian2.png>
+Package pdftex.def Info: MSTyuanjian2.png used on input line 1415.
 (pdftex.def)             Requested size: 142.53214pt x 125.46843pt.
+
 <Emittingmagneticpulse.png, id=213, 1482.53876pt x 712.6625pt>
 File: Emittingmagneticpulse.png Graphic file (type png)
+
 <use Emittingmagneticpulse.png>
-Package pdftex.def Info: Emittingmagneticpulse.png  used on input line 1437.
+Package pdftex.def Info: Emittingmagneticpulse.png used on input line 1422.
 (pdftex.def)             Requested size: 266.84546pt x 128.27371pt.
 
-Underfull \hbox (badness 4242) in paragraph at lines 1480--1480
+Underfull \hbox (badness 4242) in paragraph at lines 1465--1465
 []|\OT1/ptm/m/n/10 Cost of de-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1484--1484
+Underfull \hbox (badness 10000) in paragraph at lines 1469--1469
 []|\OT1/ptm/m/n/10 Data
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1484--1484
+Underfull \hbox (badness 10000) in paragraph at lines 1469--1469
 \OT1/ptm/m/n/10 Trans-mis-sion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1486--1486
+Underfull \hbox (badness 10000) in paragraph at lines 1471--1471
 []|\OT1/ptm/m/n/10 Hardware
  []
 
 
-Overfull \hbox (2.73425pt too wide) in paragraph at lines 1488--1488
+Overfull \hbox (2.73425pt too wide) in paragraph at lines 1473--1473
 []|\OT1/ptm/m/n/10 Eavesdropping
  []
 
 
-Overfull \hbox (2.27577pt too wide) in paragraph at lines 1488--1488
+Overfull \hbox (2.27577pt too wide) in paragraph at lines 1473--1473
 []|\OT1/ptm/m/n/10 ineffective| 
  []
 
 
-Underfull \hbox (badness 1845) in paragraph at lines 1490--1490
+Underfull \hbox (badness 1845) in paragraph at lines 1475--1475
 []|\OT1/ptm/m/n/10 Data Mod-i-fi-
  []
 
 
-Overfull \hbox (2.27577pt too wide) in paragraph at lines 1490--1490
+Overfull \hbox (2.27577pt too wide) in paragraph at lines 1475--1475
 []|\OT1/ptm/m/n/10 ineffective| 
  []
 
 
-Overfull \hbox (2.27577pt too wide) in paragraph at lines 1490--1490
+Overfull \hbox (2.27577pt too wide) in paragraph at lines 1475--1475
 []|\OT1/ptm/m/n/10 ineffective| 
  []
 
 
-Overfull \hbox (2.27577pt too wide) in paragraph at lines 1490--1490
+Overfull \hbox (2.27577pt too wide) in paragraph at lines 1475--1475
 []|\OT1/ptm/m/n/10 ineffective| 
  []
 
 
-Overfull \hbox (2.27577pt too wide) in paragraph at lines 1490--1491
+Overfull \hbox (2.27577pt too wide) in paragraph at lines 1475--1476
 []|\OT1/ptm/m/n/10 ineffective| 
  []
 
 
-Underfull \hbox (badness 5741) in paragraph at lines 1492--1492
+Underfull \hbox (badness 5741) in paragraph at lines 1477--1477
 []|\OT1/ptm/m/n/10 Man in the
  []
 
 
-Overfull \hbox (2.27577pt too wide) in paragraph at lines 1492--1492
+Overfull \hbox (2.27577pt too wide) in paragraph at lines 1477--1477
 []|\OT1/ptm/m/n/10 ineffective| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1494--1494
+Underfull \hbox (badness 10000) in paragraph at lines 1479--1479
 []|\OT1/ptm/m/n/10 Loss of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1494--1494
+Underfull \hbox (badness 10000) in paragraph at lines 1479--1479
 \OT1/ptm/m/n/10 de-vice
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1494--1494
+Underfull \hbox (badness 10000) in paragraph at lines 1479--1479
 []|\OT1/ptm/m/n/10 Rely on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1494--1494
+Underfull \hbox (badness 10000) in paragraph at lines 1479--1479
 \OT1/ptm/m/n/10 ter-mi-nal
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1494--1494
+Underfull \hbox (badness 10000) in paragraph at lines 1479--1479
 []|\OT1/ptm/m/n/10 Rely on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1494--1494
+Underfull \hbox (badness 10000) in paragraph at lines 1479--1479
 \OT1/ptm/m/n/10 ter-mi-nal
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1494--1494
+Underfull \hbox (badness 10000) in paragraph at lines 1479--1479
 []|\OT1/ptm/m/n/10 Rely on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1494--1494
+Underfull \hbox (badness 10000) in paragraph at lines 1479--1479
 \OT1/ptm/m/n/10 ter-mi-nal
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1494--1495
+Underfull \hbox (badness 10000) in paragraph at lines 1479--1480
 []|\OT1/ptm/m/n/10 Rely on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1494--1495
+Underfull \hbox (badness 10000) in paragraph at lines 1479--1480
 \OT1/ptm/m/n/10 ter-mi-nal
  []
 
 [17 <./MSTyuanjian2.png> <./Emittingmagneticpulse.png>]
 <Onlie_pay.png, id=217, 490.83376pt x 840.13875pt>
 File: Onlie_pay.png Graphic file (type png)
-<use Onlie_pay.png>
-Package pdftex.def Info: Onlie_pay.png  used on input line 1517.
+ <use Onlie_pay.png>
+Package pdftex.def Info: Onlie_pay.png used on input line 1502.
 (pdftex.def)             Requested size: 245.41628pt x 420.06834pt.
+
 <erweimazhifu.png, id=218, 646.415pt x 830.10126pt>
 File: erweimazhifu.png Graphic file (type png)
-<use erweimazhifu.png>
-Package pdftex.def Info: erweimazhifu.png  used on input line 1529.
+ <use erweimazhifu.png>
+Package pdftex.def Info: erweimazhifu.png used on input line 1514.
 (pdftex.def)             Requested size: 271.49245pt x 348.64015pt.
- [18 <./Onlie_pay.png> <./erweimazhifu.png>]
+
+[18 <./Onlie_pay.png> <./erweimazhifu.png>]
 <Offline_payment.png, id=222, 392.46625pt x 801.99625pt>
 File: Offline_payment.png Graphic file (type png)
+
 <use Offline_payment.png>
-Package pdftex.def Info: Offline_payment.png  used on input line 1544.
+Package pdftex.def Info: Offline_payment.png used on input line 1529.
 (pdftex.def)             Requested size: 196.23264pt x 400.99713pt.
 
-Underfull \vbox (badness 5064) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 
 <TOTP2.pdf, id=223, 846.16125pt x 598.48593pt>
 File: TOTP2.pdf Graphic file (type pdf)
-<use TOTP2.pdf>
-Package pdftex.def Info: TOTP2.pdf  used on input line 1560.
+ <use TOTP2.pdf>
+Package pdftex.def Info: TOTP2.pdf used on input line 1545.
 (pdftex.def)             Requested size: 338.45851pt x 239.39012pt.
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ô in font ptmr7t!
  [19 <./Offline_payment.png> <./TOTP2.pdf>]
-Underfull \hbox (badness 4518) in paragraph at lines 1614--1616
+Underfull \hbox (badness 4518) in paragraph at lines 1599--1601
  \OT1/ptm/m/it/10 3) TOTP(Time-Based One-Time Pass-word): [][] \OT1/ptm/m/n/10 
 Al-go-rithm
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1614--1616
+Underfull \hbox (badness 10000) in paragraph at lines 1599--1601
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1622--1625
+Underfull \hbox (badness 10000) in paragraph at lines 1607--1610
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1622--1625
+Underfull \hbox (badness 10000) in paragraph at lines 1607--1610
 
  []
 
 <TOTP.pdf, id=254, 846.16125pt x 598.48593pt>
 File: TOTP.pdf Graphic file (type pdf)
-<use TOTP.pdf>
-Package pdftex.def Info: TOTP.pdf  used on input line 1635.
+ <use TOTP.pdf>
+Package pdftex.def Info: TOTP.pdf used on input line 1620.
 (pdftex.def)             Requested size: 465.39014pt x 329.16827pt.
+
 <OTP.png, id=255, 540.0175pt x 299.1175pt>
 File: OTP.png Graphic file (type png)
-<use OTP.png>
-Package pdftex.def Info: OTP.png  used on input line 1687.
+ <use OTP.png>
+Package pdftex.def Info: OTP.png used on input line 1672.
 (pdftex.def)             Requested size: 216.00316pt x 119.64487pt.
-[20 <./TOTP.pdf> <./OTP.png>]
-<samxing_pay.png, id=292, 689.57625pt x 874.26625pt>
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ô in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ô in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ô in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ô in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ô in font ptmr7t!
+ [20 <./TOTP.pdf> <./OTP.png>] <samxing_pay.png, id=292, 689.57625pt x 874.2662
+5pt>
 File: samxing_pay.png Graphic file (type png)
+
 <use samxing_pay.png>
-Package pdftex.def Info: samxing_pay.png  used on input line 1753.
+Package pdftex.def Info: samxing_pay.png used on input line 1738.
 (pdftex.def)             Requested size: 275.8256pt x 349.7003pt.
- [21]
-<NFC_se.pdf, id=296, 846.16125pt x 598.48593pt>
+ [21] <NFC_se.pdf, id=296, 846.16125pt x 598.48593pt>
 File: NFC_se.pdf Graphic file (type pdf)
+
 <use NFC_se.pdf>
-Package pdftex.def Info: NFC_se.pdf  used on input line 1771.
+Package pdftex.def Info: NFC_se.pdf used on input line 1756.
 (pdftex.def)             Requested size: 507.70067pt x 359.09433pt.
- [22 <./samxing_pay.png> <./NFC_se.pdf>]
-[23]
+ [22 <./samxing_pay.png> <./NFC_se.pdf>] [23]
 <NFC_cpu.pdf, id=330, 846.16125pt x 598.48593pt>
 File: NFC_cpu.pdf Graphic file (type pdf)
-<use NFC_cpu.pdf>
-Package pdftex.def Info: NFC_cpu.pdf  used on input line 1826.
+ <use NFC_cpu.pdf>
+Package pdftex.def Info: NFC_cpu.pdf used on input line 1811.
 (pdftex.def)             Requested size: 490.77388pt x 347.12209pt.
- [24 <./NFC_cpu.pdf>]
-<iphone_pay.pdf, id=358, 846.16125pt x 598.48593pt>
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ô in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+ [24 <./NFC_cpu.pdf>] <iphone_pay.pdf, id=358, 846.16125pt x 598.48593pt>
 File: iphone_pay.pdf Graphic file (type pdf)
+
 <use iphone_pay.pdf>
-Package pdftex.def Info: iphone_pay.pdf  used on input line 1869.
+Package pdftex.def Info: iphone_pay.pdf used on input line 1854.
 (pdftex.def)             Requested size: 592.30885pt x 418.93729pt.
-<iphone_tsp.pdf, id=359, 846.16125pt x 598.48593pt>
+ <iphone_tsp.pdf, id=359, 846.16125pt x 598.48593pt>
 File: iphone_tsp.pdf Graphic file (type pdf)
+
 <use iphone_tsp.pdf>
-Package pdftex.def Info: iphone_tsp.pdf  used on input line 1879.
+Package pdftex.def Info: iphone_tsp.pdf used on input line 1864.
 (pdftex.def)             Requested size: 507.70067pt x 359.09433pt.
 
 Underfull \vbox (badness 1895) has occurred while \output is active []
 
  [25]
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmri7t!
+Missing character: There is no Ä in font ptmri7t!
+Missing character: There is no ô in font ptmri7t!
+Missing character: There is no ‚ in font ptmri7t!
+Missing character: There is no Ä in font ptmri7t!
+Missing character: There is no ô in font ptmri7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+Missing character: There is no ‚ in font ptmri7t!
+Missing character: There is no Ä in font ptmri7t!
+Missing character: There is no ú in font ptmri7t!
+Missing character: There is no ‚ in font ptmri7t!
+Missing character: There is no Ä in font ptmri7t!
+Missing character: There is no ô in font ptmri7t!
+Missing character: There is no ‚ in font ptmri7t!
+Missing character: There is no Ä in font ptmri7t!
+Missing character: There is no ô in font ptmri7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+Missing character: There is no ‚ in font ptmri7t!
+Missing character: There is no Ä in font ptmri7t!
+Missing character: There is no ú in font ptmri7t!
+Missing character: There is no ‚ in font ptmri7t!
+Missing character: There is no Ä in font ptmri7t!
+Missing character: There is no ô in font ptmri7t!
+Missing character: There is no ‚ in font ptmri7t!
+Missing character: There is no Ä in font ptmri7t!
+Missing character: There is no ô in font ptmri7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+Missing character: There is no ‚ in font ptmri7t!
+Missing character: There is no Ä in font ptmri7t!
+Missing character: There is no ú in font ptmri7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+Missing character: There is no ‚ in font ptmri7t!
+Missing character: There is no Ä in font ptmri7t!
+Missing character: There is no ú in font ptmri7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+Missing character: There is no ‚ in font ptmri7t!
+Missing character: There is no Ä in font ptmri7t!
+Missing character: There is no ú in font ptmri7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+Missing character: There is no √ in font ptmr7t!
+Missing character: There is no ≠ in font ptmr7t!
+Missing character: There is no ‚ in font ptmri7t!
+Missing character: There is no Ä in font ptmri7t!
+Missing character: There is no ú in font ptmri7t!
+Missing character: There is no ‚ in font ptmri7t!
+Missing character: There is no Ä in font ptmri7t!
+Missing character: There is no ù in font ptmri7t!
+Missing character: There is no ‚ in font ptmri7t!
+Missing character: There is no Ä in font ptmri7t!
+Missing character: There is no ú in font ptmri7t!
+Missing character: There is no ‚ in font ptmri7t!
+Missing character: There is no Ä in font ptmri7t!
+Missing character: There is no ù in font ptmri7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ô in font ptmr7t!
+
 [26 <./iphone_pay.pdf> <./iphone_tsp.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./iphone_tsp.pdf): PDF inclu
-sion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./iphone_tsp.pdf): PDF inclusion: multiple pdfs 
+with page group included in a single page
 >]
-Underfull \hbox (badness 10000) in paragraph at lines 2006--2007
+Underfull \hbox (badness 10000) in paragraph at lines 1991--1992
 []\OT1/ptm/m/n/8 Ulf Matts-son, Cos Cob,CT(US), Yi-gal Rozen-berg, Wilton,
  []
 
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ì in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ì in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ì in font ptmr7t!
 
-Underfull \hbox (badness 4205) in paragraph at lines 2049--2050
+Underfull \hbox (badness 4205) in paragraph at lines 2034--2035
 []\OT1/ptm/m/n/8 ETSI TS 102 613, Smart Cards; UICC - Con-tact-less Front-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2049--2050
+Underfull \hbox (badness 10000) in paragraph at lines 2034--2035
 \OT1/ptm/m/n/8 end (CLF) In-ter-face; Part 1: Phys-i-cal and data link layer
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2049--2050
+Underfull \hbox (badness 10000) in paragraph at lines 2034--2035
 \OT1/ptm/m/n/8 char-ac-ter-is-tics, Tech-ni-cal Spec-i-fi-ca-tion, ETSI TS. Ava
 il-able
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2049--2050
+Underfull \hbox (badness 10000) in paragraph at lines 2034--2035
 \OT1/ptm/m/n/8 online:$http : / / www . etsi . org / deliver / etsi[]ts / 10260
 0[]102699 / 102613 / 07 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2056--2057
+Underfull \hbox (badness 10000) in paragraph at lines 2041--2042
 \OT1/ptm/m/n/8 http : / / nfc-[]forum . org / our-[]work / speci^^Lcations-[]an
 d-[]application-[]documents/$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2058--2059
+Underfull \hbox (badness 10000) in paragraph at lines 2043--2044
 []\OT1/ptm/m/n/8 NFC Dig-i-tal Pro-to-col, NFC Fo-rum, Tech-ni-cal Spec-i-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2058--2059
+Underfull \hbox (badness 10000) in paragraph at lines 2043--2044
 \OT1/ptm/m/n/8 fi-ca-tion. Avail-able on-line: $http : / / nfc-[]forum . org / 
 our-[]work /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2058--2059
+Underfull \hbox (badness 10000) in paragraph at lines 2043--2044
 \OT1/ptm/m/n/8 speci^^Lcations-[]and-[]application-[]documents/$ (ac-cessed on 
 13 April
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2060--2061
+Underfull \hbox (badness 10000) in paragraph at lines 2045--2046
 \OT1/ptm/m/n/8 http : / / nfc-[]forum . org / our-[]work / speci^^Lcations-[]an
 d-[]application-[]documents/$
  []
@@ -995,25 +1160,24 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3319 strings out of 492649
- 51210 string characters out of 6129622
- 130555 words of memory out of 5000000
- 7128 multiletter control sequences out of 15000+600000
+ 3358 strings out of 493029
+ 51078 string characters out of 6136234
+ 128517 words of memory out of 5000000
+ 6822 multiletter control sequences out of 15000+600000
  47790 words of font info for 85 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 41i,9n,28p,2423b,335s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
-xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texl
-ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texliv
-e/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2
-018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/20
-18/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018
-/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dis
-t/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/t
-ype1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/t
-imes/utmri8a.pfb>
-Output written on ÁßªÂä®ÁªºËø∞ËÆ∫Êñá.pdf (27 pages, 2962642 bytes).
+ 38i,9n,28p,2423b,336s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on ÁßªÂä®ÁªºËø∞ËÆ∫Êñá.pdf (27 pages, 2961204 bytes).
 PDF statistics:
  448 PDF objects out of 1000 (max. 8388607)
  319 compressed objects within 4 object streams
