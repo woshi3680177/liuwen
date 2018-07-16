@@ -644,9 +644,11 @@ P1, The customer opens the payment app and enters the bank card number on the bi
 
 P2, The mobile terminal sends the bank card number to the server of the payment provider through the secure communication network.
 
-P3, the server interacts with the card organization and obtains the token of the bank card, saves and returns it to the mobile terminal
+P3, the server interacts with the card organization.
 
-P4, the mobile terminal will save the token
+P4, The card organization uses the token management module to generate a token and contacts the issuing bank to obtain the certificate.
+
+P4, The mobile payment provider obtains the token of the bank card, saves and returns it to the mobile terminalthe mobile terminal.
 
 
 No matter which payment software you use, what is indeed bound to the phone is the token, which we also call a virtual bank card. This technique and its security analysis are covered in detail in the next section.
